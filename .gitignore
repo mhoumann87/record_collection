@@ -1,6 +1,9 @@
 # database credentials
 private/db_credentials.php
 
+# Don't track the main.css file, everything is in SASS
+public/assets/styles/main.css
+
 # Logs
 logs
 *.log
