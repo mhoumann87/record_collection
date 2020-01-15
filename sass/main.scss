@@ -1,4 +1,7 @@
-body {
-    background: red;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
+// Import fonts from Google Fonts so it is here on top of the css
+@import url("https://fonts.googleapis.com/css?family=Alfa+Slab+One|Libre+Franklin:100,400,900&display=swap");
+
+// Import the different scss files in the right order
+@import "variables";
+@import "reset";
+@import "base-styles";

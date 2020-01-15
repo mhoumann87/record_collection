@@ -1,0 +1,147 @@
+// Reset the base css in the browser
+// These "rules" are from https://github.com/mozdevs/cssremedy/blob/master/css/remedy.css
+
+// Global Remedies
+// ***************
+
+// Use border-box for the complete project
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+// Remove all margin on the body
+body {
+    margin: 0;
+}
+
+// Headings
+// ***************
+
+// Switch to using REM units for headings
+// Same size as 'normal' browser defaults
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.17rem;
+}
+
+h4 {
+    font-size: 1rem;
+}
+
+h5 {
+    font-size: 0.83rem;
+}
+
+h6 {
+    font-size: 0.67rem;
+}
+
+// Embeded elements
+// ***************
+
+// Block display removes space below element
+// Makes the element responsive
+img,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+// For old browsers
+// ***************
+
+// Remove the border on images inside links >=IE10
+img {
+    border-style: none;
+}
+
+// Hide the overflow in >= IE10
+svg {
+    overflow: hidden;
+}
+
+//Default block display on HTML5 elements
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+    display: block;
+}
+
+// Add the correct box sizing and remove the padding in IE10
+[type='checkbox'],
+[type='radio'] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+// Nav lines
+// ***************
+
+// List styling
+nav ul {
+    list-style: none;
+}
+
+/*
+* list-style: none; not only remove the bullet points, but also
+* removes list-symantics for screen readers
+* This adds a zero-width-space before the li and prevents
+* VoiceOver disables. The position absolute ensures no extra space
+*/
+nav li::before {
+    content: "\200B";
+    position: absolute;
+}
+
+// Reduce motion
+// *****************
+
+/*
+* Imidiatly jump any animation to the endpoint
+* and removes transitions and fixed background attachment
+*/
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        animation-delay: -1ms !important;
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        background-attachment: initial !important;
+        scroll-behavior: auto !important;
+        transition-delay: 0s !important;
+        transition-duration: 0s !important;
+    }
+}
+
+// Line Heights
+// *****************
+
+html {
+    line-height: 1.5;
+}
+
+#{$headings} {
+    line-height: 1.25;
+}
+
+caption, figcaption, label, legend {
+    line-height: 1.375;
+}

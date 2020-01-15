@@ -23,4 +23,23 @@ require_once 'db_credentials.php';
 require_once 'database_functions.php';
 require_once 'functions.php';
 
+// Load class definations manually
+// All classes in directory
+foreach (glob('classes/*.class.php') as $file) {
+  require_once $file;
+}
+
+// Autoload class definations
+function my_autoload($class)
+{
+  if (preg_match('/\A\w+\Z/', $class)) {
+    include 'classes/' . $class . '.class.php';
+  }
+}
+spl_autoload_register('my_autoload');
+
+// Connect to the database (disconnect are handled in the footer)
 $db = db_connect();
+
+// Register the database in the DatabaseObject
+DatabaseObject::set_database($db);
