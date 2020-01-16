@@ -10,8 +10,11 @@ class Grade extends DatabaseObject
     'definition'
   ];
 
+  public $test = 'test';
+
   public $id;
   public $value;
+  public $definition;
 
   public function __construct($args = [])
   {

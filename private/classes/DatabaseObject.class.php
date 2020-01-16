@@ -30,6 +30,7 @@ class DatabaseObject
     }
 
     $result->free();
+    var_dump($object_array);
     return $object_array;
   } // find_by_sql()
 

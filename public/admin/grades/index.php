@@ -4,6 +4,7 @@
 $page_title = 'Grades Home';
 
 $grades = Grade::find_all();
+var_dump($grades);
 ?>
 
 
@@ -12,8 +13,10 @@ $grades = Grade::find_all();
 
 <h2>Grades Front Page</h2>
 
-<?php
-var_dump($grades);
-?>
+<section class="show-all">
+
+
+</section>
+
 
 <?php include SHARED_PATH . '/admin_footer.php' ?>
