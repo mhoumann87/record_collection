@@ -10,6 +10,15 @@ class Grade extends DatabaseObject
     'definition'
   ];
 
+  public $allowed_tags = [
+    '<br>',
+    '<p>',
+    '<h1>',
+    '<h2>',
+    '<h3>',
+    '<h4>'
+  ];
+
   public $id;
   public $value;
   public $definition;
@@ -24,4 +33,16 @@ class Grade extends DatabaseObject
   {
     return self::$table_name;
   }
+
+  // Remove html tags not cleared in $allowed_tags
+  public function clear_html_input($text)
+  {
+    $allowed_tags = implode('', $this->allowed_tags);
+    return strip_tags($text, $allowed_tags);
+  }
+
+  // Validate the input
+  protected function validate()
+  {
+  } // validate()
 }// class

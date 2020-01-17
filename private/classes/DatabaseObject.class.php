@@ -12,11 +12,17 @@ class DatabaseObject
     self::$db = $db;
   }
 
-  // CRUD operations
+  /*****************************************
+   * CRUD operations
+   ******************************************/
 
-  // Create
+  // * Create
+  // ********************
 
-  // Read
+
+  // * Read
+  // ********************
+
   static public function find_by_sql($sql)
   {
     $result = self::$db->query($sql);
@@ -39,7 +45,18 @@ class DatabaseObject
     return static::find_by_sql($sql);
   } // find_all()
 
-  // "Service" functions for CRUD functions
+  // * Update
+  // ********************
+
+  // * Delete
+  // ********************
+
+
+
+
+  /*********************************************
+   * "Service" functions for CRUD functions
+   **********************************************/
 
   // Instanciate connects the values to the columns in the database
   static protected function instanciate($record)
