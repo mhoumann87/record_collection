@@ -4,7 +4,7 @@
 $page_title = 'Grades Home';
 
 $grades = Grade::find_all();
-var_dump($grades);
+
 ?>
 
 
@@ -14,7 +14,14 @@ var_dump($grades);
 <h2>Grades Front Page</h2>
 
 <section class="show-all">
-
+  <?php foreach ($grades as $grade) { ?>
+    <article class="card">
+      <h3><?php echo h(ucfirst($grade->value)); ?></h3>
+      <div class="description">
+        <?php echo $grade->definition; ?>
+      </div>
+    </article>
+  <?php } ?>
 
 </section>
 

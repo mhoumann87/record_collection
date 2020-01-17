@@ -28,9 +28,7 @@ class DatabaseObject
     while ($record = $result->fetch_assoc()) {
       $object_array[] = static::instanciate($record);
     }
-
     $result->free();
-    var_dump($object_array);
     return $object_array;
   } // find_by_sql()
 
@@ -52,7 +50,7 @@ class DatabaseObject
       if (property_exists($object, $property)) {
         $object->$property = $value;
       }
-      return $object;
     }
+    return $object;
   }
 } // class
