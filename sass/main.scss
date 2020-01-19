@@ -3,5 +3,9 @@
 
 // Import the different scss files in the right order
 @import "variables";
+@import "mixins";
 @import "reset";
 @import "base-styles";
+
+// Partials
+@import "./partials/admin-header";

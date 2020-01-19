@@ -1,0 +1,26 @@
+.admin-header {
+    background: $background-dark;
+    padding: 0.4em;
+    color: $font-light;
+
+    h1 {
+        margin: 0;
+        line-height: 1;
+    }
+
+    p {
+        margin: 0.2em 0;
+        line-height: 1;
+        font-size: 0.8rem;
+    }
+
+    @include medium {
+        h1 {
+            font-size: 3rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+    }
+}

@@ -13,6 +13,7 @@
 </head>
 
 <body>
-  <header>
-    <h1>This is the Admin Area</h1>
+  <header class="admin-header">
+    <h1>My Record Collection</h1>
+    <p>Admin Area - <?php echo $page_title; ?></p>
   </header>

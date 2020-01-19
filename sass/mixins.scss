@@ -1,0 +1,31 @@
+// Mixins for mefia queries
+
+// Medium screens (601px)
+@mixin medium {
+    @media screen and (min-width: #{$tablet-width}) {
+        @content;
+    }
+}
+
+// Desktop (1025px)
+@mixin large {
+    @media screen and (min-width: #{$desktop-small}) {
+        @content;
+    }
+}
+
+// Large screens (>1600px)
+@mixin x-large {
+    @media screen and (min-width: #{$desktop-large}) {
+        @content;
+    }
+}
+
+/*************************************************
+* Implement media quries in SASS                 *
+*  @include large {                              *
+*    body {                                      *
+*      font-size: 1.2rem;                        *
+*    }                                           *
+*  }                                             *
+*************************************************/
