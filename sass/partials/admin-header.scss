@@ -1,7 +1,10 @@
+/* Admin header */
 .admin-header {
     background: $background-dark;
-    padding: 0.4em;
     color: $font-light;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     h1 {
         margin: 0;
@@ -14,6 +17,15 @@
         font-size: 0.8rem;
     }
 
+    .branding {
+        width: 100%;
+        padding: 0.4em;
+    }
+
+    .image {
+        display: none;
+    }
+
     @include medium {
         h1 {
             font-size: 3rem;
@@ -21,6 +33,24 @@
 
         p {
             font-size: 1.2rem;
+        }
+    }
+
+
+    @include large {
+        .branding {
+            width: 48%;
+        }
+
+        .image {
+            display: block;
+            width: 50%;
+
+            //background-image: url(../images/admin_header_bg.jpg);
+            background-position: center center;
+            background-size: cover;
+            min-height: 100%;
+            align-self: stretch;
         }
     }
 }

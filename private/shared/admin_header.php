@@ -14,6 +14,9 @@
 
 <body>
   <header class="admin-header">
-    <h1>My Record Collection</h1>
-    <p>Admin Area - <?php echo $page_title; ?></p>
+    <div class="branding">
+      <h1>My Record Collection</h1>
+      <p>Admin Area - <?php echo $page_title; ?></p>
+    </div>
+    <div class="image" id="admin-header-image"></div>
   </header>

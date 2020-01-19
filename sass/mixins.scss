@@ -21,11 +21,26 @@
     }
 }
 
-/*************************************************
-* Implement media quries in SASS                 *
-*  @include large {                              *
-*    body {                                      *
-*      font-size: 1.2rem;                        *
-*    }                                           *
-*  }                                             *
-*************************************************/
+//**************************************************
+//* Implement media quries in SASS                 *
+//*  @include large {                              *
+//*    body {                                      *
+//*      font-size: 1.2rem;                        *
+//*    }                                           *
+//*  }                                             *
+//**************************************************
+
+// Misc Mixins
+
+// Center in div
+@mixin center-div {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// Border styles with variable styles
+@mixin border($thickness: 1px, $color: $border) {
+    border-width: $thickness;
+    border-style: solid;
+    border-color: $color;
+}
