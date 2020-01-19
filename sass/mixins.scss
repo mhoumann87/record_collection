@@ -44,3 +44,8 @@
     border-style: solid;
     border-color: $color;
 }
+
+// Single border edge - remember to add which edge
+@mixin border-single($placement, $thickness: 1px, $color: $border) {
+    border-#{$placement}: $thickness solid $color;
+}
