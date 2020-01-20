@@ -1,6 +1,6 @@
 <?php require_once '../../../private/initialize.php'; ?>
 
-<?php $page_title = 'Add Grade'; ?> 
+<?php $page_title = 'Add Grade'; ?>
 
 <?php
 
@@ -10,5 +10,11 @@ $grade = new Grade;
 ?>
 
 <?php include SHARED_PATH . '/admin_header.php'; ?>
+
+<section class="input-page">
+
+  <?php echo display_errors($grade->errors); ?>
+
+</section>
 
 <?php include SHARED_PATH . '/admin_footer.php'; ?>

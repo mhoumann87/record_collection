@@ -23,3 +23,8 @@ a:hover,
 a:active {
     color: $link-hover;
 }
+
+// Remove div
+.no-show {
+    display: none;
+}

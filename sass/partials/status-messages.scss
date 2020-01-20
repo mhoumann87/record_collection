@@ -1,0 +1,9 @@
+.errors {
+    @include border(2px, $danger);
+    @include center-div;
+
+    color: $danger;
+    margin-top: 1.4em;
+    padding: .8em;
+    width: 90%;
+}

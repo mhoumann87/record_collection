@@ -44,5 +44,6 @@ class Grade extends DatabaseObject
   // Validate the input
   protected function validate()
   {
+    // TODO Add validation functions
   } // validate()
 }// class

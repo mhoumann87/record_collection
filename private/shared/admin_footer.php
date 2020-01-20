@@ -1,3 +1,4 @@
+</main>
 <footer class="admin-footer">
   <div class="first">
     <h4>My Record Collection</h4>

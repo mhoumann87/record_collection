@@ -1,0 +1,31 @@
+.admin-nav {
+    background-color: $background-dark;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 1em;
+
+    a {
+        color: $font-dark;
+        text-decoration: none;
+    }
+
+    a:hover,
+    a:active {
+        color: $link-hover;
+    }
+
+    ul {
+        li {
+            @include border(1px, $background-dark);
+
+            background-color: $background;
+            padding: .4em;
+            text-align: center;
+        }
+
+        li:not(last-child) {
+            margin-bottom: .3em;
+        }
+    }
+}

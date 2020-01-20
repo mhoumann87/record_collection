@@ -8,5 +8,7 @@
 @import "base-styles";
 
 // Partials
+@import "./partials/status-messages";
 @import "./partials/admin-header";
+@import "./partials/admin-nav";
 @import "./partials/admin-footer";

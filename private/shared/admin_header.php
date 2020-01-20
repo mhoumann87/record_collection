@@ -19,4 +19,7 @@
       <p>Admin Area - <?php echo $page_title; ?></p>
     </div>
     <div class="image" id="admin-header-image"></div>
+    <?php include_once SHARED_PATH . '/admin_navigation.php'; ?>
   </header>
+
+  <main>
