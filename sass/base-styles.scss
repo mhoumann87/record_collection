@@ -6,6 +6,9 @@ body {
     font-size: 100%;
     min-height: 100vh;
     width: 100%;
+    max-width: 1600px;
+
+    @include center-div;
 }
 
 #{$headings} {
@@ -27,4 +30,17 @@ a:active {
 // Remove div
 .no-show {
     display: none;
+}
+
+// Main
+
+main {
+    width: 90%;
+    margin: 1em;
+
+    @include center-div;
+
+    @include x-large {
+        width: 100%;
+    }
 }

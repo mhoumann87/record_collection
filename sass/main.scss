@@ -6,9 +6,11 @@
 @import "mixins";
 @import "reset";
 @import "base-styles";
+@import "./partials/buttons";
 
 // Partials
 @import "./partials/status-messages";
 @import "./partials/admin-header";
 @import "./partials/admin-nav";
 @import "./partials/admin-footer";
+@import "./partials/grades-card";

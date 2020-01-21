@@ -7,6 +7,7 @@ class Grade extends DatabaseObject
   static protected $db_columns = [
     'id',
     'value',
+    'short',
     'definition'
   ];
 
@@ -21,6 +22,7 @@ class Grade extends DatabaseObject
 
   public $id;
   public $value;
+  public $short;
   public $definition;
 
   public function __construct($args = [])

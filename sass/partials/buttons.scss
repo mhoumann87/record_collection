@@ -1,0 +1,18 @@
+button {
+    background-color: $background;
+    color: $font-dark;
+    padding: .5em;
+    cursor: pointer;
+
+    @include border(2px, $background-dark);
+    @include shaddow;
+    @include smooth;
+
+    &.btn-link {
+        &:hover,
+        &:active {
+            background: $background-dark;
+            color: $link-hover;
+        }
+    }
+}

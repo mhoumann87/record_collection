@@ -49,3 +49,13 @@
 @mixin border-single($placement, $thickness: 1px, $color: $border) {
     border-#{$placement}: $thickness solid $color;
 }
+
+// Drop shaddow with possibillity to change effect
+@mixin shaddow($hl: 1px, $vl: 1px, $blur: 3px, $spread: 0px) {
+    box-shadow: $hl $vl $blur $spread rgba(0, 0, 0, 0.5);
+}
+
+// Transition with possibillity to change property
+@mixin smooth($property: all) {
+    transition: $property 0.3s ease-in;
+}
