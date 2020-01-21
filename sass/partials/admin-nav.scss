@@ -1,4 +1,6 @@
 .admin-nav {
+    background: $background;
+
     ul {
         display: flex;
         flex-direction: column;
@@ -26,5 +28,34 @@
     a:active {
         color: $link-hover;
         background: $background-dark;
+    }
+
+    @include medium {
+        @include border(1px, $background-dark);
+
+        margin: 0;
+        padding: 0;
+
+        ul {
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+
+            li {
+                border: none;
+
+                @include border-single(left, 1px, $background-dark);
+                @include border-single(right, 1px, $background-dark);
+
+                text-align: center;
+            }
+
+            li:not(last-child) {
+                margin-bottom: 0;
+                margin-right: 1em;
+            }
+        }
     }
 }

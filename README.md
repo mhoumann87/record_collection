@@ -9,4 +9,6 @@ A PHP webapp to keep a database of your record collection
 * MySql
 
 ## TODO
-* Replace the images from stock to own
+- [ ] Replace the images from stock to ow
+- [ ] Make interactive drop down on small screen
+- [ ] Fix bug in navbar on hover
