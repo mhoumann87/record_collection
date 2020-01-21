@@ -8,7 +8,8 @@ class Grade extends DatabaseObject
     'id',
     'value',
     'short',
-    'definition'
+    'definition',
+    'image'
   ];
 
   public $allowed_tags = [
@@ -24,6 +25,7 @@ class Grade extends DatabaseObject
   public $value;
   public $short;
   public $definition;
+  public $image;
 
   public function __construct($args = [])
   {
@@ -34,6 +36,15 @@ class Grade extends DatabaseObject
   public function get_table_name()
   {
     return self::$table_name;
+  }
+
+  public function shorten_definition()
+  {
+    if (strlen($this->definition) > 100) {
+      return substr($this->definition, 0, 100) . '...';
+    } else {
+      return $this->definition;
+    }
   }
 
   // Remove html tags not cleared in $allowed_tags

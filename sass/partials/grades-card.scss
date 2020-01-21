@@ -25,9 +25,17 @@
     .description {
         margin-top: .8em;
         padding: .4em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
         h3 {
             font-weight: 400;
+        }
+
+        .button-bar {
+            display: flex;
+            justify-content: space-around;
         }
     }
 }

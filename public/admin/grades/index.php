@@ -20,7 +20,16 @@ $grades = Grade::find_all();
         <h3><?php echo h($grade->short); ?></h3>
       </div>
       <div class="description">
-        <?php echo $grade->definition; ?>
+        <div class="difinition">
+          <?php echo $grade->shorten_definition(); ?>
+        </div>
+        <div class="button-bar">
+          <a href="<?php echo url_for('/admin/grades/show.php?id=' . $grade->id); ?>">
+            <button class="btn-link">Show</button></a>
+          <a href="<?php echo url_for('/admin/grades/edit.php?id=' . $grade->id); ?>">
+            <button class="btn-link">Edit</button></a></a>
+          <a href="<?php echo url_for('/admin/grades/delete.php?id=' . $grade->id); ?>"> <button class="btn-danger">Delete</button></a></a>
+        </div>
       </div>
     </article>
   <?php } ?>

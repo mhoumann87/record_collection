@@ -16,4 +16,17 @@ headPhones.jpg is by [Mark Solarski
 ](https://unsplash.com/@marksolarski)
 
 playing.jpg is by [Skylar Sahakian](https://unsplash.com/@skylarfaithfilm)
+
+mint.jpg is by [Lee Campbell](https://unsplash.com/@leecampbell)
+
+nearMint.jpg is by [Steve Harvey](https://unsplash.com/@trommelkopf)
+
+vgPlus.jpg is by [Alex Holyoake](https://unsplash.com/@stairhopper)
+
+veryGood.jpg is by [Mr Cup / Fabien Barral](https://unsplash.com/@iammrcup)
+
+good.jpg is by [Clem Onojeghuo](https://unsplash.com/@clemono2)
+
+fair.jpg is by [Laura Rivera](https://unsplash.com/@laurar1vera)
+
  
