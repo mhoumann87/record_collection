@@ -1,63 +1,38 @@
 /* Admin Navigation */
 
 .admin-nav {
-    background: $background;
+    width: 100%;
+    margin-top: .4em;
+    display: flex;
+    flex-direction: column;
+    background-color: $background;
 
-    ul {
-        display: flex;
-        flex-direction: column;
+    button {
+        width: 50%;
+        margin-bottom: .4em;
 
-        li {
-            @include border(1px, $background-dark);
+        @include border(2px, $background-dark);
+        @include smooth;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: .4em;
+        &:hover,
+        &:active {
+            background: $background-dark;
+            color: $link-hover;
+
+            @include border(2px, $link-hover);
         }
-
-        li:not(last-child) {
-            margin-bottom: .4em;
-        }
-    }
-
-    a {
-        color: $font-dark;
-        text-decoration: none;
-    }
-
-    a:hover,
-    a:active {
-        color: $link-hover;
-        background: $background-dark;
     }
 
     @include medium {
-        @include border(1px, $background-dark);
+        flex-direction: row;
+        padding-top: .4rem;
+        padding-right: 1rem;
+        justify-content: flex-end;
 
-        margin: 0;
-        padding: 0;
-
-        ul {
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-            column-gap: 1em;
-
-            li {
-                border: none;
-
-                @include border-single(left, 1px, $background-dark);
-                @include border-single(right, 1px, $background-dark);
-
-                text-align: center;
-            }
-
-            li:not(last-child) {
-                margin-bottom: 0;
-            }
+        button {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 0;
         }
     }
 }

@@ -1,24 +1,17 @@
 <nav class="admin-nav" role="navigation">
-  <ul>
-    <a href="<?php echo url_for('/admin/index.php'); ?>">
-      <li>Home
-      </li>
-    </a>
-    <a href="<?php echo url_for('/admin/records/index.php'); ?>">
-      <li>Records
-      </li>
-    </a>
-    <a href="<?php echo url_for('/admin/artists/index.php'); ?>">
-      <li>Artists
-      </li>
-    </a>
-    <a href="<?php echo url_for('/admin/formats/index.php'); ?>">
-      <li>Formats
-      </li>
-    </a>
-    <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
-      <li>Grades
-      </li>
-    </a>
-  </ul>
+  <a href="<?php echo url_for('/admin/index.php'); ?>">
+    <button class="nav-btn" role="link">Home</button>
+  </a>
+  <a href="<?php echo url_for('/admin/records/index.php'); ?>">
+    <button class="nav-btn" role="link">Records</button>
+  </a>
+  <a href="<?php echo url_for('/admin/artists/index.php'); ?>">
+    <button class="nav-btn" role="link">Artists</button>
+  </a>
+  <a href="<?php echo url_for('/admin/formats/index.php'); ?>">
+    <button class="nav-btn" role="link">Formats</button>
+  </a>
+  <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
+    <button class="nav-btn" role="link">Grades</button>
+  </a>
 </nav>
