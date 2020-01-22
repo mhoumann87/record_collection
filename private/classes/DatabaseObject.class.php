@@ -65,7 +65,15 @@ class DatabaseObject
   // * Delete
   // ********************
 
+  public function delete()
+  {
+    $sql  = "DELETE FROM " . static::$table_name . " ";
+    $sql .= "WHERE id = '" . self::$db->escape_string($this->id) . "' ";
+    $sql .= "LIMIT 1";
 
+    $result = self::$db->query($sql);
+    return $result;
+  }
 
 
   /*********************************************

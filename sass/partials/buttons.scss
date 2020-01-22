@@ -24,7 +24,21 @@ button {
 
         &:hover,
         &:active {
-            background-color: darken($danger, 15%);
+            background-color: darken($danger, 10%);
         }
     }
+
+    &.btn-success {
+        background-color: $success;
+        color: $font-light;
+
+        &:hover,
+        &:active {
+            background-color: darken($success, 10%);
+        }
+    }
+}
+
+.button {
+    @extend button;
 }
