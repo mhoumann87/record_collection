@@ -19,6 +19,10 @@ class DatabaseObject
   // * Create
   // ********************
 
+  protected function create()
+  {
+  } //create()
+
 
   // * Read
   // ********************
@@ -57,10 +61,14 @@ class DatabaseObject
     } else {
       return false;
     }
-  }
+  } //find_by_id()
 
   // * Update
   // ********************
+
+  protected function update()
+  {
+  } // update()
 
   // * Delete
   // ********************
@@ -73,12 +81,22 @@ class DatabaseObject
 
     $result = self::$db->query($sql);
     return $result;
-  }
-
+  } // delete()
 
   /*********************************************
    * "Service" functions for CRUD functions
    **********************************************/
+
+  // Save looks at indut and "decides" if it is an update or create
+  public function save()
+  {
+    // A new record will not have an id yet
+    if (isset($this->id)) {
+      return $this->update();
+    } else {
+      return $this->create();
+    }
+  } // save()
 
   // Instanciate connects the values to the columns in the database
   static protected function instanciate($record)
@@ -91,5 +109,50 @@ class DatabaseObject
       }
     }
     return $object;
-  }
+  } // instanciate()
+
+  protected function validate()
+  {
+    $this->errors = [];
+
+    // Add custom validation in the class
+
+    return $this->errors;
+  } // validate()
+
+  // Mate an array of values from input that are in the db columns
+  /*   public function attributes()
+  {
+    $attributes = [];
+    foreach (static::$db_columns as $column) {
+      // "Weed" out the columns you don't want here
+      if ($column == 'id') {
+        continue;
+      }
+      $attributes[$column] = $this->$column;
+    }
+    return $attributes;
+  } */ // attributes()
+
+  // Takes the atributes array and makes an new array where the values are sanitized
+  /*   protected function sanitized_attributes()
+  {
+    $sanitized = [];
+    foreach ($this->attributes() as $key => $value) {
+      $sanitized[$key] = self::$db->escape_string($value);
+    }
+    return $sanitized;
+  } */ // sanitized_attributes()
+
+  // Function to put in new values form the user on the update page
+  public function merge_attributes($args)
+  {
+    foreach ($args as $key => $value) {
+      if (property_exists($this, $key) && !is_null($value)) {
+        $this->$key = $value;
+      }
+    }
+  } // merge_attributes()
+
+
 } // class
