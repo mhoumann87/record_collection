@@ -6,6 +6,12 @@
 
 if (is_post_request()) {
   // If it is a post request instianziate a new grade
+  $args = $_POST['grade'];
+
+  //var_dump($args);
+  // "Clean" html for allowed tags
+  $grade->definition = $grade->clear_html_input($grade->definition);
+  echo $grade->definition;
 } else {
 
   // If it is a get request, just show the form with an empty post
