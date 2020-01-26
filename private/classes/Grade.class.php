@@ -54,10 +54,32 @@ class Grade extends DatabaseObject
     return strip_tags($text, $allowed_tags);
   }
 
+  // Check to see if input is valid
+  public function check_validation()
+  {
+    return $this->validate();
+  }
+
   // Validate the input
   protected function validate()
   {
-    // TODO Add validation functions
+    $this->errors = [];
+
+    if (is_blank($this->value)) {
+      $this->errors[] = 'Value can not be blank';
+    }
+
+    if (is_blank($this->short)) {
+      $this->errors[] = 'Short name can not be blank';
+    }
+
+    if (is_blank($this->definition)) {
+      $this->errors[] = 'Description can not be blank';
+    }
+
+    if (is_blank($this->image)) {
+      $this->errors[] = 'Image link can not be blank';
+    }
   } // validate()
 
 }// class
