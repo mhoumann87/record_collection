@@ -4,7 +4,7 @@ class DatabaseObject
 {
   static protected $db;
   static protected $table_name = '';
-  static protected $columns = [];
+  static protected $db_columns = [];
   public $errors = [];
 
   static public function set_database($db)
@@ -120,8 +120,8 @@ class DatabaseObject
     return $this->errors;
   } // validate()
 
-  // Mate an array of values from input that are in the db columns
-  /*   public function attributes()
+  // Make an array of values from input that are in the db columns
+  public function attributes()
   {
     $attributes = [];
     foreach (static::$db_columns as $column) {
@@ -132,17 +132,17 @@ class DatabaseObject
       $attributes[$column] = $this->$column;
     }
     return $attributes;
-  } */ // attributes()
+  } // attributes()
 
   // Takes the atributes array and makes an new array where the values are sanitized
-  /*   protected function sanitized_attributes()
+  protected function sanitized_attributes()
   {
     $sanitized = [];
     foreach ($this->attributes() as $key => $value) {
       $sanitized[$key] = self::$db->escape_string($value);
     }
     return $sanitized;
-  } */ // sanitized_attributes()
+  } // sanitized_attributes()
 
   // Function to put in new values form the user on the update page
   public function merge_attributes($args)

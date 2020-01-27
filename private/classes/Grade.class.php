@@ -30,7 +30,9 @@ class Grade extends DatabaseObject
   public function __construct($args = [])
   {
     $this->value = $args['value'] ?? '';
-    $this->definition = $args['difinition'] ?? '';
+    $this->short = $args['short'] ?? '';
+    $this->definition = $args['definition'] ?? '';
+    $this->image = $args['image'] ?? '';
   }
 
   public function get_table_name()
@@ -74,7 +76,7 @@ class Grade extends DatabaseObject
     }
 
     if (is_blank($this->definition)) {
-      $this->errors[] = 'Description can not be blank';
+      $this->errors[] = 'Definition can not be blank';
     }
 
     if (is_blank($this->image)) {
@@ -82,4 +84,13 @@ class Grade extends DatabaseObject
     }
   } // validate()
 
+  // Prepare the input for upload, remove whitespace and sanitize tags
+  public function prepare_new_upload()
+  {
+    $this->value = trim($this->value);
+    $this->short = trim($this->short);
+    $this->definition = trim($this->clear_html_input($this->definition));
+    $this->image = trim($this->image);
+    return true;
+  }
 }// class

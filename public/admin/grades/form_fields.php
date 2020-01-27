@@ -18,7 +18,7 @@
 <div class="input-box">
 
   <label for="short">Short name: </label>
-  <input type="text" name="grade[short]" value="<?php echo h($grade->value); ?>">
+  <input type="text" name="grade[short]" value="<?php echo h($grade->short); ?>">
 
 </div>
 
@@ -26,7 +26,7 @@
 
   <label for="description">Definition: </label>
   <textarea name="grade[definition]">
-    <?php echo h($grade->definition); ?>
+    <?php echo h(trim($grade->definition)); ?>
   </textarea>
 
 </div>

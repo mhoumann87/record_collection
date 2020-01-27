@@ -6,12 +6,32 @@
 
 if (is_post_request()) {
   // If it is a post request instianziate a new grade
+
+  // "Collent" all the input from user in an array
   $args = $_POST['grade'];
 
-  //var_dump($args);
-  // "Clean" html for allowed tags
-  $grade->definition = $grade->clear_html_input($grade->definition);
-  echo $grade->definition;
+  // Create a new instance with with info from $args
+  $grade = new Grade($args);
+
+  // Prepare the instance to upload
+  $grade->prepare_new_upload();
+
+  // Validate input
+  $valid = $grade->check_validation();
+
+  var_dump($valid);
+
+  if (empty($valid)) {
+    // The input was validated and we upload the grade to the database
+    $result = $grade->save();
+    $set_id = $grade->id;
+
+    // If the upload succeded redirect to show.php
+    if ($result === true) {
+      $session->message('Grade saved successfully');
+      redirect_to('/admin/grades/show.php?=id' . h(u($set_id)));
+    }
+  }
 } else {
 
   // If it is a get request, just show the form with an empty post
