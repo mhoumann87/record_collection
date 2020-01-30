@@ -28,8 +28,8 @@ if (is_post_request()) {
 
     // If the upload succeded redirect to show.php
     if ($result === true) {
-      $session->message('Grade saved successfully');
-      redirect_to('/admin/grades/show.php?=id' . h(u($set_id)));
+      // $session->message('Grade saved successfully');
+      redirect_to(url_for('/admin/grades/show.php?id=' . h(u($set_id))));
     }
   }
 } else {

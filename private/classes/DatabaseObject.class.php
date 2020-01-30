@@ -21,6 +21,30 @@ class DatabaseObject
 
   protected function create()
   {
+    // Check to see if the input is valid
+    $this->validate();
+    if (!empty($this->errors)) {
+      return false;
+    }
+
+    // Clean the input
+    $attributes = $this->sanitized_attributes();
+
+    // Insert the input in the database
+    $sql  = "INSERT INTO " . static::$table_name . " (";
+    $sql .= join(', ', array_keys($attributes));
+    $sql .= ") VALUES ('";
+    $sql .= join("', '", array_values($attributes));
+    $sql .= "')";
+    //echo $sql;
+
+    $result = self::$db->query($sql);
+
+    // Get the id from the database and add it to the object
+    if ($result) {
+      $this->id  = self::$db->insert_id;
+    }
+    return $result;
   } //create()
 
 
