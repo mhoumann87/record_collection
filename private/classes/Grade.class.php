@@ -85,7 +85,7 @@ class Grade extends DatabaseObject
   } // validate()
 
   // Prepare the input for upload, remove whitespace and sanitize tags
-  public function prepare_new_upload()
+  public function prepare_upload()
   {
     $this->value = trim($this->value);
     $this->short = trim($this->short);

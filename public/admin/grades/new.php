@@ -14,12 +14,12 @@ if (is_post_request()) {
   $grade = new Grade($args);
 
   // Prepare the instance to upload
-  $grade->prepare_new_upload();
+  $grade->prepare_upload();
 
   // Validate input
   $valid = $grade->check_validation();
 
-  var_dump($valid);
+  //var_dump($valid);
 
   if (empty($valid)) {
     // The input was validated and we upload the grade to the database
@@ -45,6 +45,7 @@ if (is_post_request()) {
 <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
   <button class="btn-link">&larr;Back To List</button>
 </a>
+
 <section class="input-page">
 
   <?php echo display_errors($grade->errors); ?>

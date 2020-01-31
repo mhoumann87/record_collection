@@ -92,6 +92,29 @@ class DatabaseObject
 
   protected function update()
   {
+    // Check to see if input is valid
+    $this->validate();
+    if (!empty($this->errors)) {
+      return false;
+    }
+
+    // Clear the input
+    $attributes = $this->sanitized_attributes();
+
+    // Make an array for the input
+    $attribute_pairs = [];
+    foreach ($attributes as $key => $value) {
+      $attribute_pairs[] = "{$key}='{$value}'";
+    }
+
+    // Upload to the database
+    $sql  = "UPDATE " . static::$table_name . " SET ";
+    $sql .= join(', ', $attribute_pairs);
+    $sql .= " WHERE id='" . self::$db->escape_string($this->id) . "' ";
+    $sql .= "LIMIT 1";
+    // echo $sql;
+    $result = self::$db->query($sql);
+    return $result;
   } // update()
 
   // * Delete
