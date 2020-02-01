@@ -1,0 +1,55 @@
+/* Form Fields base style */
+
+.input-page {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    background: $popup-background;
+
+    @include center-div;
+    @include shaddow;
+
+    .form-box {
+        padding: .4em;
+        display: flex;
+        flex-direction: column;
+
+        image {
+            margin-bottom: 1em;
+        }
+
+        .input-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1em;
+
+            label {
+                flex-basis: 30%;
+                flex-shrink: 0;
+            }
+
+            input,
+            textarea {
+                flex-grow: 1;
+                background: $background;
+                border: none;
+                padding: .5em;
+                font-size: 1rem;
+                font-family: $body-font;
+
+                &:active,
+                &:focus {
+                    outline: thin solid $background-dark;
+                }
+            }
+
+            textarea {
+                resize: none;
+                min-height: 8rem;
+            }
+        }
+    }
+}

@@ -48,7 +48,7 @@ if (is_post_request() && isset($_POST['submit'])) {
   <button class="btn-link">&larr;Back To List</button>
 </a>
 
-<section="input-page">
+<section class="input-page">
 
   <?php echo display_errors($grade->errors) ?>
 
@@ -63,16 +63,16 @@ if (is_post_request() && isset($_POST['submit'])) {
       echo '';
     }
     ?>
+    <div class="form-box">
+      <?php include_once 'form_fields.php'; ?>
 
-    <?php include_once 'form_fields.php'; ?>
-
-    <div class="input-bax">
-      <input type="submit" name="submit" class="button btn-success" value="Edit Grade">
-
+      <div class="button-box">
+        <input type="submit" name="submit" class="button btn-success" value="Edit Grade">
+      </div>
     </div>
 
   </form>
 
-  </section>
+</section>
 
-  <?php include_once SHARED_PATH . '/admin_footer.php'; ?>
+<?php include_once SHARED_PATH . '/admin_footer.php'; ?>

@@ -52,10 +52,12 @@ if (is_post_request()) {
 
   <form action="<?php echo url_for('/admin/grades/new.php'); ?>" method="post">
 
-    <?php include 'form_fields.php' ?>
+    <div class="form-box">
+      <?php include 'form_fields.php' ?>
 
-    <div class="input-box">
-      <input type="submit" class="button btn-success" value="Create Grade">
+      <div class="button-box">
+        <input type="submit" class="button btn-success" value="Create Grade">
+      </div>
     </div>
   </form>
 
