@@ -16,6 +16,7 @@
   <header class="admin-header">
     <div class="branding">
       <h1>My Record Collection</h1>
+      <!-- TODO Set up an if admin clause for $page_title -->
       <p>Admin Area - <?php echo $page_title; ?></p>
     </div>
     <div class="image" id="admin-header-image"></div>

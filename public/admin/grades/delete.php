@@ -30,7 +30,7 @@ if (is_post_request()) {
 <?php include_once SHARED_PATH . '/admin_header.php'; ?>
 
 <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
-  <button class="btn-link">&larr; Back to list</button>
+  <button class="btn-link" role="link">&larr; Back to list</button>
 </a>
 
 <section class="show-single-grade">

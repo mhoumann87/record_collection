@@ -21,7 +21,7 @@ $page_title = 'View Grade ' . h($grade->short);
 <?php include_once SHARED_PATH . '/admin_header.php'; ?>
 
 <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
-  <button class="btn-link">&larr; Back to list</button>
+  <button class="btn-link" role="link">&larr; Back to list</button>
 </a>
 
 <section class="show-single-grade">
@@ -32,6 +32,11 @@ $page_title = 'View Grade ' . h($grade->short);
     <h3>Description:</h3>
     <div class="description">
       <?php echo $grade->definition; ?>
+    </div>
+    <div class="button-bar">
+      <a href="<?php echo url_for('/admin/grades/edit.php?id=' . $grade->id); ?>">
+        <button class="btn-link" role="link">Edit</button></a></a>
+      <a href="<?php echo url_for('/admin/grades/delete.php?id=' . $grade->id); ?>"> <button class="btn-danger" role="link">Delete</button></a></a>
     </div>
   </div>
 </section>

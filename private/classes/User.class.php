@@ -34,9 +34,9 @@ class User extends DatabaseObject
     $this->hashed_password = $args['hashed_password'] ?? '';
     $this->is_admin = $args['is_admin'] ?? 0;
     $this->password = $args['password'] ?? '';
-    $this->confirm_password = $args['confirm_password'];
+    $this->confirm_password = $args['confirm_password'] ?? '';
     $this->security_code = $args['security_code'] ?? '';
     $this->created = $args['created'] ?? '';
-    $this->last_logged_in = $args['last_logged_in'];
+    $this->last_logged_in = $args['last_logged_in'] ?? '';
   }
 }// user

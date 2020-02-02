@@ -14,4 +14,7 @@
   <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
     <button class="nav-btn" role="link">Grades</button>
   </a>
+  <a href="<?php echo url_for('/admin/users/index.php'); ?>">
+    <button class="nav-btn" role="link">Users</button>
+  </a>
 </nav>

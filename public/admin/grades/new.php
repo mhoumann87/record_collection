@@ -43,7 +43,7 @@ if (is_post_request()) {
 <?php include SHARED_PATH . '/admin_header.php'; ?>
 
 <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
-  <button class="btn-link">&larr;Back To List</button>
+  <button class="btn-link" role="link">&larr;Back To List</button>
 </a>
 
 <section class="input-page">

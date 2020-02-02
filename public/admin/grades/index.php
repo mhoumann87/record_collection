@@ -9,7 +9,7 @@ $grades = Grade::find_all();
 
 <?php include SHARED_PATH . '/admin_header.php'; ?>
 <a href="<?php echo url_for('/admin/grades/new.php'); ?>">
-  <button class="btn-link">Create New</button>
+  <button class="btn-link" role="link">Create New</button>
 </a>
 
 <section class="show-all-grades">
@@ -25,10 +25,10 @@ $grades = Grade::find_all();
         </div>
         <div class="button-bar">
           <a href="<?php echo url_for('/admin/grades/show.php?id=' . $grade->id); ?>">
-            <button class="btn-link">Show</button></a>
+            <button class="btn-link" role="link">Show</button></a>
           <a href="<?php echo url_for('/admin/grades/edit.php?id=' . $grade->id); ?>">
-            <button class="btn-link">Edit</button></a></a>
-          <a href="<?php echo url_for('/admin/grades/delete.php?id=' . $grade->id); ?>"> <button class="btn-danger">Delete</button></a></a>
+            <button class="btn-link" role="link">Edit</button></a></a>
+          <a href="<?php echo url_for('/admin/grades/delete.php?id=' . $grade->id); ?>"> <button class="btn-danger" role="link">Delete</button></a></a>
         </div>
       </div>
     </article>
