@@ -86,3 +86,36 @@ function has_exclusion_of($value, $set)
 {
   return !in_array($value, $set);
 }
+
+/*
+* has_valid_email_format('nobody@mowhere.com')
+  - validate correct format for email address
+  - format: [chars]@[chars].[2+ letters]
+  - preg_match is helpful, uses a regular expression
+      returns 1 for a match, 0 for no match
+      http://php.net/manual/en/function.preg-match.php
+*/
+function has_valid_email_format($value)
+{
+  $email_regex = '/\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\Z/i';
+  return preg_match($email_regex, $value) === 1;
+}
+
+/*
+* has_unique_entries (username and email)
+  - Validates uniqueness of entries
+  - For new records, provide only column name and value
+  - For existing records also provide the id
+      has_unique_entries(username, 'testing', 5)
+ */
+function has_unique_entries($column, $value, $current_id = "0")
+{
+  $user = User::find_by_column($column, $value);
+  if ($user === false || $user->id == $current_id) {
+    // input is unique
+    return true;
+  } else {
+    // User already in database
+    return false;
+  }
+}

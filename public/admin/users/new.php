@@ -14,6 +14,20 @@ $page_title = 'Sign Up';
 
 if (is_post_request()) {
   // POST request
+  // If the form data is submitted, create record based on these parameters
+  // "Collect" all the parameters in an array
+  $args = $_POST['user'];
+  $user = new User($args);
+  $user->set_created_at();
+  $result = $user->save();
+
+  if ($result === true) {
+    $new_id = $user->id;
+    //$session->message("User was created successfully");
+    redirect_to(url_for('/admin/users/show.php?id=' . $new_id));
+  } else {
+    // Show errors
+  }
 } else {
   // GET request
   $user = new User;
@@ -30,7 +44,7 @@ if (is_post_request()) {
 
 <section class="input-page">
 
-  <?php //echo display_errors($user->errors); 
+  <?php echo display_errors($user->errors);
   ?>
 
   <form action="<?php echo url_for('/admin/users/new.php'); ?>" method="post">

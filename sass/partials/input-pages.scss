@@ -51,5 +51,15 @@
                 min-height: 8rem;
             }
         }
+
+        .radio-box {
+            width: 100%;
+            margin-bottom: 1em;
+
+            label,
+            input {
+                margin-right: 0.7em;
+            }
+        }
     }
 }
