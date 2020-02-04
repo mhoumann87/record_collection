@@ -23,8 +23,8 @@ class User extends DatabaseObject
   public $password;
   public $confirm_password;
   protected $security_code;
-  protected $created;
-  protected $last_logged_in;
+  public $created;
+  public $last_logged_in;
   protected $password_required = true;
 
   public function __construct($args = [])

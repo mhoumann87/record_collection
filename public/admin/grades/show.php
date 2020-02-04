@@ -24,7 +24,7 @@ $page_title = 'View Grade ' . h($grade->short);
   <button class="btn-link" role="link">&larr; Back to list</button>
 </a>
 
-<section class="show-single-grade">
+<section class="show-single">
   <img src="<?php echo url_for('/assets/images/') . $grade->image; ?>" alt="">
   <div class="show-single-text">
     <h3>Name: <?php echo h(ucfirst($grade->value)); ?></h3>

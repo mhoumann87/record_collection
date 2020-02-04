@@ -145,3 +145,8 @@ html {
 caption, figcaption, label, legend {
     line-height: 1.375;
 }
+
+/* Collapse the border on tables */
+table {
+    border-collapse: collapse;
+}

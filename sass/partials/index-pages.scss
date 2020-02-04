@@ -1,0 +1,76 @@
+/* Index pages with card and table layout */
+
+.index-pages {
+    margin-top: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 1em;
+
+    h3 {
+        margin: 0;
+    }
+
+    .card {
+        background: $popup-background;
+
+        @include shaddow;
+    }
+
+    .card-header {
+        background: $background-dark;
+        color: $background;
+        padding: .4em;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .description {
+        margin-top: .8em;
+        padding: .4em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        h3 {
+            font-weight: 400;
+        }
+    }
+}
+
+.index-tabel {
+    width: 100%;
+    margin: 2em 0;
+
+    table {
+        width: 100%;
+
+        @include border;
+
+        th {
+            background: $background-dark;
+            color: $font-light;
+            text-align: left;
+            padding: .4em;
+
+            @include border;
+        }
+
+        tr:nth-child(odd) {
+            background-color: lighten($popup_background, 10%);
+        }
+
+        td {
+            padding: .4em;
+
+            @include border;
+
+            &.num {
+                text-align: right;
+            }
+        }
+
+        .btn {
+            text-align: center;
+        }
+    }
+}

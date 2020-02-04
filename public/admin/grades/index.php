@@ -12,7 +12,7 @@ $grades = Grade::find_all();
   <button class="btn-link" role="link">Create New</button>
 </a>
 
-<section class="show-all-grades">
+<section class="index-pages">
   <?php foreach ($grades as $grade) { ?>
     <article class="card">
       <div class="card-header">
