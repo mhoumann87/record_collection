@@ -7,7 +7,7 @@ $page_title = 'Users Front Page';
 // Get all users from database
 $users = User::find_all();
 
-var_dump($users);
+//var_dump($users);
 ?>
 
 
