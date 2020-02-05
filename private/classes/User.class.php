@@ -95,9 +95,26 @@ class User extends DatabaseObject
     return parent::create();
   }
 
+  protected function update()
+  {
+    if ($this->password != '') {
+      // password changed
+      $this->set_hashed_password();
+    } else {
+      // Password not changes, skip hashing and validation
+      $this->password_required = false;
+    }
+    return parent::update();
+  }
+
   public function set_created_at()
   {
     $this->created = time();
+  }
+
+  public function set_last_logged_in()
+  {
+    $this->last_logged_in = time();
   }
 
   // Database call to check uniqueness
