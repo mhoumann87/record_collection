@@ -64,11 +64,13 @@ if (is_post_request() && isset($_POST['submit'])) {
     }
     ?>
     <div class="form-box">
+
       <?php include_once 'form_fields.php'; ?>
 
       <div class="button-box">
         <input type="submit" name="submit" class="button btn-success" value="Edit Grade">
       </div>
+
     </div>
 
   </form>

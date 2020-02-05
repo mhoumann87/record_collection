@@ -36,6 +36,16 @@ if ($user === false) {
 
 if (is_post_request()) {
   // POST request, "collect" info from user input
+  $args = $_POST['user'];
+  $user->merge_attributes($args);
+  $result = $user->save();
+
+  if ($result === true) {
+    //$session->message("User {$user->username}" was updated successfully);
+    redirect_to(url_for('/admin/users/show.php?id=' . h(u($id))));
+  } else {
+    // Show errors
+  }
 } else {
   // GET request, show the form
 }
@@ -55,5 +65,25 @@ if (is_post_request()) {
   <button class="btn-link">&larr;Back To Front Page</button>
 </a>
 -->
+
+<div class="input-page">
+
+  <?php echo display_errors($user->errors); ?>
+
+  <form action="<?php echo url_for('admin/users/edit.php?id=' . h(u($id))); ?>" method="post">
+
+    <div class="form-box">
+
+      <?php include_once 'form_fields.php'; ?>
+
+      <div class="button-box">
+        <input type="submit" class="button btn-success" value="Edit User">
+      </div>
+
+    </div>
+
+  </form>
+
+</div>
 
 <?php include_once SHARED_PATH . '/admin_footer.php'; ?>
