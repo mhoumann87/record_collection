@@ -1,5 +1,8 @@
 <?php require_once '../../../private/initialize.php'; ?>
 
+<?php require_admin_role();
+?>
+
 <?php
 $page_title = 'Grades Front Page';
 
@@ -7,7 +10,8 @@ $grades = Grade::find_all();
 
 ?>
 
-<?php include SHARED_PATH . '/admin_header.php'; ?>
+<?php include SHARED_PATH . '/header.php'; ?>
+
 <a href="<?php echo url_for('/admin/grades/new.php'); ?>">
   <button class="btn-link" role="link">Create New</button>
 </a>
@@ -37,4 +41,4 @@ $grades = Grade::find_all();
 </section>
 
 
-<?php include SHARED_PATH . '/admin_footer.php' ?>
+<?php include SHARED_PATH . '/footer.php' ?>

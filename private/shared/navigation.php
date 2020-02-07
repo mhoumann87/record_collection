@@ -10,7 +10,7 @@
 
   </div>
 
-  <nav class="admin-nav" role="navigation">
+  <nav role="navigation">
     <a href="<?php echo url_for('/admin/index.php'); ?>">
       <button class="nav-btn" role="link">Home</button>
     </a>
@@ -35,7 +35,7 @@
         <button class="nav-btn" role="link">Logout</button>
       </a>
     <?php } else { ?>
-      <a href="<?php echo url_for('/admin/login'); ?>">
+      <a href="<?php echo url_for('/admin/login.php'); ?>">
         <button class="nav-btn" role="link">Login</button>
       </a>
     <?php } ?>
