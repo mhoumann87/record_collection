@@ -3,6 +3,6 @@
 <?php
 $page_title = 'Home';
 
-include_once SHARED_PATH . '/admin_header.php';
+include_once SHARED_PATH . '/header.php';
 
-?> <?php include_once SHARED_PATH . '/admin_footer.php'; ?>
+?> <?php include_once SHARED_PATH . '/footer.php'; ?>

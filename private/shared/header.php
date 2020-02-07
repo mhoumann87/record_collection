@@ -1,5 +1,5 @@
 <?php if (!isset($page_title)) {
-  $page_title = 'Admin Area';
+  $page_title = 'My Record Collection';
 }
 ?>
 <!DOCTYPE html>
@@ -13,14 +13,14 @@
 </head>
 
 <body>
-  <header class="admin-header">
+  <header>
     <div class="branding">
       <h1>My Record Collection</h1>
-      <!-- TODO Set up an if admin clause for $page_title -->
-      <p>Admin Area - <?php echo $page_title; ?></p>
+
+      <p><?php echo $page_title; ?></p>
     </div>
     <div class="image" id="admin-header-image"></div>
-    <?php include_once SHARED_PATH . '/admin_navigation.php'; ?>
+    <?php include_once SHARED_PATH . '/navigation.php'; ?>
   </header>
 
   <main>

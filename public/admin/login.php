@@ -39,6 +39,13 @@ if (is_post_request()) {
 
       // Mark user as logged in
       $session->login($user);
+
+      // Redirect based on role
+      if ($session->is_admin()) {
+        redirect_to(url_for('/admin/index.php'));
+      } else {
+        redirect_to(url_for('/index.php'));
+      }
     } else {
       $errors[] = 'Email or Password is incorrect';
     }
@@ -47,7 +54,7 @@ if (is_post_request()) {
 
 ?>
 
-<?php include_once SHARED_PATH . '/admin_header.php'; ?>
+<?php include_once SHARED_PATH . '/header.php'; ?>
 <p class="no-show" id="imagePath">../../public/assets/images/</p>
 
 <section class="input-page">
@@ -86,4 +93,4 @@ if (is_post_request()) {
 
 </section>
 
-<?php include_once SHARED_PATH . '/admin_footer.php'; ?>
+<?php include_once SHARED_PATH . '/footer.php'; ?>

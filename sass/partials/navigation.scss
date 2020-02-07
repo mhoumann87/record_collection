@@ -1,0 +1,59 @@
+/* Navigation */
+.navbar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: .4em;
+    background-color: $background;
+
+    .welcome {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        color: $font-dark;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+
+        button {
+            width: 100%;
+
+            @include border(2px, $background-dark);
+            @include smooth;
+
+            &:not(last-child) {
+                margin-bottom: .4em;
+            }
+
+            &:hover,
+            &:active {
+                background-color: $background-dark;
+                color: $link-hover;
+
+                @include border(2px, $link-hover);
+            }
+        }
+    }
+
+    @include medium {
+        flex-direction: row;
+        justify-content: space-between;
+
+        .welcome {
+            flex-shrink: 0;
+        }
+
+        nav {
+            flex-direction: row;
+            flex-grow: 1;
+            justify-content: flex-end;
+
+            button:not(last-child) {
+                margin-bottom: 0;
+                margin-right: 2em;
+            }
+        }
+    }
+}
