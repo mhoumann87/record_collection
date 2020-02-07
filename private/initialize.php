@@ -45,3 +45,6 @@ $db = db_connect();
 
 // Register the database in the DatabaseObject
 DatabaseObject::set_database($db);
+
+// Start a new session
+$session = new Session;

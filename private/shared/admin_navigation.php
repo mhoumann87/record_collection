@@ -17,4 +17,14 @@
   <a href="<?php echo url_for('/admin/users/index.php'); ?>">
     <button class="nav-btn" role="link">Users</button>
   </a>
+
+  <?php if ($session->is_logged_in()) { ?>
+    <a href="<?php echo url_for('/admin/logout.php'); ?>">
+      <button class="nav-btn" role="link">Logout</button>
+    </a>
+  <?php } else { ?>
+    <a href="<?php echo url_for('/admin/login'); ?>">
+      <button class="nav-btn" role="link">Login</button>
+    </a>
+  <?php } ?>
 </nav>

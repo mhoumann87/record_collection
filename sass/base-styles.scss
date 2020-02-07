@@ -37,6 +37,7 @@ a:active {
 main {
     width: 90%;
     margin: 1em;
+    min-height: 60vh;
 
     @include center-div;
 

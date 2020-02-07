@@ -12,21 +12,32 @@
     @include shaddow;
 
     .form-box {
-        padding: .4em;
         display: flex;
         flex-direction: column;
 
-        image {
-            margin-bottom: 1em;
-        }
-
         .input-header {
             background: $background-dark;
+            padding: .4em;
+            margin-bottom: 1em;
 
             h2 {
                 color: $font-light;
                 margin: 0;
             }
+        }
+
+        .input-header-image {
+            @extend .input-header;
+
+            margin-bottom: 0;
+        }
+
+        image {
+            margin-bottom: 1em;
+        }
+
+        .outer-input-box {
+            padding: .6em;
         }
 
         .input-box {
@@ -75,11 +86,11 @@
         .button-bar {
             display: flex;
             justify-content: space-around;
-            padding-bottom: 1em;
+            padding-bottom: .5em;
         }
 
         .button-box {
-            padding-bottom: 1em;
+            padding-bottom: .5em;
         }
     }
 }

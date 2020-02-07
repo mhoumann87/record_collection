@@ -4,7 +4,7 @@ class Session
 {
   public $user_id;
   public $username;
-  public $user_role;
+  public $is_admin;
   private $last_login;
 
   public const MAX_LOGIN_AGE = 60 * 60 * 24 * 7; // one week
@@ -21,7 +21,7 @@ class Session
       session_regenerate_id(); // prevent session fixation attacks
       $this->user_id = $_SESSION['user_id'] = $user->id;
       $this->username = $_SESSION['username'] = $user->username;
-      $this->user_role = $_SESSION['user_role'] = $user->user_role;
+      $this->is_admin = $_SESSION['is_admin'] = $user->is_admin;
       $this->last_login = $_SESSION['last_login'] = time();
     }
     return true;
@@ -36,7 +36,7 @@ class Session
   // Check if user is administrator
   public function is_admin()
   {
-    return $this->is_logged_in() && $this->user_role == 'admin';
+    return $this->is_logged_in() && $this->is_admin == 1;
   } // is_admin()
 
   // Log user out
@@ -44,11 +44,11 @@ class Session
   {
     unset($_SESSION['user_id']);
     unset($_SESSION['username']);
-    unset($_SESSION['user_role']);
+    unset($_SESSION['is_admin']);
     unset($_SESSION['last_login']);
     unset($this->user_id);
     unset($this->username);
-    unset($this->user_role);
+    unset($this->is_admin);
     unset($this->last_login);
 
     return true;
@@ -59,7 +59,7 @@ class Session
     if (isset($_SESSION['user_id'])) {
       $this->user_id = $_SESSION['user_id'];
       $this->username = $_SESSION['username'];
-      $this->user_role = $_SESSION['user-role'];
+      $this->is_admin = $_SESSION['is_admin'];
       $this->last_login = $_SESSION['last_login'];
     }
   } // check_stored_login()

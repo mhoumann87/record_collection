@@ -58,8 +58,6 @@ class User extends DatabaseObject
     // Validate username field
     if (is_blank($this->username)) {
       $this->errors[] = 'Username can not be blank';
-    } elseif (!has_unique_entries('username', $this->username, $this->id ?? 0)) {
-      $this->errors[] = 'Username is allready in the database';
     }
 
     // Validate password

@@ -33,24 +33,32 @@ if (is_post_request()) {
   <button class="btn-link" role="link">&larr; Back to list</button>
 </a>
 
-<section class="show-single-grade">
-  <img src="<?php echo url_for('/assets/images/') . $grade->image; ?>" alt="">
-  <div class="show-single-text">
-    <h3>Name: <?php echo h(ucfirst($grade->value)); ?></h3>
-    <h3>Short: <?php echo h($grade->short); ?></h3>
-    <h3>Description:</h3>
-    <div class="description">
-      <?php echo $grade->definition; ?>
+<section class="input-page">
+
+  <div class="form-box">
+
+    <div class="input-header-image">
+      <h2>Delete Grade</h2>
     </div>
-    <div class="delete-post">
-      <h3>Do you really want to delete this post?</h3>
-      <div class="button-bar">
-        <form method="post" action="<?php echo url_for('/admin/grades/delete.php?id=' . h(u($id))); ?>">
-          <input class="button btn-danger" type="submit" value="Yes, delete grade">
-        </form>
-        <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
-          <button class="btn-success" role="link">No, back to list</button>
-        </a>
+
+    <img src="<?php echo url_for('/assets/images/') . $grade->image; ?>" alt="">
+    <div class="outer-input-box">
+      <h3>Name: <?php echo h(ucfirst($grade->value)); ?></h3>
+      <h3>Short: <?php echo h($grade->short); ?></h3>
+      <h3>Description:</h3>
+      <div class="description">
+        <?php echo $grade->definition; ?>
+      </div>
+      <div class="delete-post">
+        <h3>Do you really want to delete this post?</h3>
+        <div class="button-bar">
+          <form method="post" action="<?php echo url_for('/admin/grades/delete.php?id=' . h(u($id))); ?>">
+            <input class="button btn-danger" type="submit" value="Yes, delete grade">
+          </form>
+          <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
+            <button class="btn-success" role="link">No, back to list</button>
+          </a>
+        </div>
       </div>
     </div>
   </div>
