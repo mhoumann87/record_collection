@@ -2,6 +2,8 @@
 
 <?php
 
+require_admin_role();
+
 // Get the id from the URL, in there isn't any go back to list
 $id = $_GET['id'] ?? '';
 
@@ -16,52 +18,56 @@ if ($grade == false) {
   redirect_to(url_for('/admin/grades/index.php'));
 }
 
-$page_title = 'Delete Grade: ' . ucfirst(h($grade->value));
+$page_title = 'Admin Area - Delete Grade: ' . ucfirst(h($grade->value));
 
 if (is_post_request()) {
   // User wants to delete the grade
   $grade->delete();
-  // $session->message("The Grade {$grade->value} was deleted successfully");
+  $session->message("The Grade {$grade->value} was deleted successfully");
   redirect_to(url_for('/admin/grades/index.php'));
 }
 
 ?>
 
-<?php include_once SHARED_PATH . '/admin_header.php'; ?>
+<?php include_once SHARED_PATH . '/header.php'; ?>
 
 <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
   <button class="btn-link" role="link">&larr; Back to list</button>
 </a>
 
-<section class="input-page">
+<section class="display-box">
 
-  <div class="form-box">
-
-    <div class="input-header-image">
+  <?php if (isset($grade->image)) { ?>
+    <div class="display-header-image">
       <h2>Delete Grade</h2>
     </div>
 
     <img src="<?php echo url_for('/assets/images/') . $grade->image; ?>" alt="">
-    <div class="outer-input-box">
-      <h3>Name: <?php echo h(ucfirst($grade->value)); ?></h3>
-      <h3>Short: <?php echo h($grade->short); ?></h3>
-      <h3>Description:</h3>
-      <div class="description">
-        <?php echo $grade->definition; ?>
-      </div>
-      <div class="delete-post">
-        <h3>Do you really want to delete this post?</h3>
-        <div class="button-bar">
-          <form method="post" action="<?php echo url_for('/admin/grades/delete.php?id=' . h(u($id))); ?>">
-            <input class="button btn-danger" type="submit" value="Yes, delete grade">
-          </form>
-          <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
-            <button class="btn-success" role="link">No, back to list</button>
-          </a>
-        </div>
+  <?php } else { ?>
+    <div class="display-header">
+      <h2>Delete Grade</h2>
+    </div>
+  <?php } ?>
+
+  <div class="display-content">
+    <h3>Name: <?php echo h(ucfirst($grade->value)); ?></h3>
+    <h3>Short: <?php echo h($grade->short); ?></h3>
+    <h3>Description:</h3>
+    <div class="description">
+      <?php echo $grade->definition; ?>
+    </div>
+    <div class="delete-post">
+      <h3>Do you really want to delete this post?</h3>
+      <div class="button-bar">
+        <form method="post" action="<?php echo url_for('/admin/grades/delete.php?id=' . h(u($id))); ?>">
+          <input class="button btn-danger" type="submit" value="Yes, delete grade">
+        </form>
+        <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
+          <button class="btn-success" role="link">No, back to list</button>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<?php include_once SHARED_PATH . '/admin_footer.php'; ?>
+<?php include_once SHARED_PATH . '/footer.php'; ?>

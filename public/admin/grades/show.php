@@ -2,43 +2,76 @@
 
 <?php
 
+require_login();
+
 // Get the id from the URL if it is not there set id to empty
 $id = $_GET['id'] ?? '';
 
 if (!$id) {
-  redirect_to(url_for('/admin/grades/index.php'));
+  redirect_to($_SESSION['is_admin'] == 1 ? url_for('/admin/grades/index.php') : url_for('/index.php'));
 }
 
 $grade = Grade::find_by_id($id);
 
 if (empty($grade)) {
-  redirect_to(url_for('/admin/grades/index.php'));
+  redirect_to($_SESSION['is_admin'] == 1 ? url_for('/admin/grades/index.php') : url_for('/index.php'));
 }
 
-$page_title = 'View Grade ' . h($grade->short);
+if ($_SESSION['is_admin'] == 1) {
+  $page_title = 'Admin Area - View Grade';
+} else {
+  $page_title = 'View Grade ' . h($grade->short);
+}
 ?>
 
-<?php include_once SHARED_PATH . '/admin_header.php'; ?>
+<?php include_once SHARED_PATH . '/header.php'; ?>
 
-<a href="<?php echo url_for('/admin/grades/index.php'); ?>">
-  <button class="btn-link" role="link">&larr; Back to list</button>
-</a>
+<?php if ($session->is_admin()) { ?>
+  <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
+    <button class="btn-link" role="link">&larr; Back to list</button>
+  </a>
+<?php } else { ?>
+  <a href="<?php echo url_for('/index.php'); ?>">
+    <button class="btn-link" role="link">&larr; Back to Front Page</button>
+  </a>
+<?php } ?>
+<section class="display-box">
 
-<section class="show-single">
-  <img src="<?php echo url_for('/assets/images/') . $grade->image; ?>" alt="">
-  <div class="show-single-text">
+  <?php if (isset($grade->image)) { ?>
+
+    <div class="display-header-image">
+      <h2>Show <?php echo h(ucfirst($grade->value)); ?></h2>
+    </div>
+
+    <img src="<?php echo url_for('/assets/images/') . $grade->image; ?>" alt="">
+  <?php } else { ?>
+    <div class="display-header">
+      <h2>Show <?php echo h(ucfirst($grade->value)); ?></h2>
+    </div>
+  <?php } ?>
+
+  <div class="display-content">
+
     <h3>Name: <?php echo h(ucfirst($grade->value)); ?></h3>
+
     <h3>Short: <?php echo h($grade->short); ?></h3>
+
     <h3>Description:</h3>
+
     <div class="description">
       <?php echo $grade->definition; ?>
     </div>
-    <div class="button-bar">
-      <a href="<?php echo url_for('/admin/grades/edit.php?id=' . $grade->id); ?>">
-        <button class="btn-link" role="link">Edit</button></a></a>
-      <a href="<?php echo url_for('/admin/grades/delete.php?id=' . $grade->id); ?>"> <button class="btn-danger" role="link">Delete</button></a></a>
-    </div>
+
+    <?php if ($_SESSION['is_admin'] == 1) { ?>
+
+      <div class="button-bar">
+        <a href="<?php echo url_for('/admin/grades/edit.php?id=' . $grade->id); ?>">
+          <button class="btn-link" role="link">Edit</button></a></a>
+        <a href="<?php echo url_for('/admin/grades/delete.php?id=' . $grade->id); ?>"> <button class="btn-danger" role="link">Delete</button></a></a>
+      </div>
+    <?php } ?>
+
   </div>
 </section>
 
-<?php include_once SHARED_PATH . '/admin_footer.php'; ?>
+<?php include_once SHARED_PATH . '/footer.php'; ?>

@@ -1,0 +1,101 @@
+/* Show singel element incl. input fields styles */
+
+.display-box {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    background: $popup-background;
+
+    @include center-div;
+    @include shaddow;
+
+    .display-header {
+        background: $background-dark;
+        padding: .4em;
+        margin-bottom: 1em;
+
+        h2 {
+            color: $font-light;
+            margin: 0;
+        }
+    }
+
+    .display-header-image {
+        @extend .display-header;
+
+        margin-bottom: 0;
+    }
+
+    image {
+        margin-bottom: 1em;
+    }
+
+    .display-content {
+        padding: .6em;
+
+        h3 {
+            font-weight: 400;
+        }
+    }
+
+    .input-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1em;
+
+        label {
+            flex-basis: 30%;
+            flex-shrink: 0;
+        }
+
+        input,
+        textarea {
+            flex-grow: 1;
+            background: $background;
+            border: none;
+            padding: .5em;
+            font-size: 1rem;
+            font-family: $body-font;
+
+            &:active,
+            &:focus {
+                outline: thin solid $background-dark;
+            }
+        }
+
+        textarea {
+            resize: none;
+            min-height: 8rem;
+        }
+    }
+
+    .radio-box {
+        width: 100%;
+        margin-bottom: 1em;
+
+        label,
+        input {
+            margin-right: 0.7em;
+        }
+    }
+
+    .delete-post h3 {
+        background-color: $danger;
+        color: $font-light;
+        padding: 0.4em;
+    }
+
+    /* Button boxes */
+    .button-bar {
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: .5em;
+    }
+
+    .button-box {
+        padding-bottom: .5em;
+    }
+}

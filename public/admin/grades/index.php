@@ -4,7 +4,7 @@
 ?>
 
 <?php
-$page_title = 'Grades Front Page';
+$page_title = 'Admin Area - Grades Front Page';
 
 $grades = Grade::find_all();
 

@@ -57,37 +57,35 @@ if (is_post_request()) {
 <?php include_once SHARED_PATH . '/header.php'; ?>
 <p class="no-show" id="imagePath">../../public/assets/images/</p>
 
-<section class="input-page">
+<section class="display-box">
 
-  <div class="form-box">
+  <div class="display-header">
+    <h2>Login</h2>
+  </div>
 
-    <div class="input-header">
-      <h2>Login</h2>
-    </div>
+  <?php echo display_errors($errors); ?>
 
-    <?php echo display_errors($errors); ?>
+  <div class="display-content">
 
-    <div class="outer-input-box">
+    <form action="login.php" method="post">
 
-      <form action="login.php" method="post">
+      <div class="input-box">
+        <label for="email">Email: </label>
+        <input type="text" name="email" value="<?php echo h($email); ?>" autofocus>
+      </div>
 
-        <div class="input-box">
-          <label for="email">Email: </label>
-          <input type="text" name="email" value="<?php echo h($email); ?>" autofocus>
-        </div>
+      <div class="input-box">
+        <label for="password">Password: </label>
+        <input type="password" name="password">
+      </div>
 
-        <div class="input-box">
-          <label for="password">Password: </label>
-          <input type="password" name="password">
-        </div>
+      <div class="button-box">
+        <input type="submit" class="button btn-success" value="Login">
+      </div>
 
-        <div class="button-box">
-          <input type="submit" class="button btn-success" value="Login">
-        </div>
+  </div>
 
-    </div>
-
-    </form>
+  </form>
 
   </div>
 

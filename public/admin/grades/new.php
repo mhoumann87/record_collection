@@ -1,8 +1,10 @@
 <?php require_once '../../../private/initialize.php'; ?>
 
-<?php $page_title = 'Add Grade'; ?>
-
 <?php
+
+$page_title = 'Admin Area - Add Grade';
+
+require_admin_role();
 
 if (is_post_request()) {
   // If it is a post request instianziate a new grade
@@ -40,27 +42,32 @@ if (is_post_request()) {
 }
 ?>
 
-<?php include SHARED_PATH . '/admin_header.php'; ?>
+<?php include SHARED_PATH . '/header.php'; ?>
 
 <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
   <button class="btn-link" role="link">&larr;Back To List</button>
 </a>
 
-<section class="input-page">
+<section class="display-box">
 
-  <?php echo display_errors($grade->errors); ?>
+  <div class="display-header">
+    <h2>Add New Grade</h2>
+  </div>
 
-  <form action="<?php echo url_for('/admin/grades/new.php'); ?>" method="post">
+  <div class="display-content">
+    <?php echo display_errors($grade->errors); ?>
 
-    <div class="form-box">
-      <?php include 'form_fields.php' ?>
+    <form action="<?php echo url_for('/admin/grades/new.php'); ?>" method="post">
 
-      <div class="button-box">
-        <input type="submit" class="button btn-success" value="Create Grade">
+      <div class="outer-input-box">
+        <?php include 'form_fields.php' ?>
+
+        <div class="button-box">
+          <input type="submit" class="button btn-success" value="Create Grade">
+        </div>
       </div>
-    </div>
-  </form>
-
+    </form>
+  </div>
 </section>
 
-<?php include SHARED_PATH . '/admin_footer.php'; ?>
+<?php include SHARED_PATH . '/footer.php'; ?>

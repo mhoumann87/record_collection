@@ -2,9 +2,11 @@
 
 <?php
 
-$page_title = 'Edit Grade';
+$page_title = 'Admin Area - Edit Grade';
 
 $id = $_GET['id'] ?? '';
+
+require_admin_role();
 
 // If no id is send with the request, just return to the list
 if ($id === '') {
@@ -32,7 +34,7 @@ if (is_post_request() && isset($_POST['submit'])) {
   $result = $grade->save();
 
   if ($result === true) {
-    //$session->message('The grading were edited succesfully');
+    $session->message('The grading were edited succesfully');
     redirect_to(url_for('/admin/grades/show.php?id=' . h(u($id))));
   }
 } else {
@@ -42,28 +44,32 @@ if (is_post_request() && isset($_POST['submit'])) {
 
 ?>
 
-<?php include_once SHARED_PATH . '/admin_header.php'; ?>
+<?php include_once SHARED_PATH . '/header.php'; ?>
 
 <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
   <button class="btn-link" role="link">&larr;Back To List</button>
 </a>
 
-<section class="input-page">
+<section class="display-box">
 
-  <?php echo display_errors($grade->errors) ?>
 
-  <form action="<?php echo url_for('/admin/grades/edit.php?id=' . h(u($id))); ?>" method="post">
+  <?php if (isset($grade->image)) { ?>
+    <div class="display-header-image">
+      <h2>Delete Grade</h2>
+    </div>
 
-    <?php
-    if ($grade->image != '') {
-      echo '<div class="image">';
-      echo '<img src="' . url_for("/assets/images/") . h($grade->image) . '" alt="">';
-      echo '</div>';
-    } else {
-      echo '';
-    }
-    ?>
-    <div class="form-box">
+    <img src="<?php echo url_for('/assets/images/') . $grade->image; ?>" alt="">
+  <?php } else { ?>
+    <div class="display-header">
+      <h2>Delete Grade</h2>
+    </div>
+  <?php } ?>
+
+  <div class="display-content">
+
+    <?php echo display_errors($grade->errors) ?>
+
+    <form action="<?php echo url_for('/admin/grades/edit.php?id=' . h(u($id))); ?>" method="post">
 
       <?php include_once 'form_fields.php'; ?>
 
@@ -71,10 +77,12 @@ if (is_post_request() && isset($_POST['submit'])) {
         <input type="submit" name="submit" class="button btn-success" value="Edit Grade">
       </div>
 
-    </div>
+  </div>
+
+  </div>
 
   </form>
 
 </section>
 
-<?php include_once SHARED_PATH . '/admin_footer.php'; ?>
+<?php include_once SHARED_PATH . '/footer.php'; ?>
