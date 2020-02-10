@@ -5,4 +5,6 @@ $page_title = 'Home';
 
 include_once SHARED_PATH . '/header.php';
 
-?> <?php include_once SHARED_PATH . '/footer.php'; ?>
+?>
+
+<?php include_once SHARED_PATH . '/footer.php'; ?>

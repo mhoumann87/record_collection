@@ -36,3 +36,13 @@ function display_errors($errors = array())
   }
   return $output;
 }
+
+function display_session_message()
+{
+  global $session;
+  $msg = $session->message();
+  if (isset($msg) && $msg != '') {
+    $session->clear_message();
+    return '<div class="session_message">' . h($msg) . '</div>';
+  }
+}

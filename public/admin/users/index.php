@@ -2,7 +2,9 @@
 
 <?php
 
-$page_title = 'Users Front Page';
+require_admin_role();
+
+$page_title = 'Admin Area - Users Front Page';
 
 // Get all users from database
 $users = User::find_all();
@@ -11,7 +13,7 @@ $users = User::find_all();
 ?>
 
 
-<?php include_once SHARED_PATH . '/admin_header.php'; ?>
+<?php include_once SHARED_PATH . '/header.php'; ?>
 
 <a href="<?php echo url_for('/admin/users/new.php'); ?>">
   <button class="btn-link" role="link">Create New</button>
@@ -66,4 +68,4 @@ $users = User::find_all();
 
 </section>
 
-<?php include_once SHARED_PATH . '/admin_footer.php'; ?>
+<?php include_once SHARED_PATH . '/footer.php'; ?>

@@ -26,9 +26,10 @@ if (!isset($user)) {
   <input type="password" name="user[confirm_password]">
 </div>
 
-<!-- TODO Show only when administrator -->
-<div class="radio-box">
-  <label for="is-admin">Is administrator: </label>
-  <input type="radio" name="user[is_admin]" value="0" <?php echo ($user->is_admin == 0) ? 'checked="checked"' : ''; ?>>No&nbsp;
-  <input type="radio" name="user[is_admin]" value="1" <?php echo ($user->is_admin > 0) ? 'checked="checked"' : ''; ?>>Yes
-</div>
+<?php if ($session->is_admin()) { ?>
+  <div class="radio-box">
+    <label for="is-admin">Is administrator: </label>
+    <input type="radio" name="user[is_admin]" value="0" <?php echo ($user->is_admin == 0) ? 'checked="checked"' : ''; ?>>No&nbsp;
+    <input type="radio" name="user[is_admin]" value="1" <?php echo ($user->is_admin > 0) ? 'checked="checked"' : ''; ?>>Yes
+  </div>
+<?php } ?>

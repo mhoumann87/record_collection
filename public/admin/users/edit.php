@@ -1,37 +1,40 @@
 <?php require_once '../../../private/initialize.php'; ?>
 
 <?php
-// TODO set $page_title based on role
-//if (admin) {
-$page_title = 'Edit User';
-//} else {
-//$page_title = 'Edit account';
-//}
 
-// Check to see an id is included in URL, else go back
-// TODO set redirect based on role
-if (!isset($_GET['id'])) {
-  //if (admin) {
-  redirect_to(url_for('/admin/users/index.php'));
-  //} else {
-  //redirect_to(url_for('/index.php));
-  //}
+require_login();
+
+if ($session->is_admin()) {
+  $page_title = 'Admin Area - Edit User';
+} else {
+  $page_title = 'Edit account';
 }
 
-// Get the is from the URL
-$id = $_GET['id'];
+// Check to see an id is included in URL, else go back
+if (!isset($_GET['id'])) {
+  if ($session->is_admin()) {
+    redirect_to(url_for('/admin/users/index.php'));
+  } else {
+    redirect_to(url_for('/index.php'));
+  }
+} else {
+  $id = $_GET['id'];
+}
 
+// Users can only see their account, else send to front page
+if (!$session->is_admin() && $_SESSION['id'] != $id) {
+  redirect_to(url_for('/index.php'));
+}
 // Find user in database, else go back
 
 $user = User::find_by_id(h($id));
 
-// TODO change redirect based on role
 if ($user === false) {
-  //if (admin) {
-  redirect_to(url_for('/admin/users/index.php'));
-  //} else {
-  //redirect_to(url_for('index.php'));
-  //}
+  if ($session->is_admin()) {
+    redirect_to(url_for('/admin/users/index.php'));
+  } else {
+    redirect_to(url_for('/index.php'));
+  }
 }
 
 if (is_post_request()) {
@@ -41,7 +44,7 @@ if (is_post_request()) {
   $result = $user->save();
 
   if ($result === true) {
-    //$session->message("User {$user->username}" was updated successfully);
+    $session->message("User {$user->username} was updated successfully");
     redirect_to(url_for('/admin/users/show.php?id=' . h(u($id))));
   } else {
     // Show errors
@@ -51,28 +54,30 @@ if (is_post_request()) {
 }
 ?>
 
-<?php include_once SHARED_PATH . '/admin_header.php'; ?>
+<?php include_once SHARED_PATH . '/header.php'; ?>
 
-<!-- if role is admin show this button -->
-<a href="<?php echo url_for('/admin/users/index.php'); ?>">
-  <button class="btn-link">&larr;Back To List</button>
-</a>
+<?php if ($session->is_admin()) { ?>
+  <a href="<?php echo url_for('/admin/users/index.php'); ?>">
+    <button class="btn-link">&larr;Back To List</button>
+  </a>
+<?php } else { ?>
 
-<!-- If role is user, show this button -->
-<!-- 
-  <a href="<?php //echo url_for('/index.php); 
-            ?>">
-  <button class="btn-link">&larr;Back To Front Page</button>
-</a>
--->
+  <a href="<?php echo url_for('/index.php'); ?>">
+    <button class="btn-link">&larr;Back To Front Page</button>
+  </a>
+<?php } ?>
 
-<div class="input-page">
+<div class="display-box">
+
+  <div class="display-header">
+    <h2>Edit Account - <?php echo $user->username; ?></h2>
+  </div>
 
   <?php echo display_errors($user->errors); ?>
 
   <form action="<?php echo url_for('admin/users/edit.php?id=' . h(u($id))); ?>" method="post">
 
-    <div class="form-box">
+    <div class="display-content">
 
       <?php include_once 'form_fields.php'; ?>
 
@@ -86,4 +91,4 @@ if (is_post_request()) {
 
 </div>
 
-<?php include_once SHARED_PATH . '/admin_footer.php'; ?>
+<?php include_once SHARED_PATH . '/footer.php'; ?>

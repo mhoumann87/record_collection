@@ -2,7 +2,8 @@
 
 <?php $page_title = 'Home'; ?>
 
-<?php include SHARED_PATH . '/header.php'; ?>
+<?php include SHARED_PATH . '/header.php';
+?>
 
 <!-- 
   The relative path to the image directory from this file, 
@@ -13,4 +14,5 @@
 
 <h2>This is the frontpage</h2>
 
-<?php include SHARED_PATH . '/footer.php'; ?>
+<?php include SHARED_PATH . '/footer.php';
+?>

@@ -20,7 +20,10 @@
       <p><?php echo $page_title; ?></p>
     </div>
     <div class="image" id="admin-header-image"></div>
-    <?php include_once SHARED_PATH . '/navigation.php'; ?>
+    <?php include_once SHARED_PATH . '/navigation.php';
+    ?>
   </header>
 
   <main>
+
+    <?php echo display_session_message(); ?>
