@@ -2,14 +2,29 @@
 
 <?php
 
-$page_title = 'Show User';
+require_login();
+
+if ($session->is_admin()) {
+  $page_title = 'Admin Area - Show User';
+} else {
+  $page_title = 'Your Account';
+}
 
 // Get id from the URL
 $id = $_GET['id'] ?? '';
 
 // If no id in URL go to index
 if (!$id) {
-  redirect_to(url_for('/admin/users/index.php'));
+  if ($session->is_admin()) {
+    redirect_to(url_for('/admin/users/index.php'));
+  } else {
+    redirect_to(url_for('/index.php'));
+  }
+}
+
+// Users can only see their own account, else return them to front page
+if (!$session->is_admin() && $_SESSION['user_id'] != $id) {
+  redirect_to(url_for('/index.php'));
 }
 
 // If id get the user
@@ -17,21 +32,36 @@ $user = User::find_by_id(h($id));
 
 // If nothing found in the database, redirect to index
 if (!$user) {
-  redirect_to(url_for('/admin/users/index.php'));
+  if ($session->is_admin()) {
+    redirect_to(url_for('/admin/users/index.php'));
+  } else {
+    redirect_to(url_for('/index.php'));
+  }
 }
 
 //var_dump($user);
 
 ?>
 
-<?php include_once SHARED_PATH . '/admin_header.php'; ?>
+<?php include_once SHARED_PATH . '/header.php'; ?>
 
-<a href="<?php echo url_for('/admin/users/index.php'); ?>">
-  <button class="btn-link" role="link">&larr;Back To List</button>
-</a>
+<?php if ($session->is_admin()) { ?>
+  <a href="<?php echo url_for('/admin/users/index.php'); ?>">
+    <button class="btn-link" role="link">&larr;Back To List</button>
+  </a>
+<?php } else { ?>
+  <a href="<?php echo url_for('/index.php'); ?>">
+    <button class="btn-link" role="link">&larr; Back To Front Page</button>
+  </a>
+<?php } ?>
 
-<section class="show-single">
-  <div class="show-single-text">
+<section class="display-box">
+
+  <div class="display-header">
+    <h2>Show Account</h2>
+  </div>
+
+  <div class="display-content">
     <h3>Email: <?php echo h($user->email); ?></h3>
     <h3>Username: <?php echo h($user->username); ?></h3>
     <h3><?php echo $user->is_admin == '1' ? 'Administrator' : 'User'; ?></h3>
@@ -40,6 +70,9 @@ if (!$user) {
   </div>
 
   <div class="button-bar">
+    <a href="<?php echo $session->is_admin() ? url_for('/admin/users/index.php') : url_for('/index.php'); ?>">
+      <button class="btn-success" role="link">Ok</button>
+    </a>
     <a href="<?php echo url_for('/admin/users/edit.php?id=' . h(u($id))) ?>">
       <button class="btn-link" role="link">Edit</button>
     </a>
@@ -52,4 +85,4 @@ if (!$user) {
 
 
 
-<?php include_once SHARED_PATH . '/admin_footer.php'; ?>
+<?php include_once SHARED_PATH . '/footer.php'; ?>

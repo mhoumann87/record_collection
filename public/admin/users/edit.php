@@ -22,7 +22,7 @@ if (!isset($_GET['id'])) {
 }
 
 // Users can only see their account, else send to front page
-if (!$session->is_admin() && $_SESSION['id'] != $id) {
+if (!$session->is_admin() && $_SESSION['user_id'] != $id) {
   redirect_to(url_for('/index.php'));
 }
 // Find user in database, else go back

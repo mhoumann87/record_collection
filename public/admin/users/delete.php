@@ -6,13 +6,18 @@ require_login();
 // Get id from URL
 $id = $_GET['id'] ?? '';
 
-// If no is with URL return to index.php
+// If no id with URL return to index.php
 if (!$id) {
   if ($session->is_admin()) {
     redirect_to(url_for('/admin/users/index.php'));
   } else {
     redirect_to((url_for('/index.php')));
   }
+}
+
+// Users can only access their own account, else send to front page
+if (!$session->is_admin() && $_SESSION['user_id'] != $id) {
+  redirect_to(url_for('/index.php'));
 }
 
 $user = User::find_by_id($id);

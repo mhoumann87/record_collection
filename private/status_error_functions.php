@@ -15,7 +15,7 @@ function require_admin_role()
 {
   global $session;
   if (!$session->is_admin()) {
-    redirect_to(url_for('/admin/login.php'));
+    redirect_to(url_for('/index.php'));
   }
 }
 

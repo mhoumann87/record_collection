@@ -1,6 +1,8 @@
 <?php require_once '../private/initialize.php'; ?>
 
-<?php $page_title = 'Home'; ?>
+<?php $page_title = 'Home';
+var_dump($_SESSION);
+?>
 
 <?php include SHARED_PATH . '/header.php';
 ?>
