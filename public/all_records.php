@@ -1,0 +1,1 @@
+<h1>This is the all records page</h1>
