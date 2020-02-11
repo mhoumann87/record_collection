@@ -59,15 +59,16 @@ if (is_post_request()) {
 
     <form action="<?php echo url_for('/admin/grades/new.php'); ?>" method="post">
 
-      <div class="outer-input-box">
-        <?php include 'form_fields.php' ?>
+      <?php include 'form_fields.php' ?>
 
-        <div class="button-box">
-          <input type="submit" class="button btn-success" value="Create Grade">
-        </div>
+      <div class="button-box">
+        <input type="submit" class="button btn-success" value="Create Grade">
       </div>
+
     </form>
+
   </div>
+
 </section>
 
 <?php include SHARED_PATH . '/footer.php'; ?>

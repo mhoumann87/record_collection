@@ -2,11 +2,17 @@
 
 <?php
 
-$page_title = 'Formats Home';
+require_admin_role();
 
-include SHARED_PATH . '/admin_header.php';
+$page_title = 'Admin Area - Formats Home';
+
+include SHARED_PATH . '/header.php';
 ?>
+
+<a href="<?php echo url_for('/admin/formats/new.php'); ?>">
+  <button class="btn-link">Create New Format</button>
+</a>
 
 <h1>Formats Home</h1>
 
-<?php include_once SHARED_PATH . '/admin_footer.php'; ?>
+<?php include_once SHARED_PATH . '/footer.php'; ?>
