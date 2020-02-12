@@ -49,6 +49,8 @@ if (is_post_request()) {
     </div>
   <?php } ?>
 
+  <?php echo display_errors($format->errors); ?>
+
   <div class="display-content">
     <h3>Name: <?php echo h(ucfirst($grade->value)); ?></h3>
     <h3>Short: <?php echo h($grade->short); ?></h3>

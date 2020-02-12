@@ -43,6 +43,6 @@ function display_session_message()
   $msg = $session->message();
   if (isset($msg) && $msg != '') {
     $session->clear_message();
-    return '<div class="session_message">' . h($msg) . '</div>';
+    return '<div class="session-message"><p>' . h($msg) . '</p></div>';
   }
 }

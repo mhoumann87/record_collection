@@ -65,13 +65,25 @@ if ($_SESSION['is_admin'] == 1) {
     <?php if ($_SESSION['is_admin'] == 1) { ?>
 
       <div class="button-bar-more">
+
+        <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
+          <button class="btn-success" role="link">Ok</button>
+        </a>
+
         <a href="<?php echo url_for('/admin/grades/edit.php?id=' . $grade->id); ?>">
-          <button class="btn-link" role="link">Edit</button></a></a>
-        <a href="<?php echo url_for('/admin/grades/delete.php?id=' . $grade->id); ?>"> <button class="btn-danger" role="link">Delete</button></a></a>
+          <button class="btn-link" role="link">Edit</button>
+        </a>
+
+        <a href="<?php echo url_for('/admin/grades/delete.php?id=' . $grade->id); ?>">
+          <button class="btn-danger" role="link">Delete</button>
+        </a>
+
       </div>
+
     <?php } ?>
 
   </div>
+
 </section>
 
 <?php include_once SHARED_PATH . '/footer.php'; ?>

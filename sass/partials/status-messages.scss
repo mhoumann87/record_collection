@@ -9,3 +9,16 @@
     padding: .8em;
     width: 90%;
 }
+
+.session-message {
+    width: 100%;
+    background: $success;
+    padding: .4em;
+    text-align: center;
+
+    p {
+        color: $font-light;
+        font-size: 1.2rem;
+        margin: 0;
+    }
+}

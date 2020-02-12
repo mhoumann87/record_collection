@@ -2,10 +2,12 @@
 
 <?php
 
+// This area is only for admins
 require_admin_role();
 
 $page_title = 'Admin Area - Formats Home';
 
+// Find all elements in the database
 $formats = Format::find_all();
 ?>
 
