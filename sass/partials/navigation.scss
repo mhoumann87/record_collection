@@ -34,6 +34,10 @@
 
                 @include border(2px, $link-hover);
             }
+
+            &.active {
+                @extend :hover;
+            }
         }
     }
 

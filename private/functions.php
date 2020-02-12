@@ -44,3 +44,14 @@ function is_get_request()
 {
   return $_SERVER['REQUEST_METHOD' == 'GET'];
 }
+
+// Set menu point as active when on the right page
+function set_menu_active($uri, $str)
+{
+  $class = '';
+
+  if (has_string($uri, $str)) {
+    $class = 'active';
+  }
+  return $class;
+}

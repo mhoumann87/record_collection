@@ -2,11 +2,11 @@
 
 <?php
 
-$page_title = 'Formats Home';
+$page_title = 'Records Home';
 
-include SHARED_PATH . '/admin_header.php';
+include SHARED_PATH . '/header.php';
 ?>
 
 <h1>Formats Home</h1>
 
-<?php include_once SHARED_PATH . '/admin_footer.php'; ?>
+<?php include_once SHARED_PATH . '/footer.php'; ?>
