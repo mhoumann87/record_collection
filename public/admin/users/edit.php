@@ -81,7 +81,7 @@ if (is_post_request()) {
 
       <?php include_once 'form_fields.php'; ?>
 
-      <div class="button-box">
+      <div class="button-bar-single">
         <input type="submit" class="button btn-success" value="Edit User">
       </div>
 

@@ -64,7 +64,7 @@ if ($_SESSION['is_admin'] == 1) {
 
     <?php if ($_SESSION['is_admin'] == 1) { ?>
 
-      <div class="button-bar">
+      <div class="button-bar-more">
         <a href="<?php echo url_for('/admin/grades/edit.php?id=' . $grade->id); ?>">
           <button class="btn-link" role="link">Edit</button></a></a>
         <a href="<?php echo url_for('/admin/grades/delete.php?id=' . $grade->id); ?>"> <button class="btn-danger" role="link">Delete</button></a></a>

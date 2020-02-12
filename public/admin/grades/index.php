@@ -24,17 +24,17 @@ $grades = Grade::find_all();
         <h3><?php echo h($grade->short); ?></h3>
       </div>
       <div class="description">
-        <div class="difinition">
-          <?php echo $grade->shorten_definition(); ?>
-        </div>
-        <div class="button-bar">
-          <a href="<?php echo url_for('/admin/grades/show.php?id=' . $grade->id); ?>">
-            <button class="btn-link" role="link">Show</button></a>
-          <a href="<?php echo url_for('/admin/grades/edit.php?id=' . $grade->id); ?>">
-            <button class="btn-link" role="link">Edit</button></a></a>
-          <a href="<?php echo url_for('/admin/grades/delete.php?id=' . $grade->id); ?>"> <button class="btn-danger" role="link">Delete</button></a></a>
-        </div>
+        <?php echo $grade->shorten_definition(); ?>
       </div>
+
+      <div class="button-bar-more">
+        <a href="<?php echo url_for('/admin/grades/show.php?id=' . $grade->id); ?>">
+          <button class="btn-link" role="link">Show</button></a>
+        <a href="<?php echo url_for('/admin/grades/edit.php?id=' . $grade->id); ?>">
+          <button class="btn-link" role="link">Edit</button></a></a>
+        <a href="<?php echo url_for('/admin/grades/delete.php?id=' . $grade->id); ?>"> <button class="btn-danger" role="link">Delete</button></a></a>
+      </div>
+
     </article>
   <?php } ?>
 

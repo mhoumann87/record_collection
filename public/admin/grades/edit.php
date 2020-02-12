@@ -55,7 +55,7 @@ if (is_post_request() && isset($_POST['submit'])) {
 
   <?php if (isset($grade->image)) { ?>
     <div class="display-header-image">
-      <h2>Delete Grade</h2>
+      <h2>Edit Grade</h2>
     </div>
 
     <img src="<?php echo url_for('/assets/images/') . $grade->image; ?>" alt="">
@@ -73,7 +73,7 @@ if (is_post_request() && isset($_POST['submit'])) {
 
       <?php include_once 'form_fields.php'; ?>
 
-      <div class="button-box">
+      <div class="button-bar-single">
         <input type="submit" name="submit" class="button btn-success" value="Edit Grade">
       </div>
 

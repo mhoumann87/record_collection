@@ -69,7 +69,7 @@ if (!$user) {
     <h3>Last Login: <?php echo $user->last_logged_in != '0' ? date('d/m Y', h($user->last_logged_in)) : 'Never'; ?></h3>
   </div>
 
-  <div class="button-bar">
+  <div class="button-bar-more">
     <a href="<?php echo $session->is_admin() ? url_for('/admin/users/index.php') : url_for('/index.php'); ?>">
       <button class="btn-success" role="link">Ok</button>
     </a>

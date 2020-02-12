@@ -42,3 +42,14 @@ button {
 .button {
     @extend button;
 }
+
+/* Button boxes */
+.button-bar-more {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: .5em;
+}
+
+.button-bar-single {
+    padding-bottom: .5em;
+}

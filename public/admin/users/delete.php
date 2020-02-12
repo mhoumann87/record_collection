@@ -75,12 +75,17 @@ if (is_post_request()) {
   </div>
 
   <div class="display-content">
-    <h3>Do you really want to delete this account?</h3>
+
     <p>Email: <?php echo h($user->email); ?></p>
     <p>Username: <?php echo h($user->username); ?></p>
 
+    <div class="delete-post">
+      <h3>Do you really want to delete this account?</h3>
+    </div>
+
     <form action="<?php echo url_for('/admin/users/delete.php?id=' . h(u($id))); ?>" method="post">
-      <div class="button-bar">
+
+      <div class="button-bar-more">
         <input class="button btn-danger" type="submit" value="Yes, delete account">
 
         <?php if ($session->is_admin()) { ?>

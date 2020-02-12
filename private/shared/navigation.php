@@ -26,7 +26,11 @@
 
     <?php if ($session->is_logged_in()) { ?>
       <a href="<?php echo url_for('/admin/users/show.php?id=' . $_SESSION['user_id']); ?>">
-        <button class="nav-btn <?php echo set_menu_active($_SERVER['REQUEST_URI'], '/admin/users/show.php') ?>" role="link">Account</button>
+        <button class="nav-btn <?php
+                                if (!$session->is_admin()) {
+                                  echo set_menu_active($_SERVER['REQUEST_URI'], '/admin/users/');
+                                }
+                                ?>" role="link">Account</button>
       </a>
     <?php } ?>
 
