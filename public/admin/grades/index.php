@@ -23,7 +23,7 @@ $grades = Grade::find_all();
         <h3><?php echo h(ucfirst($grade->value)); ?></h3>
         <h3><?php echo h($grade->short); ?></h3>
       </div>
-      <div class="description">
+      <div class="card-description">
         <?php echo $grade->shorten_definition(); ?>
       </div>
 

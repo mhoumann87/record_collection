@@ -4,6 +4,8 @@
 
 $page_title = 'Admin Area - Edit Format';
 
+require_admin_role();
+
 $id = $_GET['id'] ?? '';
 
 if (!$id) {
