@@ -20,6 +20,8 @@ body {
 
 a {
     color: $link;
+
+    @include smooth;
 }
 
 a:hover,

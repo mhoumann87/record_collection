@@ -31,9 +31,9 @@
             &:hover,
             &:active {
                 background-color: $background-dark;
-                color: $link-hover;
+                color: $link;
 
-                @include border(2px, $link-hover);
+                @include border(2px, $link);
             }
 
             &.active {
