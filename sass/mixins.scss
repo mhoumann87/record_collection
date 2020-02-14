@@ -59,3 +59,14 @@
 @mixin smooth($property: all) {
     transition: $property 0.3s ease-in;
 }
+
+// Mixin for headings, no arguments = all headings, 
+//else use form lowest to higest size (1-6)
+
+@mixin headings($from: 1, $to: 6) {
+    @for $i from $from through $to {
+        h#{$i} {
+            @content;
+        }
+    }
+}

@@ -12,9 +12,9 @@
 
     .card {
         background: $popup-background;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
 
         @include shaddow;
     }
@@ -32,8 +32,11 @@
         padding: .4em;
         display: flex;
         flex-direction: column;
+        justify-content: space-around;
 
-        h3 {
+        #{headings} {
+            background: crimson;
+            margin: 0;
             font-weight: 400;
         }
 
