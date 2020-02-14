@@ -19,7 +19,7 @@ $users = User::find_all();
   <button class="btn-link" role="link">Create New</button>
 </a>
 
-<section class="index-tabel">
+<section class="index-page-tabel">
   <table>
     <tr>
       <th>ID</th>

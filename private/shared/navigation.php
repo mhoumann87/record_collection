@@ -16,8 +16,13 @@
       <button class="nav-btn <?php echo set_menu_active($_SERVER['REQUEST_URI'], 'public/index.php') ?>" role="link">Home</button>
     </a>
 
-    <a href="<?php echo url_for('/all_artists.php'); ?>">
-      <button class="nav-btn <?php echo set_menu_active($_SERVER['REQUEST_URI'], '/all_artists.php') ?>" role="link">All Artists</button>
+    <a href="<?php echo url_for('/admin/artists/index.php'); ?>">
+      <button class="nav-btn <?php
+
+                              if (!$session->is_admin()) {
+                                echo set_menu_active($_SERVER['REQUEST_URI'], '/admin/artists/');
+                              }
+                              ?>" role="link">All Artists</button>
     </a>
 
     <a href="<?php echo url_for('/all_records.php'); ?>">

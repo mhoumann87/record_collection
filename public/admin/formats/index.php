@@ -17,7 +17,7 @@ $formats = Format::find_all();
   <button class="btn-link">Create New Format</button>
 </a>
 
-<section class="index-pages">
+<section class="index-page-grid">
 
   <?php foreach ($formats as $format) { ?>
 

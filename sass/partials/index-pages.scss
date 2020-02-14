@@ -1,6 +1,6 @@
 /* Index pages with card and table layout */
 
-.index-pages {
+.index-page-grid {
     margin-top: 1em;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -12,6 +12,9 @@
 
     .card {
         background: $popup-background;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
         @include shaddow;
     }
@@ -29,15 +32,20 @@
         padding: .4em;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
 
         h3 {
             font-weight: 400;
         }
+
+        .button-bar-single-card {
+            @extend .button-bar-single;
+
+            justify-self: end;
+        }
     }
 }
 
-.index-tabel {
+.index-page-tabel {
     width: 100%;
     margin: 2em 0;
 
