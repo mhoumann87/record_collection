@@ -2,6 +2,11 @@
 
 <?php
 
+/*
+* It is only administrators that can see all accounts
+* that are in the database 
+*/
+
 require_admin_role();
 
 $page_title = 'Admin Area - Users Front Page';

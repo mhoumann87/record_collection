@@ -55,3 +55,12 @@ function set_menu_active($uri, $str)
   }
   return $class;
 }
+
+function shorten_text($text, $length = 100)
+{
+  if (strlen($text) > $length) {
+    return substr($text, 0, $length) . '...';
+  } else {
+    return $text;
+  }
+}

@@ -1,6 +1,12 @@
 <?php require_once '../../../private/initialize.php'; ?>
 
 <?php
+
+/*
+* "Normal" user can only see and delete their own account.
+* Administrator can see and delete all accounts. 
+*/
+
 require_login();
 
 // Get id from URL

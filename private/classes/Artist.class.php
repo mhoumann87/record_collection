@@ -54,7 +54,6 @@ class Artist extends DatabaseObject
       if (isset($this->the_first)) {
         return "The {$this->bandname}";
       } else {
-        return "{$this->bandname}";
       }
     } else {
       return "{$this->firstname} {$this->lastname}";

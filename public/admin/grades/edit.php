@@ -2,6 +2,12 @@
 
 <?php
 
+/*
+* This area is for administrators only.
+* The content is just user ad "service"
+* the main pages 
+*/
+
 $page_title = 'Admin Area - Edit Grade';
 
 $id = $_GET['id'] ?? '';

@@ -1,9 +1,15 @@
 <?php require_once '../../../private/initialize.php'; ?>
 
-<?php require_admin_role();
-?>
-
 <?php
+
+/*
+* This area is for administrators only.
+* The content is just user ad "service"
+* the main pages 
+*/
+
+require_admin_role();
+
 $page_title = 'Admin Area - Grades Front Page';
 
 $grades = Grade::find_all();
@@ -24,7 +30,7 @@ $grades = Grade::find_all();
         <h3><?php echo h($grade->short); ?></h3>
       </div>
       <div class="card-description">
-        <?php echo $grade->shorten_definition(); ?>
+        <?php echo shorten_text($grade->definition); ?>
       </div>
 
       <div class="button-bar-more">

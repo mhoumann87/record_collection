@@ -2,7 +2,12 @@
 
 <?php
 
-// This area is only for admins
+/*
+* This area is for administrators only.
+* The content is just user ad "service"
+* the main pages 
+*/
+
 require_admin_role();
 
 $page_title = 'Admin Area - Formats Home';

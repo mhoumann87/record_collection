@@ -2,6 +2,12 @@
 
 <?php
 
+/*
+* This area is for administrators only.
+* The content is just user ad "service"
+* the main pages 
+*/
+
 require_admin_role();
 
 // Get the id from the URL, in there isn't any go back to list

@@ -1,0 +1,30 @@
+.image-artist {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    .img-background {
+        position: relative;
+        z-index: 0;
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
+        filter: blur(7px) opacity(0.8);
+    }
+
+    .img-profile-box {
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
+        min-height: 100%;
+        min-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .img-profile {
+            position: relative;
+            z-index: 999;
+            max-width: 80%;
+            height: auto;
+            filter: drop-shadow(8px 8px 8px rgba(0, 0, 0, 0.5));
+        }
+    }
+}

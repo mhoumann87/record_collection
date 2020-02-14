@@ -2,6 +2,12 @@
 
 <?php
 
+/*
+* This area is for administrators only.
+* The content is just user ad "service"
+* the main pages 
+*/
+
 require_login();
 
 // Get the id from the URL if it is not there set id to empty

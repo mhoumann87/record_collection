@@ -2,6 +2,11 @@
 
 <?php
 
+/*
+* "Normal" user can only see their own account.
+* Administrator can see all accounts. 
+*/
+
 require_login();
 
 if ($session->is_admin()) {

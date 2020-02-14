@@ -4,6 +4,12 @@
 
 <?php
 
+/*
+* This area is for administrators only.
+* The content is just user ad "service"
+* the main pages 
+*/
+
 $page_title = 'Admin Area - Create New Format';
 
 if (is_post_request()) {

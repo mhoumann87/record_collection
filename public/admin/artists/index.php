@@ -3,7 +3,7 @@
 <?php
 
 /*
-* This is a page that everyone can see, but you have to be logged in 
+* Everyone can see this page, but you have to be logged in 
 * to add new posts or edit existing post, and very important, you have 
 * to be an administrator to able to delete posts!
 */
@@ -39,9 +39,9 @@ $artists = Artist::find_all();
         <h3><?php echo $artist->display_name(); ?></h3>
       </div>
 
-      <?php if (isset($artist->image)) { ?>
+      <?php if ($artist->image != '') { ?>
         <div class="card-image">
-          <?php echo "<img src=\"{$artist->image}\ alt=\"Image of {$artist->display_name()}\""; ?> />
+          <img src="<?php echo h($artist->image); ?>" alt="Image of <?php echo h($artist->display_name()); ?>" />
         </div>
       <?php } ?>
 
@@ -49,7 +49,7 @@ $artists = Artist::find_all();
 
         <h3><?php echo $artist->display_name(); ?></h3>
 
-        <?php echo $artist->profile != '' ? '<div>' . $artist->profile . '</div>' : ''; ?>
+        <?php echo $artist->profile != '' ? '<div>' . shorten_text($artist->profile, 150) . '</div>' : ''; ?>
 
         <?php echo $artist->website != '' ? '<a href="' . $artist->website . '" target="_blank">Official Website</a>' : ''; ?>
 

@@ -40,15 +40,6 @@ class Grade extends DatabaseObject
     return self::$table_name;
   }
 
-  public function shorten_definition()
-  {
-    if (strlen($this->definition) > 100) {
-      return substr($this->definition, 0, 100) . '...';
-    } else {
-      return $this->definition;
-    }
-  }
-
   // Remove html tags not cleared in $allowed_tags
   public function clear_html_input($text)
   {

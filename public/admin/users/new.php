@@ -2,6 +2,10 @@
 
 <?php
 
+/*
+ * Everybody can create a new account.
+ */
+
 if ($session->is_admin()) {
   $page_title = 'Create New User';
 } else {
