@@ -59,12 +59,11 @@
     }
 
     .card-description {
-        min-height: 100%;
         margin-top: .8em;
-        padding: .4em;
+        min-height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        background: hotpink;
 
         @include headings {
             margin: 0;
@@ -74,14 +73,33 @@
         }
 
 
+        .card-description-header {
+            flex: auto;
+            background: seagreen;
+        }
+
+        .card-description-profile {
+            flex: 1;
+            background: steelblue;
+        }
+
+        .card-description-links {
+            flex: auto;
+            background: crimson;
+        }
+
         .button-bar-single-card {
+            flex: auto;
             margin-top: 1em;
+            background: yellowgreen;
 
             @extend .button-bar-single;
         }
 
         .button-bar-more-card {
+            flex: auto;
             margin-top: 1em;
+            background: yellowgreen;
 
             @extend .button-bar-more;
         }

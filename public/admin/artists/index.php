@@ -54,13 +54,19 @@ $artists = Artist::find_all();
 
       <div class="card-description">
 
-        <h3><?php echo $artist->display_name(); ?></h3>
+        <div class="card-description-header">
+          <h3><?php echo $artist->display_name(); ?></h3>
+        </div>
 
-        <?php echo $artist->profile != '' ? '<div>' . shorten_text($artist->profile, 150) . '</div>' : ''; ?>
+        <div class="card-description-profile">
+          <?php echo $artist->profile != '' ? '<div>' . shorten_text($artist->profile, 150) . '</div>' : ''; ?>
+        </div>
 
-        <?php echo $artist->website != '' ? '<a href="' . $artist->website . '" target="_blank">Official Website</a>' : ''; ?>
+        <div class="card-description-links">
+          <?php echo $artist->website != '' ? '<a href="' . $artist->website . '" target="_blank">Official Website</a>' : ''; ?>
 
-        <?php echo $artist->amazon_link != '' ? '<a href="' . $artist->amazon_link . '" target="_blank">Search on Amazon</a>' : ''; ?>
+          <?php echo $artist->amazon_link != '' ? '<a href="' . $artist->amazon_link . '" target="_blank">Search on Amazon</a>' : ''; ?>
+        </div>
 
         <div class="<?php echo $session->is_logged_in() ? 'button-bar-more-card' : 'button-bar-single-card'; ?>">
 
@@ -84,11 +90,10 @@ $artists = Artist::find_all();
 
       </div>
 
-
-    </article>
+    </article><!-- End card -->
 
   <?php } ?>
-
+  <!-- End card -->
 
 </section>
 
