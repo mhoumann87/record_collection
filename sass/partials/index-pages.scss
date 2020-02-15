@@ -17,6 +17,11 @@
         grid-template-rows: auto auto 1fr;
 
         @include shaddow;
+
+        a {
+            text-decoration: none;
+            cursor: pointer;
+        }
     }
 
     .card-header {
@@ -27,12 +32,39 @@
         justify-content: space-between;
     }
 
+    .card-image-artist {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+
+        .card-image-artist-box {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+        }
+
+        .card-image-overlay {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            h2 {
+                font-family: 'Baloo Bhaina', cursive;
+                color: $font_light;
+                font-size: 3.2rem;
+            }
+        }
+    }
+
     .card-description {
+        min-height: 100%;
         margin-top: .8em;
         padding: .4em;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-between;
 
         @include headings {
             margin: 0;

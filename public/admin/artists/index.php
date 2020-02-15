@@ -35,13 +35,20 @@ $artists = Artist::find_all();
 
     <article class="card">
 
-      <div class="card-header">
-        <h3><?php echo $artist->display_name(); ?></h3>
-      </div>
-
       <?php if ($artist->image != '') { ?>
-        <div class="card-image">
-          <img src="<?php echo h($artist->image); ?>" alt="Image of <?php echo h($artist->display_name()); ?>" />
+        <a href="<?php echo url_for('admin/artists/show.php?id=' . h(u($artist->id))) ?>">
+          <div class="card-image-artist">
+            <div class="card-image-artist-box">
+              <img src="<?php echo h($artist->image); ?>" alt="Image of <?php echo h($artist->display_name()); ?>" />
+            </div>
+            <div class="card-image-overlay">
+              <h2><?php echo h($artist->display_name()); ?></h2>
+            </div>
+          </div>
+        </a>
+      <?php } else { ?>
+        <div class="card-header">
+          <h2><?php echo h($artist->display_name()); ?></h2>
         </div>
       <?php } ?>
 
