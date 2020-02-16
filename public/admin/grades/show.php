@@ -70,7 +70,7 @@ if ($_SESSION['is_admin'] == 1) {
 
     <?php if ($_SESSION['is_admin'] == 1) { ?>
 
-      <div class="button-bar-more">
+      <div class="button-bar">
 
         <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
           <button class="btn-success" role="link">Ok</button>

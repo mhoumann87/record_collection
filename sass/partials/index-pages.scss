@@ -112,6 +112,8 @@
 
         .card-description-links {
             // background-color: seagreen;
+            display: flex;
+            justify-content: space-between;
             grid-row: 4 / 5;
         }
 

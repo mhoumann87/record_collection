@@ -54,7 +54,7 @@ if (is_post_request()) {
       <h3>Do you really want to delete this format?</h3>
     </div>
 
-    <div class="button-bar-more">
+    <div class="button-bar">
 
       <form action="<?php echo url_for('/admin/formats/delete.php?id=' . h(u($id))); ?>" method="post">
         <input type="submit" name="submit" class="button btn-danger" value="Yes, delete format">

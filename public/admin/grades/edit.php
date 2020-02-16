@@ -79,7 +79,7 @@ if (is_post_request() && isset($_POST['submit'])) {
 
       <?php include_once 'form_fields.php'; ?>
 
-      <div class="button-bar-single">
+      <div class="button-bar">
         <input type="submit" name="submit" class="button btn-success" value="Edit Grade">
       </div>
 

@@ -67,7 +67,7 @@ if (is_post_request()) {
 
       <?php include 'form_fields.php' ?>
 
-      <div class="button-bar-single">
+      <div class="button-bar">
         <input type="submit" class="button btn-success" value="Create Grade">
       </div>
 

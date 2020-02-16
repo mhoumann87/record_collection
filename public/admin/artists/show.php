@@ -69,7 +69,7 @@ if (!$session->is_admin()) {
     <?php } ?>
 
 
-    <div class="<?php echo $session->is_logged_in() ? 'button-bar-more' : 'button-bar-single'; ?>">
+    <div class="<button-bar">
 
       <a href="<?php echo url_for('/admin/artists/index.php'); ?>">
         <button class="btn-success" role="link">Ok</button>

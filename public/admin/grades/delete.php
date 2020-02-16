@@ -55,7 +55,7 @@ if (is_post_request()) {
     </div>
   <?php } ?>
 
-  <?php echo display_errors($format->errors); ?>
+  <?php echo display_errors($grade->errors); ?>
 
   <div class="display-content">
     <h3>Name: <?php echo h(ucfirst($grade->value)); ?></h3>
@@ -68,7 +68,7 @@ if (is_post_request()) {
     <div class="delete-post">
       <h3>Do you really want to delete this post?</h3>
 
-      <div class="button-bar-more">
+      <div class="button-bar">
         <form method="post" action="<?php echo url_for('/admin/grades/delete.php?id=' . h(u($id))); ?>">
           <input class="button btn-danger" type="submit" value="Yes, delete grade">
         </form>

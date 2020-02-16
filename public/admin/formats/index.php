@@ -35,24 +35,24 @@ $formats = Format::find_all();
       <div class="card-description">
         <p>ID: <?php echo h($format->id); ?></p>
         <p>Name: <?php echo h($format->name); ?></p>
+
+
+        <div class="button-bar">
+
+          <a href="<?php echo url_for('/admin/formats/show.php?id=' . h(u($format->id))); ?>">
+            <button class="btn-link" role="link">Show</button>
+          </a>
+
+          <a href="<?php echo url_for('/admin/formats/edit.php?id=' . h(u($format->id))); ?>">
+            <button class="btn-link" role="link">Edit</button>
+          </a>
+
+          <a href="<?php echo url_for('/admin/formats/delete.php?id=' . h(u($format->id))); ?>">
+            <button class="btn-danger" role="link">Delete</button>
+          </a>
+
+        </div>
       </div>
-
-      <div class="button-bar-more">
-
-        <a href="<?php echo url_for('/admin/formats/show.php?id=' . h(u($format->id))); ?>">
-          <button class="btn-link" role="link">Show</button>
-        </a>
-
-        <a href="<?php echo url_for('/admin/formats/edit.php?id=' . h(u($format->id))); ?>">
-          <button class="btn-link" role="link">Edit</button>
-        </a>
-
-        <a href="<?php echo url_for('/admin/formats/delete.php?id=' . h(u($format->id))); ?>">
-          <button class="btn-danger" role="link">Delete</button>
-        </a>
-
-      </div>
-
     </article>
 
   <?php } ?>

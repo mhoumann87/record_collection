@@ -44,12 +44,8 @@ button {
 }
 
 /* Button boxes */
-.button-bar-more {
+.button-bar {
     display: flex;
-    justify-content: space-around;
-    padding-bottom: .5em;
-}
-
-.button-bar-single {
+    justify-content: space-between;
     padding-bottom: .5em;
 }

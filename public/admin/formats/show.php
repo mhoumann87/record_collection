@@ -40,24 +40,24 @@ if (empty($format)) {
 
   <div class="display-content">
     <p>ID: <?php echo h($format->id); ?> Name: <?php echo h($format->name); ?></p>
+
+
+    <div class="button-bar">
+
+      <a href="<?php echo url_for('/admin/formats/index.php'); ?>">
+        <button class="btn-success" role="link">Ok</button>
+      </a>
+
+      <a href="<?php echo url_for('admin/formats/edit.php?id=' . h(u($id))) ?>">
+        <button class="btn-link" role="link">Edit</button>
+      </a>
+
+      <a href="<?php echo url_for('/admin/formats/delete.php?id=' . h(u($id))); ?>">
+        <button class="btn-danger" role="link">Delete</button>
+      </a>
+
+    </div>
   </div>
-
-  <div class="button-bar-more">
-
-    <a href="<?php echo url_for('/admin/formats/index.php'); ?>">
-      <button class="btn-success" role="link">Ok</button>
-    </a>
-
-    <a href="<?php echo url_for('admin/formats/edit.php?id=' . h(u($id))) ?>">
-      <button class="btn-link" role="link">Edit</button>
-    </a>
-
-    <a href="<?php echo url_for('/admin/formats/delete.php?id=' . h(u($id))); ?>">
-      <button class="btn-danger" role="link">Delete</button>
-    </a>
-
-  </div>
-
 
 </section>
 

@@ -69,7 +69,7 @@ if (is_post_request()) {
 
       <?php include_once 'form_fields.php'; ?>
 
-      <div class="button-bar-single">
+      <div class="button-bar">
         <!-- TODO change text in button when user or admin -->
         <input class="button btn-success" type="submit" value="Create User">
       </div>

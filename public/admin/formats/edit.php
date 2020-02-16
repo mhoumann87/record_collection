@@ -66,7 +66,7 @@ if (is_post_request()) {
 
       <?php include_once './form_fields.php'; ?>
 
-      <div class="button-bar-single">
+      <div class="button-bar">
         <input type="submit" class="button btn-success" value="Update Format">
       </div>
 

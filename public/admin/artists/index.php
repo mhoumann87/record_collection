@@ -70,7 +70,7 @@ $artists = Artist::find_all();
           <?php echo $artist->amazon_link != '' ? '<a href="' . $artist->amazon_link . '" target="_blank">Search on Amazon</a>' : ''; ?>
         </div>
 
-        <div class="<?php echo $session->is_logged_in() ? 'button-bar-more' : 'button-bar-single'; ?>">
+        <div class="button-bar">
 
           <a href="<?php echo url_for('/admin/artists/show.php?id=' . h(u($artist->id))); ?>">
             <button class="btn-link" role="link">Show Artist</button>

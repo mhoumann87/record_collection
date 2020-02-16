@@ -31,16 +31,16 @@ $grades = Grade::find_all();
       </div>
       <div class="card-description">
         <?php echo shorten_text($grade->definition); ?>
-      </div>
 
-      <div class="button-bar-more">
-        <a href="<?php echo url_for('/admin/grades/show.php?id=' . $grade->id); ?>">
-          <button class="btn-link" role="link">Show</button></a>
-        <a href="<?php echo url_for('/admin/grades/edit.php?id=' . $grade->id); ?>">
-          <button class="btn-link" role="link">Edit</button></a></a>
-        <a href="<?php echo url_for('/admin/grades/delete.php?id=' . $grade->id); ?>"> <button class="btn-danger" role="link">Delete</button></a></a>
-      </div>
 
+        <div class="button-bar">
+          <a href="<?php echo url_for('/admin/grades/show.php?id=' . $grade->id); ?>">
+            <button class="btn-link" role="link">Show</button></a>
+          <a href="<?php echo url_for('/admin/grades/edit.php?id=' . $grade->id); ?>">
+            <button class="btn-link" role="link">Edit</button></a></a>
+          <a href="<?php echo url_for('/admin/grades/delete.php?id=' . $grade->id); ?>"> <button class="btn-danger" role="link">Delete</button></a></a>
+        </div>
+      </div>
     </article>
   <?php } ?>
 

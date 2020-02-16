@@ -72,19 +72,19 @@ if (!$user) {
     <h3><?php echo $user->is_admin == '1' ? 'Administrator' : 'User'; ?></h3>
     <h3>Created: <?php echo date('d/m Y', h($user->created)); ?></h3>
     <h3>Last Login: <?php echo $user->last_logged_in != '0' ? date('d/m Y', h($user->last_logged_in)) : 'Never'; ?></h3>
-  </div>
 
-  <div class="button-bar-more">
-    <a href="<?php echo $session->is_admin() ? url_for('/admin/users/index.php') : url_for('/index.php'); ?>">
-      <button class="btn-success" role="link">Ok</button>
-    </a>
-    <a href="<?php echo url_for('/admin/users/edit.php?id=' . h(u($id))) ?>">
-      <button class="btn-link" role="link">Edit</button>
-    </a>
-    <a href="<?php echo url_for('/admin/users/delete.php?id=' . h(u($id))) ?>">
-      <button class="btn-danger" role="link">Delete</button>
-    </a>
 
+    <div class="button-bar">
+      <a href="<?php echo $session->is_admin() ? url_for('/admin/users/index.php') : url_for('/index.php'); ?>">
+        <button class="btn-success" role="link">Ok</button>
+      </a>
+      <a href="<?php echo url_for('/admin/users/edit.php?id=' . h(u($id))) ?>">
+        <button class="btn-link" role="link">Edit</button>
+      </a>
+      <a href="<?php echo url_for('/admin/users/delete.php?id=' . h(u($id))) ?>">
+        <button class="btn-danger" role="link">Delete</button>
+      </a>
+    </div>
   </div>
 </section>
 

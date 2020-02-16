@@ -52,7 +52,7 @@ if (is_post_request()) {
 
       <?php include_once './form_fields.php'; ?>
 
-      <div class="button-box">
+      <div class="button-car">
         <input type="submit" class="button btn-success" value="Create" />
       </div>
 
