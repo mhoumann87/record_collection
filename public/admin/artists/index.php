@@ -33,24 +33,26 @@ $artists = Artist::find_all();
 
   <?php foreach ($artists as $artist) { ?>
 
-    <article class="card">
+    <article class="card-artist">
 
-      <?php if ($artist->image != '') { ?>
-        <a href="<?php echo url_for('admin/artists/show.php?id=' . h(u($artist->id))) ?>">
-          <div class="card-image-artist">
-            <div class="card-image-artist-box">
-              <img src="<?php echo h($artist->image); ?>" alt="Image of <?php echo h($artist->display_name()); ?>" />
+      <div class="card-top">
+        <?php if ($artist->image != '') { ?>
+          <a href="<?php echo url_for('admin/artists/show.php?id=' . h(u($artist->id))) ?>">
+            <div class="card-image-artist">
+              <div class="card-image-artist-box">
+                <img src="<?php echo h($artist->image); ?>" alt="Image of <?php echo h($artist->display_name()); ?>" />
+              </div>
+              <div class="card-image-overlay">
+                <h2><?php echo h($artist->display_name()); ?></h2>
+              </div>
             </div>
-            <div class="card-image-overlay">
-              <h2><?php echo h($artist->display_name()); ?></h2>
-            </div>
+          </a>
+        <?php } else { ?>
+          <div class="card-header">
+            <h3><?php echo h($artist->display_name()); ?></h3>
           </div>
-        </a>
-      <?php } else { ?>
-        <div class="card-header">
-          <h2><?php echo h($artist->display_name()); ?></h2>
-        </div>
-      <?php } ?>
+        <?php } ?>
+      </div>
 
       <div class="card-description">
 
@@ -68,7 +70,7 @@ $artists = Artist::find_all();
           <?php echo $artist->amazon_link != '' ? '<a href="' . $artist->amazon_link . '" target="_blank">Search on Amazon</a>' : ''; ?>
         </div>
 
-        <div class="<?php echo $session->is_logged_in() ? 'button-bar-more-card' : 'button-bar-single-card'; ?>">
+        <div class="<?php echo $session->is_logged_in() ? 'button-bar-more' : 'button-bar-single'; ?>">
 
           <a href="<?php echo url_for('/admin/artists/show.php?id=' . h(u($artist->id))); ?>">
             <button class="btn-link" role="link">Show Artist</button>

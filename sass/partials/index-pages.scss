@@ -11,97 +11,114 @@
     }
 
     .card {
-        background: $popup-background;
+        background-color: $popup_background;
         display: grid;
+        padding-bottom: .8em;
         grid-template-columns: 1fr;
         grid-template-rows: auto auto 1fr;
 
         @include shaddow;
 
-        a {
-            text-decoration: none;
-            cursor: pointer;
-        }
-    }
-
-    .card-header {
-        background: $background-dark;
-        color: $background;
-        padding: .4em;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .card-image-artist {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
-
-        .card-image-artist-box {
-            grid-column: 1 / -1;
-            grid-row: 1 / -1;
-        }
-
-        .card-image-overlay {
-            grid-column: 1 / -1;
-            grid-row: 1 / -1;
-            background-color: rgba(0, 0, 0, 0.6);
+        .card-header {
+            background-color: $background-dark;
+            padding: .8em;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: space-between;
 
-            h2 {
-                font-family: 'Baloo Bhaina', cursive;
-                color: $font_light;
-                font-size: 3.2rem;
+            h3 {
+                color: $font-light;
+            }
+        }
+
+        .card-description {
+            margin-top: .8em;
+            padding: .8em;
+
+            h3 {
+                font-weight: 400;
             }
         }
     }
 
-    .card-description {
-        margin-top: .8em;
-        min-height: 100%;
-        display: flex;
-        flex-direction: column;
-        background: hotpink;
+    .card-artist {
+        @extend .card;
 
-        @include headings {
-            margin: 0;
-            padding: 0;
-            font-weight: 400;
-            margin-bottom: 1em;
+        grid-template-rows: 1fr 2fr;
+
+        .card-top {
+            grid-row: 1 / 2;
         }
 
+        a {
+            text-decoration: none;
+            color: $font_light;
+        }
+
+        .card-image-artist {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+
+            .card-image-artist-box {
+                grid-column: 1 / -1;
+                grid-row: 1 / -1;
+            }
+
+            .card-image-overlay {
+                grid-column: 1 / -1;
+                grid-row: 1 / -1;
+                background-color: rgba(0, 0, 0, 0.6);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                h2 {
+                    font-family: "Baloo Bhaina", cursive;
+                    font-size: 2.5rem;
+                }
+            }
+        }
+
+        .card-description {
+            // background: pink;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 2fr 1fr 1fr;
+
+            a {
+                color: $link;
+            }
+
+            a:hover,
+            a:active,
+            a:focus {
+                color: $link_hover;
+            }
+        }
 
         .card-description-header {
-            flex: auto;
-            background: seagreen;
+            grid-row: 1 / 2;
+
+            // background-color: steelblue;
+       
         }
 
         .card-description-profile {
-            flex: 1;
-            background: steelblue;
+            grid-row: 2 / 4;
+
+            // background-color: crimson;
+       
         }
 
         .card-description-links {
-            flex: auto;
-            background: crimson;
+            // background-color: seagreen;
+            grid-row: 4 / 5;
         }
 
-        .button-bar-single-card {
-            flex: auto;
-            margin-top: 1em;
-            background: yellowgreen;
-
-            @extend .button-bar-single;
-        }
-
-        .button-bar-more-card {
-            flex: auto;
-            margin-top: 1em;
-            background: yellowgreen;
-
-            @extend .button-bar-more;
+        .button-bar-single,
+        .button-bar-more {
+            // background-color: orange;
+            grid-row: 5 / -1;
         }
     }
 }

@@ -51,8 +51,8 @@
 }
 
 // Drop shaddow with possibillity to change effect
-@mixin shaddow($hl: 1px, $vl: 1px, $blur: 3px, $spread: 0px) {
-    box-shadow: $hl $vl $blur $spread rgba(0, 0, 0, 0.5);
+@mixin shaddow($hl: 5px, $vl: 5px, $blur: 3px, $spread: 0px) {
+    box-shadow: $hl $vl $blur $spread rgba(0, 0, 0, 0.4);
 }
 
 // Transition with possibillity to change property

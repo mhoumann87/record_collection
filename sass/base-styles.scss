@@ -25,7 +25,8 @@ a {
 }
 
 a:hover,
-a:active {
+a:active,
+a:focus {
     color: $link-hover;
 }
 
