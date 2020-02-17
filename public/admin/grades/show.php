@@ -30,7 +30,7 @@ if ($_SESSION['is_admin'] == 1) {
 }
 ?>
 
-<?php include_once SHARED_PATH . '/header.php'; ?>
+<?php include SHARED_PATH . '/header.php'; ?>
 
 <?php if ($session->is_admin()) { ?>
   <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
@@ -92,4 +92,4 @@ if ($_SESSION['is_admin'] == 1) {
 
 </section>
 
-<?php include_once SHARED_PATH . '/footer.php'; ?>
+<?php include SHARED_PATH . '/footer.php'; ?>

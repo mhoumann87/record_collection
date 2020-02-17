@@ -59,7 +59,7 @@ if (is_post_request()) {
 }
 ?>
 
-<?php include_once SHARED_PATH . '/header.php'; ?>
+<?php include SHARED_PATH . '/header.php'; ?>
 
 <?php if ($session->is_admin()) { ?>
   <a href="<?php echo url_for('/admin/users/index.php'); ?>">
@@ -96,4 +96,4 @@ if (is_post_request()) {
 
 </div>
 
-<?php include_once SHARED_PATH . '/footer.php'; ?>
+<?php include SHARED_PATH . '/footer.php'; ?>

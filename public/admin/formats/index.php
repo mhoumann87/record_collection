@@ -59,4 +59,4 @@ $formats = Format::find_all();
 
 </section>
 
-<?php include_once SHARED_PATH . '/footer.php'; ?>
+<?php include SHARED_PATH . '/footer.php'; ?>

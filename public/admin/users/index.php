@@ -18,7 +18,7 @@ $users = User::find_all();
 ?>
 
 
-<?php include_once SHARED_PATH . '/header.php'; ?>
+<?php include SHARED_PATH . '/header.php'; ?>
 
 <a href="<?php echo url_for('/admin/users/new.php'); ?>">
   <button class="btn-link" role="link">Create New</button>
@@ -73,4 +73,4 @@ $users = User::find_all();
 
 </section>
 
-<?php include_once SHARED_PATH . '/footer.php'; ?>
+<?php include SHARED_PATH . '/footer.php'; ?>

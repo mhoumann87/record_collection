@@ -26,7 +26,7 @@ if (empty($format)) {
 
 ?>
 
-<?php include_once SHARED_PATH . '/header.php'; ?>
+<?php include SHARED_PATH . '/header.php'; ?>
 
 <a href="<?php echo url_for('/admin/formats/index.php'); ?>">
   <button class="btn-link" role="link">&larr; Back To List</button>
@@ -61,4 +61,4 @@ if (empty($format)) {
 
 </section>
 
-<?php include_once SHARED_PATH . '/footer.php'; ?>
+<?php include SHARED_PATH . '/footer.php'; ?>

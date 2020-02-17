@@ -64,7 +64,7 @@ if (is_post_request()) {
 
     <div class="display-content">
 
-      <?php include_once './form_fields.php'; ?>
+      <?php include './form_fields.php'; ?>
 
       <div class="button-bar">
         <input type="submit" class="button btn-success" value="Update Format">
@@ -77,4 +77,4 @@ if (is_post_request()) {
 
 </section>
 
-<?php include_once SHARED_PATH . '/footer.php'; ?>
+<?php include SHARED_PATH . '/footer.php'; ?>

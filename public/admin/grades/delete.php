@@ -35,7 +35,7 @@ if (is_post_request()) {
 
 ?>
 
-<?php include_once SHARED_PATH . '/header.php'; ?>
+<?php include SHARED_PATH . '/header.php'; ?>
 
 <a href="<?php echo url_for('/admin/grades/index.php'); ?>">
   <button class="btn-link" role="link">&larr; Back to list</button>
@@ -84,4 +84,4 @@ if (is_post_request()) {
 
 </section>
 
-<?php include_once SHARED_PATH . '/footer.php'; ?>
+<?php include SHARED_PATH . '/footer.php'; ?>

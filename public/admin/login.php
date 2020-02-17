@@ -54,7 +54,7 @@ if (is_post_request()) {
 
 ?>
 
-<?php include_once SHARED_PATH . '/header.php'; ?>
+<?php include SHARED_PATH . '/header.php'; ?>
 <p class="no-show" id="imagePath">../../public/assets/images/</p>
 
 <section class="display-box">
@@ -91,4 +91,4 @@ if (is_post_request()) {
 
 </section>
 
-<?php include_once SHARED_PATH . '/footer.php'; ?>
+<?php include SHARED_PATH . '/footer.php'; ?>
