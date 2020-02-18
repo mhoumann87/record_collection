@@ -8,16 +8,28 @@ if (!isset($artist)) {
 
 ?>
 
-<h2>Band Name</h2>
 
 <div class="input-box">
-  <label for="artist[bandname]">Band Name (- 'The'):</label>
-  <input type="text" name="artist[bandname]" value="<?php echo h($artist->bandname); ?>" />
+  <label for="artist[firstname]">First Name (Band Name):</label>
+  <input type="text" name="artist[firstname]" value="<?php echo h($artist->firstname); ?>" />
 </div>
 
-<div class="checkbox">
-  <label for="artist[the_first]">Start with 'The':</label>
-  <input type="checkbox" name="artist[the_first]" value="1" />
+<div class="input-box">
+  <label for="artist[lastname]">Last Name:</label>
+  <input type="text" name="artist[lastname]" value="<?php echo h($artist->lastname); ?>" />
 </div>
 
-<h2>Or Artist Name</h2>
+<div class="input-box">
+  <label for="artist[image]">Upload Image:</label>
+  <input type="file" name="artist[image]" accept="image/*" />
+</div>
+
+<div class="input-box">
+  <label for="artist[profile]">Artist Profile:</label>
+  <textarea name="artist[profile]"><?php echo $artist->profile; ?></textarea>
+</div>
+
+<div class="input-box">
+  <label for="artist[website]">Official Website</label>
+  <input type="text" name="artist[website]" value="<?php echo h($artist->website); ?>" />
+</div>

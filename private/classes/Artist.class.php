@@ -6,10 +6,9 @@ class Artist extends DatabaseObject
   static protected $table_name = 'artists';
   static protected $db_columns = [
     'id',
-    'bandname',
-    'the_first',
     'firstname',
     'lastname',
+    'sorting',
     'image',
     'profile',
     'website',
@@ -27,10 +26,9 @@ class Artist extends DatabaseObject
   ];
 
   public $id;
-  public $bandname;
-  public $the_first;
   public $firstname;
   public $lastname;
+  protected $sorting;
   public $image;
   public $profile;
   public $website;
@@ -38,8 +36,6 @@ class Artist extends DatabaseObject
 
   public function __construct($args = [])
   {
-    $this->bandname = $args['bandname'] ?? '';
-    $this->the_first = $args['the_first'] ?? 0;
     $this->firstname = $args['firstname'] ?? '';
     $this->lastname = $args['lastname'] ?? '';
     $this->image = $args['image'] ?? '';
@@ -50,11 +46,8 @@ class Artist extends DatabaseObject
 
   public function display_name()
   {
-    if (isset($this->bandname)) {
-      if (isset($this->the_first)) {
-        return "The {$this->bandname}";
-      } else {
-      }
+    if (!isset($this->lastname)) {
+      return $this->firstname;
     } else {
       return "{$this->firstname} {$this->lastname}";
     }
