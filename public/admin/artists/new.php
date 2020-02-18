@@ -15,6 +15,8 @@ if ($session->is_admin()) {
 }
 
 if (is_post_request()) {
+  $args = $_POST['artist'];
+  $artist = new Artist($args);
 } else {
   $artist = new Artist;
 } // is_post_request()
@@ -37,7 +39,7 @@ if (is_post_request()) {
 
     <form action="<?php echo url_for('/admin/artists/new.php'); ?>" method="post" enctype="multipart/form-data>">
 
-      <?php include_once './form_fields.php'; ?>
+      <?php include_once 'form_fields.php'; ?>
 
 
       <div class="button-bar">

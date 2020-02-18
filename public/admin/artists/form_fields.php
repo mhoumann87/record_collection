@@ -21,7 +21,7 @@ if (!isset($artist)) {
 
 <div class="input-box">
   <label for="artist[image]">Upload Image:</label>
-  <input type="file" name="artist[image]" accept="image/*" />
+  <input type="file" name="artist[image]" />
 </div>
 
 <div class="input-box">
