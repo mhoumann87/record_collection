@@ -64,3 +64,15 @@ function shorten_text($text, $length = 100)
     return $text;
   }
 }
+
+// Calculate the value in bytes from MB
+function calculate_bytes_from_mb($mb)
+{
+  return pow((2), 20) * $mb;
+}
+
+// Calculate the value in MB from bytes
+function calculate_mb_from_bytes($bytes)
+{
+  return $bytes / 1048576;
+}

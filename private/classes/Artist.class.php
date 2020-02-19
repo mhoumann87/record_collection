@@ -25,6 +25,9 @@ class Artist extends DatabaseObject
     '<h6>',
   ];
 
+  // The max image size for artists
+  public $max_megabytes = 2;
+
   public $id;
   public $firstname;
   public $lastname;
@@ -33,6 +36,9 @@ class Artist extends DatabaseObject
   public $profile;
   public $website;
   public $amazon_link;
+
+  // Variable to set the image uploads
+  public $for_image_upload = 'artist';
 
   public function __construct($args = [])
   {
@@ -44,6 +50,21 @@ class Artist extends DatabaseObject
     $this->amazon_link = $args['amazon_link'] ?? '';
   }
 
+  // Set the $sortting variable
+  public function set_sorted_name()
+  {
+    if ($this->lastname != '') {
+      $this->sorting = "{$this->lastname}, {$this->firstname}";
+    } else {
+      $firstname = ucfirst($this->firstname);
+      if (strpos($firstname, 'The' !== false)) {
+        $this->sorting = substr($this->firstname, 4);
+      } else {
+        $this->sorting = $this->firstname;
+      }
+    }
+  }
+
   public function display_name()
   {
     if (!isset($this->lastname)) {
@@ -51,5 +72,27 @@ class Artist extends DatabaseObject
     } else {
       return "{$this->firstname} {$this->lastname}";
     }
+  }
+
+  // The only required field is name
+  protected function validate()
+  {
+    $this->errors = [];
+
+    if (is_blank($this->firstname)) {
+      $this->errors[] = 'Name can not be blank';
+    }
+    return $this->errors;
+  }
+
+  // Function to check input is valid
+  public function check_validation()
+  {
+    return $this->validate();
+  }
+
+  public function get_table_name()
+  {
+    return self::$table_name;
   }
 } // class
