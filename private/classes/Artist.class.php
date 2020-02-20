@@ -57,7 +57,7 @@ class Artist extends DatabaseObject
       $this->sorting = "{$this->lastname}, {$this->firstname}";
     } else {
       $firstname = ucfirst($this->firstname);
-      if (strpos($firstname, 'The' !== false)) {
+      if (strpos($firstname, 'The') !== false) {
         $this->sorting = substr($this->firstname, 4);
       } else {
         $this->sorting = $this->firstname;
