@@ -80,7 +80,7 @@ class Artist extends DatabaseObject
     $this->errors = [];
 
     if (is_blank($this->firstname)) {
-      $this->errors[] = 'Name can not be blank';
+      $this->errors[] = 'First name can not be blank';
     }
     return $this->errors;
   }

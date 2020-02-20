@@ -20,10 +20,32 @@ if (is_post_request()) {
   // the information from the user input.
   $args = $_POST['artist'];
   $artist = new Artist($args);
-
+  // Set name to use for sorting
   $artist->set_sorted_name();
-
-  var_dump($artist);
+  // Check to see if validation will pass
+  $valid = $artist->check_validation();
+  //  var_dump($valid);
+  if (empty($valid)) {
+    // The user input is valid, check to see if an image is uploaded
+    if ($_FILES[$artist->for_image_upload]['name']['image'] === '') {
+      // TODO No image is uploaded, so we just save the artist
+      echo 'No Image';
+    } else { //if ($_FILES[$artist->for_image_upload]['name']['image'] === '')
+      // echo 'Image Uploaded';
+      // An image is uploaded and we make an insrance of the image
+      $image = new Image($_FILES, $artist->for_image_upload);
+      // Set the variables that is not contained in the image file
+      $image->prepare_upload($artist->max_megabytes, $artist->get_table_name());
+      // Try to upload the image
+      var_dump($image);
+      //$result = $image->upload_image();
+      //var_dump($result);
+    } // else if ($_FILES[$artist->for_image_upload]['name']['image'] === '')
+  } else { // if (empty($valid))
+    // The input is not valid, so we just show the filled form with
+    // the error message. This will happend automaticly, this is just 
+    // to keep my head in the right place.
+  } // else if(empty($valid))
 } else { // if (is_post_request())
   // It is a GET request, and we just show the empty form
   // with an empty Artist
