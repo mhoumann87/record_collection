@@ -31,6 +31,9 @@ if (!$session->is_admin()) {
   $page_title = 'Show ' . $artist->display_name();
 }
 
+$image_path = '/assets/images/' . $artist->get_table_name() . '/';
+//var_dump($artist);
+
 ?>
 
 <?php include SHARED_PATH . '/header.php'; ?>
@@ -41,17 +44,26 @@ if (!$session->is_admin()) {
 
 <section class="display-box">
 
-  <?php if (isset($artist->image)) { ?>
+  <?php if ($artist->image != '') { ?>
 
     <div class="image-artist">
-      <img class="img-background" src="<?php echo h($artist->image); ?>" alt="<?php echo $artist->display_name(); ?>" alt="" />
+      <img class="img-background" src="<?php echo url_for($image_path . h($artist->image)); ?>" alt="<?php echo $artist->display_name(); ?>" alt="" />
 
 
       <div class="img-profile-box">
-        <img class="img-profile" src="<?php echo h($artist->image); ?>" alt="<?php echo $artist->display_name(); ?>" />
+        <img class="img-profile" src="<?php echo url_for($image_path . h($artist->image)); ?>" alt="<?php echo $artist->display_name(); ?>" />
       </div>
     </div>
 
+  <?php } elseif ($artist->image_link != '') { ?>
+    <div class="image-artist">
+      <img class="img-background" src="<?php echo h($artist->image_link); ?>" alt="" />
+
+
+      <div class="img-profile-box">
+        <img class="img-profile" src="<?php echo h($artist->image_link); ?>" alt="<?php echo $artist->display_name(); ?>" />
+      </div>
+    </div>
   <?php } ?>
 
   <div class="display-content">
@@ -69,7 +81,7 @@ if (!$session->is_admin()) {
     <?php } ?>
 
 
-    <div class="<button-bar">
+    <div class="button-bar">
 
       <a href="<?php echo url_for('/admin/artists/index.php'); ?>">
         <button class="btn-success" role="link">Ok</button>

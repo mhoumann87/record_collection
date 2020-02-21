@@ -18,6 +18,7 @@ $artists = Artist::find_all();
 
 //var_dump($artists);
 
+
 ?>
 
 <?php include SHARED_PATH . '/header.php'; ?>
@@ -36,11 +37,22 @@ $artists = Artist::find_all();
     <article class="card-artist">
 
       <div class="card-top">
-        <?php if ($artist->image != '') { ?>
+        <?php if ($artist->image_link != '') { ?>
           <a href="<?php echo url_for('admin/artists/show.php?id=' . h(u($artist->id))) ?>">
             <div class="card-image-artist">
               <div class="card-image-artist-box">
-                <img src="<?php echo h($artist->image); ?>" alt="Image of <?php echo h($artist->display_name()); ?>" />
+                <img src="<?php echo h($artist->image_link); ?>" alt="Image of <?php echo h($artist->display_name()); ?>" />
+              </div>
+              <div class="card-image-overlay">
+                <h2><?php echo h($artist->display_name()); ?></h2>
+              </div>
+            </div>
+          </a>
+        <?php } elseif ($artist->image != '') { ?>
+          <a href="<?php echo url_for('admin/artists/show.php?id=' . h(u($artist->id))) ?>">
+            <div class="card-image-artist">
+              <div class="card-image-artist-box">
+                <img src="<?php echo url_for('/assets/images/artists/' . h($artist->image)); ?>" alt="Image of <?php echo h($artist->display_name()); ?>" />
               </div>
               <div class="card-image-overlay">
                 <h2><?php echo h($artist->display_name()); ?></h2>

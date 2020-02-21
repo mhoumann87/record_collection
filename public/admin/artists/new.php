@@ -28,8 +28,15 @@ if (is_post_request()) {
   if (empty($valid)) {
     // The user input is valid, check to see if an image is uploaded
     if ($_FILES[$artist->for_image_upload]['name']['image'] === '') {
-      // TODO No image is uploaded, so we just save the artist
-      echo 'No Image';
+      // No image is uploaded, so we just save the artist
+      //echo 'No Image';
+      $result = $artist->save();
+      $set_id = $artist->id;
+      // if the artist is upoaded, redirect to show.php
+      if ($result === true) {
+        $session->message("Artist were created successfully");
+        redirect_to(url_for('/admin/artists/show.php?id=' . h(u($set_id))));
+      }
     } else { //if ($_FILES[$artist->for_image_upload]['name']['image'] === '')
       // echo 'Image Uploaded';
       // An image is uploaded and we make an insrance of the image
@@ -37,9 +44,22 @@ if (is_post_request()) {
       // Set the variables that is not contained in the image file
       $image->prepare_upload($artist->max_megabytes, $artist->get_table_name());
       // Try to upload the image
-      var_dump($image);
-      //$result = $image->upload_image();
-      //var_dump($result);
+      $result = $image->upload_image();
+      // If there are errors in the upload, result is an array and we can show the errors
+      if (is_array($result)) {
+        // Set the artist errors to the result
+        $artist->errors[] = $result;
+      } else {
+        // If there are no errors, save the artist with the image path
+        $artist->image = $result;
+        $result = $artist->save();
+        $set_id = $artist->id;
+        // If the artist is created, redirect to show.php
+        if ($result === true) {
+          $session->message("Image is uploaded and the artist are created successfully");
+          redirect_to(url_for('/admin/artists/show.php?id=' . h(u($set_id))));
+        }
+      }
     } // else if ($_FILES[$artist->for_image_upload]['name']['image'] === '')
   } else { // if (empty($valid))
     // The input is not valid, so we just show the filled form with

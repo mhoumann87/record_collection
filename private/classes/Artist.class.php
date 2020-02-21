@@ -9,6 +9,7 @@ class Artist extends DatabaseObject
     'firstname',
     'lastname',
     'sorting',
+    'image_link',
     'image',
     'profile',
     'website',
@@ -32,6 +33,7 @@ class Artist extends DatabaseObject
   public $firstname;
   public $lastname;
   protected $sorting;
+  public $image_link;
   public $image;
   public $profile;
   public $website;
@@ -44,6 +46,7 @@ class Artist extends DatabaseObject
   {
     $this->firstname = $args['firstname'] ?? '';
     $this->lastname = $args['lastname'] ?? '';
+    $this->image_link = $args['image_link'] ?? '';
     $this->image = $args['image'] ?? '';
     $this->profile = $args['profile'] ?? '';
     $this->website = $args['website'] ?? '';

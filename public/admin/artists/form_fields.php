@@ -19,6 +19,15 @@ if (!isset($artist)) {
   <input type="text" name="artist[lastname]" value="<?php echo h($artist->lastname); ?>" />
 </div>
 
+<p class="dark">Enter an image link</p>
+
+<div class="input-box">
+  <label for="artist[image_link]">Image Link:</label>
+  <input type="text" name="artist[image_link]" value="<?php echo h($artist->image_link); ?>" />
+</div>
+
+<p class="dark">Or upload an image</p>
+
 <div class="input-box">
   <label for="artist[image]">Upload Image:</label>
   <input type="file" name="artist[image]" />
