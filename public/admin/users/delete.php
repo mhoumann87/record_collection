@@ -92,7 +92,7 @@ if (is_post_request()) {
     <form action="<?php echo url_for('/admin/users/delete.php?id=' . h(u($id))); ?>" method="post">
 
       <div class="button-bar">
-        <input class="button btn-danger" type="submit" value="Yes, delete account">
+        <input type="submit" class="button btn-danger" type="submit" value="Yes, delete account">
 
         <?php if ($session->is_admin()) { ?>
           <a href="<?php echo url_for('/admin/users/index.php') ?>">

@@ -40,10 +40,16 @@
     }
 }
 
-.delete-post h3 {
+.delete-post {
+    text-align: center;
     background-color: $danger;
     color: $font-light;
     padding: 0.4em;
+    margin: 1rem 0;
+
+    h3 {
+        margin: 0;
+    }
 }
 
 .dark {
