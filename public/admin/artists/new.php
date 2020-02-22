@@ -30,6 +30,7 @@ if (is_post_request()) {
     if ($_FILES[$artist->for_image_upload]['name']['image'] === '') {
       // No image is uploaded, so we just save the artist
       //echo 'No Image';
+      $artist->set_sorted_name();
       $result = $artist->save();
       $set_id = $artist->id;
       // if the artist is upoaded, redirect to show.php
@@ -51,6 +52,7 @@ if (is_post_request()) {
         $artist->errors[] = $result;
       } else {
         // If there are no errors, save the artist with the image path
+        $artist->set_sorted_name();
         $artist->image = $result;
         $result = $artist->save();
         $set_id = $artist->id;
