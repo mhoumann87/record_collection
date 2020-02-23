@@ -64,6 +64,11 @@ $image_path = '/assets/images/' . $artist->get_table_name() . '/';
         <img class="img-profile" src="<?php echo h($artist->image_link); ?>" alt="<?php echo $artist->display_name(); ?>" />
       </div>
     </div>
+
+  <?php } else { ?>
+    <div class="display-header">
+      <h2><?php echo h($artist->display_name()); ?></h2>
+    </div>
   <?php } ?>
 
   <div class="display-content">

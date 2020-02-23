@@ -50,17 +50,70 @@ if (is_post_request()) {
       $photo_deleted = $image->delete_uploaded_image($artist->get_table_name(), h($artist->image));
       // Check to controll the image is deleted
       if ($photo_deleted == 1) {
-        // Upload the new image and update the artist
+        // Upload the new image and update artist
         $result = $image->upload_image();
-        // Check to see if image is uploaded
+        // check to see if image is uploaded
         if (is_array($result)) {
-          // $result is an array of errors
+          // If upload failed, $result will be an array of errors,
+          // we just add these errors to the $artist errors
           $artist->errors[] = $result;
+        } else {
+          // no errors save() the artist
+          $artist->merge_attributes($args);
+          $artist->set_sorted_name();
+          $artist->image = $result;
+          $result = $artist->save();
+
+          if ($result === true) {
+            $session->message('Article was edited successfully');
+            redirect_to(url_for('/admin/artists/show.php?id=' . h(u($artist->id))));
+          }
+        } // else if (is_array($result))
+      } // if ($photo_deleted == 1)
+    } elseif ($artist->image_link != '') { //if ($artist->image != '')
+      $result = $image->upload_image();
+
+      // Check upload
+      if (is_array($result)) {
+        // If upload failed, $result will ba an array of errors,
+        // we just add these errors to the $artist errors
+        $artist->errors[] = $result;
+      } else {
+        // No errors save() the artist
+        $artist->merge_attributes($args);
+        $artist->set_sorted_name();
+        $artist->image_link = '';
+        $artist->image = $result;
+        $result = $artist->save();
+
+        if ($result === true) {
+          $session->message('Article was edited successfully');
+          redirect_to(url_for('/admin/artists/show.php?id=' . h(u($artist->id))));
         }
       }
-    }
-  } // if (is_post_request())
-}
+    } else { // elseif ($artist->image_link != '')
+      // No image information, just upload image and update $artist
+      $result = $image->upload_image();
+      // check upload
+      if (is_array($result)) {
+        // If upload failed $result will be an array of errors
+        // We just add thesee errors to the $artist errors
+        $artist->errors[] = $result;
+      } else {
+        // No errors just save() the artist
+        $artist->merge_attributes($args);
+        $artist->set_sorted_name();
+        $artist->image = $result;
+        $result = $artist->save();
+
+        if ($result === true) {
+          $session->message('Article was edited successfully');
+          redirect_to(url_for('/admin/artists/show.php?id=' . h(u($artist->id))));
+        }
+      }
+    } // else if ($artist->image != '')
+  } // if ($_FILES[$artist->for_image_upload]['name']['image'] != '')
+} // if (is_post_request())
 
 ?>
 
