@@ -112,7 +112,53 @@ if (is_post_request()) {
         }
       }
     } // else if ($artist->image != '')
-  } // if ($_FILES[$artist->for_image_upload]['name']['image'] != '')
+  } elseif ($artist->image_link != '') { // if ($_FILES[$artist->for_image_upload]['name']['image'] != '')
+    // The user added a link to an image, 
+    // check to see if there are a image uploaded,
+    // and if there is, delete this.
+    // Else just update the artist
+
+    echo 'change image to link';
+
+    if ($artist->image != '') {
+      // Create an empty instance of an image
+      $image = new Image('', '');
+      $photo_deleted = $image->delete_uploaded_image($artist->get_table_name(), h($artist->image));
+      if ($photo_deleted == 1) {
+        // Update the artist
+        $artist->merge_attributes($args);
+        $artist->image = '';
+        $artist->set_sorted_name();
+        $result = $artist->save();
+
+        if ($result === true) {
+          $session->message('Artist were updated successfully');
+          redirect_to(url_for('/admin/artists/show.php?id=' . h(u($artist->id))));
+        }
+      } // if ($photo_deleted == 1)
+    } else { // if ($artist->image != '')
+      // No Image in the database/folder, just update the artist
+      $artist->merge_attributes($args);
+      $artist->set_sorted_name();
+      $result = $artist->save();
+
+      if ($result === true) {
+        $session->message('Artist were updated successfully');
+        redirect_to(url_for('/admin/artists/show.php?id=' . h(u($artist->id))));
+      }
+    } // else if ($artist->image != '')
+  } else { // elseif ($artist->image_link != '')
+    // No image informations are uploaded/changed
+    // We just update the article
+    $artist->merge_attributes($args);
+    $artist->set_sorted_name();
+    $result = $artist->save();
+
+    if ($result === true) {
+      $session->message('Artist were updated successfully');
+      redirect_to(url_for('/admin/artists/show.php?id=' . h(u($artist->id))));
+    }
+  }
 } // if (is_post_request())
 
 ?>
