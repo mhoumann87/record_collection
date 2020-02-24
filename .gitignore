@@ -1,6 +1,10 @@
 # database credentials
 private/db_credentials.php
 
+# Images for artists and albums
+public/assets/images/artists/*
+public/assets/images/albums/*
+
 # Don't track the main.css file, everything is in SASS
 public/assets/styles/main.css
 
