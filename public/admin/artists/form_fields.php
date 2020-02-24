@@ -23,7 +23,7 @@ if (!isset($artist)) {
 
 <div class="input-box">
   <label for="artist[image_link]">Image Link:</label>
-  <input type="text" name="artist[image_link]" value="<?php echo h($artist->image_link); ?>" />
+  <input type="text" name="artist[image_link]" value="" />
 </div>
 
 <p class="dark">Or upload an image</p>
