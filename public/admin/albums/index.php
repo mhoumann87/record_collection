@@ -28,13 +28,17 @@ $albums = Album::find_all();
       <?php if ($album->image != '') { ?>
 
         <div class="card-header-image">
-          <img src="<?php echo url_for('/assets/images/albums/' . h($album->image)); ?>" alt="<?php echo h($artist->display_name()) . ': *' . h($album->title); ?>" />
+          <a href="<?php echo url_for('/admin/albums/show.php?id=' . h(u($album->id))); ?>">
+            <img src="<?php echo url_for('/assets/images/albums/' . h($album->image)); ?>" alt="<?php echo h($artist->display_name()) . ': *' . h($album->title); ?>" />
+          </a>
         </div>
 
       <?php } elseif ($album->image_link != '') { ?>
 
         <div class="card-header-image">
-          <img src="<?php echo h($album->image_link); ?>" alt="<?php echo h($artist->display_name()) . ': *' . h($album->title); ?>" />
+          <a href="<?php echo url_for('/admin/albums/show.php?id=' . h(u($album->id))); ?>">
+            <img src="<?php echo h($album->image_link); ?>" alt="<?php echo h($artist->display_name()) . ': *' . h($album->title); ?>" />
+          </a>
         </div>
 
       <?php } else { ?>
@@ -44,6 +48,7 @@ $albums = Album::find_all();
         </div>
 
       <?php } ?>
+
 
       <div class="card-description">
         <h3><?php echo $album->title; ?></h3>
