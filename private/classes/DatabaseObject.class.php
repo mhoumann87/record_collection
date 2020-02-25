@@ -73,6 +73,14 @@ class DatabaseObject
     return static::find_by_sql($sql);
   } // find_all()
 
+  static public function find_all_and_sort($sort_by)
+  {
+    $sql  = "SELECT * FROM " . static::$table_name . " ";
+    $sql .= "ORDER BY " . self::$db->escape_string($sort_by) . " ASC";
+
+    return static::find_by_sql($sql);
+  } // find_all_and_sort()
+
   static public function find_by_id($id)
   {
     $sql  = "SELECT * FROM " . static::$table_name . " ";
@@ -86,6 +94,17 @@ class DatabaseObject
       return false;
     }
   } //find_by_id()
+
+  // Find by field and sort result
+  static public function find_by_field_and_sort($field, $value, $sort)
+  {
+    $sql  = "SELECT * FROM " . static::$table_name . " ";
+    $sql .= "WHERE " . self::$db->escape_string($field) . "='";
+    $sql .= self::$db->escape_string($value) . "' ";
+    $sql .= "ORDER BY " . self::$db->escape_string($sort) . " ASC";
+
+    return static::find_by_sql($sql);
+  }
 
   // * Update
   // ********************
