@@ -110,4 +110,29 @@ $image_path = '/assets/images/' . $artist->get_table_name() . '/';
 
 </section>
 
+<section class="show-albums">
+
+  <?php
+
+  $albums = Album::find_by_field_and_sort('artist_id', $artist->id, 'year');
+
+  foreach ($albums as $album) {
+
+  ?>
+    <a href="<?php echo url_for('/admin/albums/show.php?id=' . h(u($album->id))); ?>">
+      <div class="album-card">
+
+        <?php if ($album->image_link != '') { ?>
+          <img src="<?php echo h($album->image_link); ?>" alt="<?php echo h($album->title) . ' by ' . $artist->display_name(); ?>" />
+        <?php } elseif ($album->image != '') { ?>
+          <img src="<?php echo url_for('/assets/images/albums/' . h($album->image)); ?>" alt="<?php echo h($album->title) . ' by ' . $artist->display_name(); ?>" />
+        <?php } else { ?>
+          <h3><?php echo $album->title; ?></h3>
+        <?php } ?>
+      </div>
+    </a>
+  <?php } ?>
+
+</section>
+
 <?php include SHARED_PATH . '/footer.php'; ?>
