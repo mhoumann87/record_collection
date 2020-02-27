@@ -66,6 +66,28 @@ $from = $_SERVER['HTTP_REFERER'];
       <?php echo $album->information; ?>
     </div>
 
+    <div class="button-bar">
+      <a href="<?php echo $from; ?>">
+        <button class="btn-success" role="link">Ok</button>
+      </a>
+
+      <?php if ($session->is_logged_in()) { ?>
+
+        <a href="<?php echo url_for('/admin/albums/edit.php?id=' . h(u($album->id))); ?>">
+          <button class="btn-link" role="link">Edit Album</button>
+        </a>
+
+      <?php } ?>
+
+      <?php if ($session->is_admin()) { ?>
+        <a href="<?php echo url_for('/admin/albums/delete.php?id=' . h(u($album->id))); ?>">
+          <button class="btn-danger" role="link">Delete Album</button>
+        </a>
+
+      <?php } ?>
+
+    </div>
+
   </div>
 
 </section>

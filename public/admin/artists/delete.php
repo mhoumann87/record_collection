@@ -3,7 +3,10 @@
 <?php
 
 /*
-* This page is only to be accessed by admins
+* This page is only to be accessed by admins.
+* Right now I keep this page here, but it shouldn't be
+* possible to delete an artist no matter what rights you have,
+* it will be were destructive for the whole site.
 */
 require_admin_role();
 

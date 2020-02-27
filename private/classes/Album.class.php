@@ -51,10 +51,10 @@ class Album extends DatabaseObject
   }
 
   // Find the name of the artist this album connects to
-  public function show_artist_name($id)
+  public function show_artist_name()
   {
-    $artist = Artist::find_by_id($id);
-    return $artist->display_name();
+    $artist = Artist::find_by_id($this->artist_id);
+    return h($artist->display_name());
   }
 
   // Get all input ready for upload
