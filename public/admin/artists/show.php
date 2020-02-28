@@ -93,9 +93,15 @@ $image_path = '/assets/images/' . $artist->get_table_name() . '/';
       </a>
 
       <?php if ($session->is_logged_in()) { ?>
+
         <a href="<?php echo url_for('/admin/artists/edit.php?id=' . h(u($artist->id))); ?>">
           <button class="btn-link" role="link">Edit Artist</button>
         </a>
+
+        <a href="<?php echo url_for('/admin/albums/new.php?id=' . h(u($artist->id))); ?>">
+          <button class="btn-link" role="link">Create New Album</button>
+        </a>
+
       <?php } ?>
 
       <?php if ($session->is_admin()) { ?>

@@ -71,6 +71,7 @@ if (is_post_request()) {
   // var_dump($album);
 } else {
   $album = new Album;
+  $album->artist_id = $artist;
 }
 
 $page_title = 'Create Album for ' . $album->show_artist_name($artist);
