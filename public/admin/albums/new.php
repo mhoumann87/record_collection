@@ -33,7 +33,7 @@ if (is_post_request()) {
     if ($_FILES[$album->for_image_upload]['name']['image'] === '') {
       // echo 'No Image uploaded';
       // No image is uploaded, so we just save the album
-      $album->save();
+      $result = $album->save();
       $set_id = $album->id;
       // If the abmum were saved redirect to show.php
       if ($result === true) {

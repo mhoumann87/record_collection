@@ -42,13 +42,13 @@ $from = $_SERVER['HTTP_REFERER'];
       <img src="<?php echo h($album->image_link); ?>" alt="<?php echo $album->title . ' by ' . $artist->display_name(); ?>" />
     </div>
 
-  <?php } elseif ($album->image) { ?>
+  <?php } elseif ($album->image != '') { ?>
     <div class="display-header-image">
       <img src="<?php echo url_for('/assets/images/albums/' . h($album->image)); ?>" alt="<?php echo $album->title . ' by ' . $artist->display_name(); ?>" />
     </div>
   <?php } else { ?>
     <div class="display-header">
-      <h3><?php echo $album->title . ' by ' . $artist->display_name(); ?></h3>
+      <h2><?php echo $album->title . ' by ' . $artist->display_name(); ?></h2>
     </div>
   <?php } ?>
 
@@ -113,7 +113,10 @@ $from = $_SERVER['HTTP_REFERER'];
           <?php } elseif ($item->image != '') { ?>
             <img src="<?php echo url_for('/assets/images/albums/' . h($item->image)); ?>" alt="<?php echo h($item->title) . ' by ' . $artist->display_name(); ?>" />
           <?php } else { ?>
-            <h3><?php echo $item->title; ?></h3>
+            <div class="show-album-no-image">
+              <p><?php echo $item->title; ?></p>
+              <p>By: <?php echo h($artist->display_name()); ?></p>
+            </div>
           <?php } ?>
         </div>
       </a>

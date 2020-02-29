@@ -34,4 +34,14 @@
 
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+
+    .show-album-no-image {
+        background: $background-dark;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 150px;
+        height: 150px;
+    }
 }

@@ -1,0 +1,33 @@
+/* display-all-ablums */
+// TODO make all cards "flip" with img fromt and artist/title back
+// Different layout than "normal" index page
+.display-all-albums {
+    // background-color: orangered;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+    .album-card {
+        width: 100%;
+        height: 100%;
+
+        .card-front {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background-color: $background-dark;
+
+            .card-text-only {
+                color: $font-light;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                min-height: 100%;
+            }
+        }
+    }
+}
