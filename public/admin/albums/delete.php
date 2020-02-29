@@ -30,7 +30,7 @@ if (is_post_request()) {
 
   // We need to check if there is an image file connected
   // to this album
-  if ($album->image != '') {
+  if ($album->image == '') {
     // No image file, we just delete the album, set a message,
     // redirect the user to albums/index.php
     $album->delete();
