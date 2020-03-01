@@ -8,6 +8,10 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(11.25em, 1fr));
 
+    a {
+        text-decoration: none;
+    }
+
     .album-card {
         width: 100%;
         height: 100%;

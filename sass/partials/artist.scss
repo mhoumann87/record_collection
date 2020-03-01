@@ -35,7 +35,11 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 
-    .show-album-no-image {
+    a {
+        text-decoration: none;
+    }
+
+    .artist-show-albums-text {
         background: $background-dark;
         display: flex;
         flex-direction: column;
@@ -43,5 +47,6 @@
         align-items: center;
         max-width: 150px;
         height: 150px;
+        color: $font-light;
     }
 }

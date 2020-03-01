@@ -129,11 +129,17 @@ $image_path = '/assets/images/' . $artist->get_table_name() . '/';
       <div class="album-card">
 
         <?php if ($album->image_link != '') { ?>
-          <img src="<?php echo h($album->image_link); ?>" alt="<?php echo h($album->title) . ' by ' . $artist->display_name(); ?>" />
+          <div class="artist-show-albums-image">
+            <img src="<?php echo h($album->image_link); ?>" alt="<?php echo h($album->title) . ' by ' . $artist->display_name(); ?>" />
+          </div>
         <?php } elseif ($album->image != '') { ?>
-          <img src="<?php echo url_for('/assets/images/albums/' . h($album->image)); ?>" alt="<?php echo h($album->title) . ' by ' . $artist->display_name(); ?>" />
+          <div class="artist-show-albums-image">
+            <img src="<?php echo url_for('/assets/images/albums/' . h($album->image)); ?>" alt="<?php echo h($album->title) . ' by ' . $artist->display_name(); ?>" />
+          </div>
         <?php } else { ?>
-          <h3><?php echo $album->title; ?></h3>
+          <div class="artist-show-albums-text">
+            <p><?php echo $album->title; ?></p>
+          </div>
         <?php } ?>
       </div>
     </a>

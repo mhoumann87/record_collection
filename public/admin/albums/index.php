@@ -20,10 +20,11 @@ $albums = Album::find_all();
 <section class="display-all-albums">
 
   <?php foreach ($albums as $album) { ?>
+    <a href="<?php echo url_for('/admin/albums/show.php?id=' . h(u($album->id))); ?>">
 
-    <article class="album-card">
+      <article class="album-card">
 
-      <div href="<?php echo url_for('/artist/albums/show.php?id=' . h(u($album->id))); ?>">
+
         <div class="card-front">
 
           <?php if ($album->image_link != '') { ?>
@@ -45,8 +46,9 @@ $albums = Album::find_all();
 
           <?php } ?>
         </div>
-      </div>
-    </article>
+
+      </article>
+    </a>
   <?php } // foreach 
   ?>
 
