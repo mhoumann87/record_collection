@@ -120,25 +120,25 @@ $image_path = '/assets/images/' . $artist->get_table_name() . '/';
 
   <?php
 
-  $albums = Album::find_by_field_and_sort('artist_id', $artist->id, 'year');
+  $records = Record::find_by_field_and_sort('artist_id', $artist->id, 'year');
 
-  foreach ($albums as $album) {
+  foreach ($records as $record) {
 
   ?>
-    <a href="<?php echo url_for('/admin/albums/show.php?id=' . h(u($album->id))); ?>">
+    <a href="<?php echo url_for('/admin/records/show.php?id=' . h(u($record->id))); ?>">
       <div class="album-card">
 
-        <?php if ($album->image_link != '') { ?>
+        <?php if ($record->image_link != '') { ?>
           <div class="artist-show-albums-image">
-            <img src="<?php echo h($album->image_link); ?>" alt="<?php echo h($album->title) . ' by ' . $artist->display_name(); ?>" />
+            <img src="<?php echo h($record->image_link); ?>" alt="<?php echo h($record->title) . ' by ' . $artist->display_name(); ?>" />
           </div>
-        <?php } elseif ($album->image != '') { ?>
+        <?php } elseif ($record->image != '') { ?>
           <div class="artist-show-albums-image">
-            <img src="<?php echo url_for('/assets/images/albums/' . h($album->image)); ?>" alt="<?php echo h($album->title) . ' by ' . $artist->display_name(); ?>" />
+            <img src="<?php echo url_for('/assets/images/' . $record->get_table_name() . '/' . h($record->image)); ?>" alt="<?php echo h($record->title) . ' by ' . $artist->display_name(); ?>" />
           </div>
         <?php } else { ?>
           <div class="artist-show-albums-text">
-            <p><?php echo $album->title; ?></p>
+            <p><?php echo $record->title; ?></p>
           </div>
         <?php } ?>
       </div>

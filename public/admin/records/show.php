@@ -14,13 +14,13 @@ if (!$id) {
 }
 
 // Get the ablum from the database, if no album found, return the user to the frontpage
-$album = Album::find_by_id(h($id));
-if ($album === false) {
+$record = Record::find_by_id(h($id));
+if ($record === false) {
   redirect_to(url_for('/index.php'));
 }
 
 // Get the artist from the database
-$artist = Artist::find_by_id(h($album->artist_id));
+$artist = Artist::find_by_id(h($record->artist_id));
 
 // Get the URL the user came from
 $from = $_SERVER['HTTP_REFERER'];
@@ -36,34 +36,34 @@ $from = $_SERVER['HTTP_REFERER'];
 
 <section class="display-box">
 
-  <?php if ($album->image_link != '') { ?>
+  <?php if ($record->image_link != '') { ?>
 
     <div class="display-header-image">
-      <img src="<?php echo h($album->image_link); ?>" alt="<?php echo $album->title . ' by ' . $artist->display_name(); ?>" />
+      <img src="<?php echo h($record->image_link); ?>" alt="<?php echo $record->title . ' by ' . $artist->display_name(); ?>" />
     </div>
 
-  <?php } elseif ($album->image != '') { ?>
+  <?php } elseif ($record->image != '') { ?>
     <div class="display-header-image">
-      <img src="<?php echo url_for('/assets/images/albums/' . h($album->image)); ?>" alt="<?php echo $album->title . ' by ' . $artist->display_name(); ?>" />
+      <img src="<?php echo url_for('/assets/images/' . $record->get_table_name() . '/' . h($record->image)); ?>" alt="<?php echo $record->title . ' by ' . $artist->display_name(); ?>" />
     </div>
   <?php } else { ?>
     <div class="display-header">
-      <h2><?php echo $album->title . ' by ' . $artist->display_name(); ?></h2>
+      <h2><?php echo $record->title . ' by ' . $artist->display_name(); ?></h2>
     </div>
   <?php } ?>
 
   <div class="display-content">
 
-    <h3><?php echo h($album->title); ?></h3>
+    <h3><?php echo h($record->title); ?></h3>
 
-    <p>Released: <?php echo h($album->year); ?></p>
+    <p>Released: <?php echo h($record->year); ?></p>
 
 
-    <p class="artist-name">By <a href="<?php echo url_for('/admin/artists/show.php?id=' . h(u($album->artist_id))) ?>"><?php echo h($artist->display_name()); ?></a></p>
+    <p class="artist-name">By <a href="<?php echo url_for('/admin/artists/show.php?id=' . h(u($record->artist_id))) ?>"><?php echo h($artist->display_name()); ?></a></p>
 
 
     <div class="info">
-      <?php echo $album->information; ?>
+      <?php echo $record->information; ?>
     </div>
 
     <div class="button-bar">
@@ -73,14 +73,14 @@ $from = $_SERVER['HTTP_REFERER'];
 
       <?php if ($session->is_logged_in()) { ?>
 
-        <a href="<?php echo url_for('/admin/albums/edit.php?id=' . h(u($album->id))); ?>">
+        <a href="<?php echo url_for('/admin/albums/edit.php?id=' . h(u($record->id))); ?>">
           <button class="btn-link" role="link">Edit Album</button>
         </a>
 
       <?php } ?>
 
       <?php if ($session->is_admin()) { ?>
-        <a href="<?php echo url_for('/admin/albums/delete.php?id=' . h(u($album->id))); ?>">
+        <a href="<?php echo url_for('/admin/albums/delete.php?id=' . h(u($record->id))); ?>">
           <button class="btn-danger" role="link">Delete Album</button>
         </a>
 
@@ -96,22 +96,22 @@ $from = $_SERVER['HTTP_REFERER'];
 
   <?php
 
-  $albums = Album::find_by_field_and_sort('artist_id', $artist->id, 'year');
+  $records = Record::find_by_field_and_sort('artist_id', $artist->id, 'year');
 
-  foreach ($albums as $item) {
+  foreach ($records as $item) {
 
-    if ($item->id === $album->id) {
+    if ($item->id === $record->id) {
       continue;
     } else {
 
   ?>
-      <a href="<?php echo url_for('/admin/albums/show.php?id=' . h(u($item->id))); ?>">
+      <a href="<?php echo url_for('/admin/records/show.php?id=' . h(u($item->id))); ?>">
         <div class="album-card">
 
           <?php if ($item->image_link != '') { ?>
             <img src="<?php echo h($item->image_link); ?>" alt="<?php echo h($item->title) . ' by ' . $artist->display_name(); ?>" />
           <?php } elseif ($item->image != '') { ?>
-            <img src="<?php echo url_for('/assets/images/albums/' . h($item->image)); ?>" alt="<?php echo h($item->title) . ' by ' . $artist->display_name(); ?>" />
+            <img src="<?php echo url_for('/assets/images/' . $item->get_table_name() . '/' . h($item->image)); ?>" alt="<?php echo h($item->title) . ' by ' . $artist->display_name(); ?>" />
           <?php } else { ?>
             <div class="show-album-no-image">
               <p><?php echo $item->title; ?></p>

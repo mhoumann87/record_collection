@@ -15,13 +15,13 @@ require_admin_role();
 $id = $_GET['id'] ?? '';
 
 if (!$id) {
-  redirect_to('/admin/albums/index.php');
+  redirect_to('/admin/records/index.php');
 }
 
 // Find the album in the database
-$album = Album::find_by_id($id);
-if (empty($album))
-  redirect_to(url_for('/admin/albums/index.php'));
+$record = Record::find_by_id($id);
+if (empty($record))
+  redirect_to(url_for('/admin/redords/index.php'));
 
 // If it is a post request, the user wants to delete the album
 // if it is a get request we just show the album, no need to do
@@ -30,29 +30,29 @@ if (is_post_request()) {
 
   // We need to check if there is an image file connected
   // to this album
-  if ($album->image == '') {
+  if ($record->image == '') {
     // No image file, we just delete the album, set a message,
     // redirect the user to albums/index.php
-    $album->delete();
+    $record->delete();
     $session->message('Album was deleted sussessfully');
-    redirect_to(url_for('/admin/albums/index.php'));
+    redirect_to(url_for('/admin/records/index.php'));
   } else {
     // We have an image file, so we have to delete that first
 
     // First we have to make an empty instance of an image
     $image = new Image('', '');
     // Then we try to delete the image file
-    $result = $image->delete_uploaded_image($album->get_table_name(), $album->image);
+    $result = $image->delete_uploaded_image($record->get_table_name(), $record->image);
     // If the image was deleted
     if ($result == 1) {
       // Delete the abbum in the database, set a message for user
       // and redirect the user to album/index.php
-      $album->delete();
-      $session->message($album->title . ' by ' . $album->show_artist_name() . ' and image was deleted');
-      redirect_to(url_for('/admin/albums/index.php'));
+      $record->delete();
+      $session->message($record->title . ' by ' . $record->show_artist_name() . ' and image was deleted');
+      redirect_to(url_for('/admin/records/index.php'));
     } else {
       // Image couldn't be deleted, show error message to user
-      $album->errors[] = 'Image could not be deleted';
+      $record->errors[] = 'Image could not be deleted';
     }
   }
 }
