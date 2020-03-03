@@ -73,14 +73,14 @@ $from = $_SERVER['HTTP_REFERER'];
 
       <?php if ($session->is_logged_in()) { ?>
 
-        <a href="<?php echo url_for('/admin/albums/edit.php?id=' . h(u($record->id))); ?>">
+        <a href="<?php echo url_for('/admin/records/edit.php?id=' . h(u($record->id))); ?>">
           <button class="btn-link" role="link">Edit Album</button>
         </a>
 
       <?php } ?>
 
       <?php if ($session->is_admin()) { ?>
-        <a href="<?php echo url_for('/admin/albums/delete.php?id=' . h(u($record->id))); ?>">
+        <a href="<?php echo url_for('/admin/records/delete.php?id=' . h(u($record->id))); ?>">
           <button class="btn-danger" role="link">Delete Album</button>
         </a>
 

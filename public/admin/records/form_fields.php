@@ -9,30 +9,30 @@ if (!isset($record)) {
 ?>
 
 <div class="input-box">
-  <label for="redord[title]">Title: </label>
-  <input type="text" name="redord[title]" value="<?php echo h($redord->title); ?>" />
+  <label for="record[title]">Title: </label>
+  <input type="text" name="record[title]" value="<?php echo h($record->title); ?>" />
 </div>
 
 <div class="input-box">
-  <label for="redord[year]">Year Released: </label>
-  <input type="text" name="redord[year]" value="<?php echo h($redord->year); ?>" />
+  <label for="record[year]">Year Released: </label>
+  <input type="text" name="record[year]" value="<?php echo h($record->year); ?>" />
 </div>
 
 <div class="input-box">
-  <label for="redord[information]">redord Information: </label>
-  <textarea name="redord[information]"><?php echo $redord->information; ?></textarea>
+  <label for="record[information]">record Information: </label>
+  <textarea name="record[information]"><?php echo $record->information; ?></textarea>
 </div>
 
 <p class="dark">Enter Image Link</p>
 
 <div class="input-box">
-  <label for="redord[image-link]">Link to Image: </label>
-  <input type="text" name="redord[image_link]">
+  <label for="record[image-link]">Link to Image: </label>
+  <input type="text" name="record[image_link]">
 </div>
 
 <p class="dark">Or Upload an Image</p>
 
 <div class="input-box">
-  <label for="redord[image]">Upload Image (max <?php echo $redord->max_megabytes; ?>MB)</label>
-  <input type="file" name="redord[image]">
+  <label for="record[image]">Upload Image (max <?php echo $record->max_megabytes; ?>MB)</label>
+  <input type="file" name="record[image]">
 </div>

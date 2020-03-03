@@ -85,6 +85,8 @@ $page_title = 'Create Album for ' . $record->show_artist_name($artist);
     <h2>Create New Album</h2>
   </div>
 
+  <?php echo display_errors($record->errors); ?>
+
   <div class="display-content">
 
     <form action="<?php echo url_for('/admin/records/new.php?id=' . h(u($artist))); ?>" method="post" enctype="multipart/form-data">

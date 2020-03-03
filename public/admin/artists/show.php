@@ -98,7 +98,7 @@ $image_path = '/assets/images/' . $artist->get_table_name() . '/';
           <button class="btn-link" role="link">Edit Artist</button>
         </a>
 
-        <a href="<?php echo url_for('/admin/albums/new.php?id=' . h(u($artist->id))); ?>">
+        <a href="<?php echo url_for('/admin/records/new.php?id=' . h(u($artist->id))); ?>">
           <button class="btn-link" role="link">Create New Album</button>
         </a>
 

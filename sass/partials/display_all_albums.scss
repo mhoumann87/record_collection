@@ -24,6 +24,12 @@
         .card-front {
             min-height: 100%;
 
+            .card-image {
+                background: hotpink;
+                width: 100%;
+                height: 100%;
+            }
+
             .card-text-only {
                 color: $font-light;
                 display: flex;
