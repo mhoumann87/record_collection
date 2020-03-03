@@ -41,8 +41,8 @@
 
     <?php if ($session->is_admin()) { ?>
 
-      <a href="<?php echo url_for('/admin/albums/index.php'); ?>">
-        <button class="nav-btn <?php echo set_menu_active($_SERVER['REQUEST_URI'], '/admin/albums/') ?>" role="link">Albums</button>
+      <a href="<?php echo url_for('/admin/records/index.php'); ?>">
+        <button class="nav-btn <?php echo set_menu_active($_SERVER['REQUEST_URI'], '/admin/records/') ?>" role="link">Albums</button>
       </a>
       <a href="<?php echo url_for('/admin/artists/index.php'); ?>">
         <button class="nav-btn <?php echo set_menu_active($_SERVER['REQUEST_URI'], '/admin/artists/') ?>" role="link">Artists</button>

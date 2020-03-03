@@ -1,8 +1,8 @@
 <?php
 
-class Album extends DatabaseObject
+class Record extends DatabaseObject
 {
-  static protected $table_name = 'albums';
+  static protected $table_name = 'records';
   static protected $db_columns = [
     'id',
     'artist_id',
@@ -29,7 +29,7 @@ class Album extends DatabaseObject
   public $image_link;
   public $image;
 
-  public $for_image_upload = 'album';
+  public $for_image_upload = 'record';
 
   // Size in megabytes images for albums can be
   public $max_megabytes = 2;

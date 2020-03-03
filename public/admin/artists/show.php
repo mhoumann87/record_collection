@@ -98,7 +98,7 @@ $image_path = '/assets/images/' . $artist->get_table_name() . '/';
           <button class="btn-link" role="link">Edit Artist</button>
         </a>
 
-        <a href="<?php echo url_for('/admin/albums/new.php?id=' . h(u($artist->id))); ?>">
+        <a href="<?php echo url_for('/admin/records/new.php?id=' . h(u($artist->id))); ?>">
           <button class="btn-link" role="link">Create New Album</button>
         </a>
 
@@ -120,20 +120,26 @@ $image_path = '/assets/images/' . $artist->get_table_name() . '/';
 
   <?php
 
-  $albums = Album::find_by_field_and_sort('artist_id', $artist->id, 'year');
+  $records = Record::find_by_field_and_sort('artist_id', $artist->id, 'year');
 
-  foreach ($albums as $album) {
+  foreach ($records as $record) {
 
   ?>
-    <a href="<?php echo url_for('/admin/albums/show.php?id=' . h(u($album->id))); ?>">
+    <a href="<?php echo url_for('/admin/records/show.php?id=' . h(u($record->id))); ?>">
       <div class="album-card">
 
-        <?php if ($album->image_link != '') { ?>
-          <img src="<?php echo h($album->image_link); ?>" alt="<?php echo h($album->title) . ' by ' . $artist->display_name(); ?>" />
-        <?php } elseif ($album->image != '') { ?>
-          <img src="<?php echo url_for('/assets/images/albums/' . h($album->image)); ?>" alt="<?php echo h($album->title) . ' by ' . $artist->display_name(); ?>" />
+        <?php if ($record->image_link != '') { ?>
+          <div class="artist-show-albums-image">
+            <img src="<?php echo h($record->image_link); ?>" alt="<?php echo h($record->title) . ' by ' . $artist->display_name(); ?>" />
+          </div>
+        <?php } elseif ($record->image != '') { ?>
+          <div class="artist-show-albums-image">
+            <img src="<?php echo url_for('/assets/images/' . $record->get_table_name() . '/' . h($record->image)); ?>" alt="<?php echo h($record->title) . ' by ' . $artist->display_name(); ?>" />
+          </div>
         <?php } else { ?>
-          <h3><?php echo $album->title; ?></h3>
+          <div class="artist-show-albums-text">
+            <p><?php echo $record->title; ?></p>
+          </div>
         <?php } ?>
       </div>
     </a>

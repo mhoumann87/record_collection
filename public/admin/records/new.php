@@ -22,59 +22,59 @@ if ($artist == '') {
 }
 
 if (is_post_request()) {
-  $args = $_POST['album'];
+  $args = $_POST['record'];
 
-  $album = new Album($args);
-  $album->prepare_for_upload($artist);
+  $record = new Record($args);
+  $record->prepare_for_upload($artist);
 
-  $valid = $album->check_validation();
+  $valid = $record->check_validation();
   if (empty($valid)) {
     // Validation passed, check to see if an image file is uploaded
-    if ($_FILES[$album->for_image_upload]['name']['image'] === '') {
+    if ($_FILES[$record->for_image_upload]['name']['image'] === '') {
       // echo 'No Image uploaded';
       // No image is uploaded, so we just save the album
-      $result = $album->save();
-      $set_id = $album->id;
+      $result = $record->save();
+      $set_id = $record->id;
       // If the abmum were saved redirect to show.php
       if ($result === true) {
         $session->message('Album were created successfully');
-        redirect_to(url_for('/admin/albums/show.php?id=' . h(u($set_id))));
+        redirect_to(url_for('/admin/records/show.php?id=' . h(u($set_id))));
       }
     } else {
       //echo 'Image is uploaded';
       // An image file is uploaded and we make an instance of the image
-      $image = new Image($_FILES, $album->for_image_upload);
+      $image = new Image($_FILES, $record->for_image_upload);
       // Set the variables that don't comes from the image file
-      $image->prepare_upload($album->max_megabytes, $album->get_table_name());
+      $image->prepare_upload($record->max_megabytes, $record->get_table_name());
       // Upload the image file to the directory
       $result = $image->upload_image();
       // Check to see if upload were successful
       if (is_array($result)) {
         // If upload failed, the $result will be an array of errors,
         // and we just pass them on to $article->error_get_last
-        $album->errors[] = $result;
+        $record->errors[] = $result;
       } else {
         // No errors in image upload, save the article with the image name
-        $album->image = $result;
+        $record->image = $result;
         // Save the ablum to the database
-        $result = $album->save();
-        $set_id = $album->id;
+        $result = $record->save();
+        $set_id = $record->id;
         // If album is saved set success message and redirect to show.php
         if ($result === true) {
           $session->message('Image is uploaded and album is saved successfully');
-          redirect_to(url_for('/admin/albums/show.php?id=' . h(u($set_id))));
+          redirect_to(url_for('/admin/records/show.php?id=' . h(u($set_id))));
         }
       }
     }
   } // if (empty($valid))
 
-  // var_dump($album);
+  // var_dump($record);
 } else {
-  $album = new Album;
-  $album->artist_id = $artist;
+  $record = new Record;
+  $record->artist_id = $artist;
 }
 
-$page_title = 'Create Album for ' . $album->show_artist_name($artist);
+$page_title = 'Create Album for ' . $record->show_artist_name($artist);
 ?>
 
 <?php include SHARED_PATH . '/header.php'; ?>
@@ -85,12 +85,14 @@ $page_title = 'Create Album for ' . $album->show_artist_name($artist);
     <h2>Create New Album</h2>
   </div>
 
+  <?php echo display_errors($record->errors); ?>
+
   <div class="display-content">
 
-    <form action="<?php echo url_for('/admin/albums/new.php?id=' . h(u($artist))); ?>" method="post" enctype="multipart/form-data">
+    <form action="<?php echo url_for('/admin/records/new.php?id=' . h(u($artist))); ?>" method="post" enctype="multipart/form-data">
 
       <div class="input-box">
-        <p>Artist: <?php echo h($album->show_artist_name($artist)); ?></p>
+        <p>Artist: <?php echo h($record->show_artist_name($artist)); ?></p>
       </div>
 
       <?php include_once 'form_fields.php'; ?>
