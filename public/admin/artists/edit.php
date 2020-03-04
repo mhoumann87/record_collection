@@ -74,7 +74,7 @@ if (is_post_request()) {
         // Inset the changes from the input
         $artist->merge_attributes($args);
         // Set the name used for sorting
-        $artist->set_sorted_name();
+        $artist->prepare_for_upload($session->user_id);
         // Set image in the database to an empty string
         $artist->image = '';
         // Update the database
@@ -92,7 +92,7 @@ if (is_post_request()) {
       // If we have an image_link in the database it will
       // be updated too
       $artist->merge_attributes($args);
-      $artist->set_sorted_name();
+      $artist->prepare_for_upload($session->user_id);
       $result = $artist->save();
     }
   } elseif ($_FILES[$artist->for_image_upload]['name']['image'] != '') {
@@ -120,7 +120,7 @@ if (is_post_request()) {
         } else {
           // No errors we just update the database with info about the new image
           $artist->merge_attributes($args);
-          $artist->set_sorted_name();
+          $artist->prepare_for_upload($session->user_id);
           $artist->image = $result;
           $result = $artist->save();
 
@@ -147,7 +147,7 @@ if (is_post_request()) {
       } else {
         // The image is uploaded, and we just update the database
         $artist->merge_attributes($args);
-        $artist->set_sorted_name();
+        $artist->prepare_for_upload($session->user_id);
         $artist->image = $result;
         $result = $artist->save();
 
@@ -167,7 +167,7 @@ if (is_post_request()) {
       $save_image_link = $artist->image_link;
     }
     $artist->merge_attributes($args);
-    $artist->set_sorted_name();
+    $artist->prepare_for_upload($session->user_id);
     $artist->image_link = $save_image_link;
     $result = $artist->save();
 

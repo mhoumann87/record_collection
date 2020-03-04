@@ -21,7 +21,7 @@ if (is_post_request()) {
   $args = $_POST['artist'];
   $artist = new Artist($args);
   // Set name to use for sorting
-  $artist->set_sorted_name();
+  $artist->prepare_for_upload($session->user_id);
   // Check to see if validation will pass
   $valid = $artist->check_validation();
   //  var_dump($valid);
@@ -30,7 +30,7 @@ if (is_post_request()) {
     if ($_FILES[$artist->for_image_upload]['name']['image'] === '') {
       // No image is uploaded, so we just save the artist
       //echo 'No Image';
-      $artist->set_sorted_name();
+      $artist->prepare_for_upload($session->user_id);
       $result = $artist->save();
       $set_id = $artist->id;
       // if the artist is upoaded, redirect to show.php
@@ -52,7 +52,7 @@ if (is_post_request()) {
         $artist->errors[] = $result;
       } else {
         // If there are no errors, save the artist with the image path
-        $artist->set_sorted_name();
+        $artist->prepare_for_upload($session->user_id);
         $artist->image = $result;
         $result = $artist->save();
         $set_id = $artist->id;

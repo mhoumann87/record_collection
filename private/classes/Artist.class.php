@@ -6,14 +6,19 @@ class Artist extends DatabaseObject
   static protected $table_name = 'artists';
   static protected $db_columns = [
     'id',
+    'created_by',
     'firstname',
     'lastname',
     'sorting',
     'image_link',
     'image',
     'profile',
+    'show_artist',
+    'cleared_by',
     'website',
-    'amazon_link'
+    'amazon_link',
+    'created_at',
+    'updated_at'
   ];
   public $allowed_tags = [
     '<br>',
@@ -30,14 +35,19 @@ class Artist extends DatabaseObject
   public $max_megabytes = 2;
 
   public $id;
+  protected $created_by;
   public $firstname;
   public $lastname;
   protected $sorting;
   public $image_link;
   public $image;
   public $profile;
+  public $show_artist;
+  protected $cleared_by;
   public $website;
   public $amazon_link;
+  public $created_at;
+  public $updated_at;
 
   // Variable to set the image uploads
   public $for_image_upload = 'artist';
@@ -49,12 +59,31 @@ class Artist extends DatabaseObject
     $this->image_link = $args['image_link'] ?? '';
     $this->image = $args['image'] ?? '';
     $this->profile = $args['profile'] ?? '';
+    $this->show_artist = $args['show_artist'] ?? 0;
     $this->website = $args['website'] ?? '';
     $this->amazon_link = $args['amazon_link'] ?? '';
   }
 
-  // Set the $sortting variable
-  public function set_sorted_name()
+  // Set info not passed through from input
+  public function prepare_for_upload($id)
+  {
+    $this->created_by = $id;
+    self::set_sorted_name();
+    self::set_dates();
+  }
+
+  // Function to set created_at/updated_at values
+  protected function set_dates()
+  {
+    if ($this->created_at == '') {
+      $this->created_at = time();
+    } else {
+      $this->updated_at = time();
+    }
+  }
+
+  // Set the name used for sorting the artists
+  protected function set_sorted_name()
   {
     if ($this->lastname != '') {
       $this->sorting = "{$this->lastname}, {$this->firstname}";
@@ -68,12 +97,25 @@ class Artist extends DatabaseObject
     }
   }
 
+  // Function used for an easy way to show the artist name,
+  // no matter if it is a band or a single person
   public function display_name()
   {
     if (!isset($this->lastname)) {
       return $this->firstname;
     } else {
       return "{$this->firstname} {$this->lastname}";
+    }
+  }
+
+  // Function to get the user name of the user that "made" the artist 
+  public function display_username()
+  {
+    $user = User::find_by_id($this->created_by);
+    if (empty($user)) {
+      return 'User deleted';
+    } else {
+      return $user->username;
     }
   }
 
@@ -94,6 +136,9 @@ class Artist extends DatabaseObject
     return $this->validate();
   }
 
+  // You need the table name when you upload an image
+  // this is a public function that can display that static
+  // proteted variable
   public function get_table_name()
   {
     return self::$table_name;

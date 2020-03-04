@@ -1,0 +1,45 @@
+.admin-index {
+    width: 100%;
+    margin: 1em 0;
+    display: flex;
+    flex-direction: column;
+
+    .show-artists {
+        @include shaddow;
+
+        .show-artists-header {
+            background-color: $background-dark;
+            margin: 0 0 1em 0;
+            padding: 0.4em;
+
+            h3 {
+                margin: 0;
+                font-size: 1.4rem;
+                color: $font-light;
+            }
+        }
+
+        .show-artists-grid {
+            padding: 0 1em 1em 1em;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+            gap: 1em;
+
+            .show-artist-card {
+                background-color: $popup-background;
+                padding: .4em;
+
+                @include shaddow;
+            }
+        }
+
+        .no-artists {
+            text-align: center;
+            padding: .4em;
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+}
