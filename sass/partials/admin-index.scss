@@ -28,8 +28,6 @@
             .show-artist-card {
                 background-color: $popup-background;
                 padding: .4em;
-
-                @include shaddow;
             }
         }
 

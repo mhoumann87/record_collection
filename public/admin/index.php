@@ -10,6 +10,7 @@ $page_title = 'Admin Area - Not cleared items';
 require_admin_role();
 
 $artists = Artist::find_by_field_and_sort('show_artist', 0, 'created_at');
+//$records = Record::find_by_field_and_sort('show_album', 0 , 'created_at');
 
 // var_dump($artists);
 ?>
@@ -60,6 +61,18 @@ $artists = Artist::find_by_field_and_sort('show_artist', 0, 'created_at');
     </div>
   <?php } // !empty(artist)
   ?>
+
+  <div class="artist-index-show-albums">
+
+    <h1>Show Albums</h1>
+
+  </div>
+
+  <aside class="artist-index-aside">
+
+    <h1>How to use this page</h1>
+
+  </aside>
 
 </section>
 
