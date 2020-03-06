@@ -49,6 +49,7 @@ class Artist extends DatabaseObject
   public $created_at;
   public $updated_at;
 
+
   // Variable to set the image uploads
   public $for_image_upload = 'artist';
 
@@ -75,7 +76,7 @@ class Artist extends DatabaseObject
   // Function to set created_at/updated_at values
   protected function set_dates()
   {
-    if ($this->created_at == '') {
+    if (!isset($this->id)) {
       $this->created_at = time();
     } else {
       $this->updated_at = time();

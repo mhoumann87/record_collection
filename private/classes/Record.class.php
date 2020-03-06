@@ -5,12 +5,17 @@ class Record extends DatabaseObject
   static protected $table_name = 'records';
   static protected $db_columns = [
     'id',
+    'created_by',
     'artist_id',
     'title',
     'year',
     'information',
     'image_link',
-    'image'
+    'image',
+    'show_record',
+    'cleared_by',
+    'created_at',
+    'updated_at'
   ];
   protected $allowed_tags = [
     '<br>',
@@ -22,12 +27,17 @@ class Record extends DatabaseObject
   ];
 
   public $id;
+  protected $created_by;
   public $artist_id;
   public $title;
   public $year;
   public $information;
   public $image_link;
   public $image;
+  protected $show_record;
+  protected $cleared_by;
+  public $created_at;
+  public $updated_at;
 
   public $for_image_upload = 'record';
 
@@ -42,6 +52,7 @@ class Record extends DatabaseObject
     $this->information = $args['information'] ?? '';
     $this->image_link = $args['image_link'] ?? '';
     $this->image = $args['image'] ?? '';
+    $this->show_record = $args['show_record'] ?? 0;
   }
 
   // Function to send table name further on
@@ -58,10 +69,10 @@ class Record extends DatabaseObject
   }
 
   // Get all input ready for upload
-  public function prepare_for_upload($id)
+  public function prepare_for_upload($artist)
   {
     $this->year = (int) $this->year;
-    $this->artist_id = (int) $id;
+    $this->artist_id = (int) $artist;
     $this->information = $this->clear_html_input($this->information);
   }
 

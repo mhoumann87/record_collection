@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Vært: 127.0.0.1
--- Genereringstid: 02. 03 2020 kl. 12:11:16
+-- Genereringstid: 06. 03 2020 kl. 11:17:16
 -- Serverversion: 10.1.38-MariaDB
 -- PHP-version: 7.3.2
 
@@ -38,28 +38,35 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `artists` (
   `id` int(150) NOT NULL,
+  `created_by` int(10) NOT NULL,
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) DEFAULT NULL,
   `sorting` varchar(255) DEFAULT NULL,
   `image_link` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `profile` text,
+  `show_artist` tinyint(1) NOT NULL,
+  `cleared_by` int(10) DEFAULT NULL,
   `website` varchar(255) DEFAULT NULL,
-  `amazon_link` text
+  `amazon_link` text,
+  `created_at` int(10) DEFAULT NULL,
+  `updated_at` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Data dump for tabellen `artists`
 --
 
-INSERT INTO `artists` (`id`, `firstname`, `lastname`, `sorting`, `image_link`, `image`, `profile`, `website`, `amazon_link`) VALUES
-(2, 'Test', 'Testesen', 'Testesen, Test', '', 'photo1518489913881199b7c7a081d.jpg', '<h3>Test</h3>\r\n<p>This is just for testing.</p>\r\n<p>Should delete image and insert an image link instead.</p>\r\n<p>Testing no image info update</p>', 'http://google.com', ''),
-(3, 'Testing', '', 'Testing', '', 'a_band.jpg', '<h1>More testing</h1>\r\n<p>This is just to see if bandname with a the before is working correctly.</p>\r\n<p>I do hope that it will work the first time.</p>', '', 'https://www.amazon.com/s?k=the+band'),
-(5, 'The Testings', '', 'Testings', 'https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80', '', 'Just testing image upload, testing editing post.\r\nChecking to see if image_link resets', 'poiladfgjhoapi', ''),
-(6, 'Wendy', 'Testaburger', 'Testaburger, Wendy', 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80', '', 'Just another test', 'http://rughtrade.co.uk', ''),
-(8, 'The The', '', 'The', '', 'singer.jpg', 'Image upload again', '', ''),
-(9, 'Some', 'Name', 'Name, Some', '', 'new.jpg', 'just testing uploading image to an artist without image informations', '', ''),
-(10, 'Depeche Mode', '', 'Depeche Mode', '', 'DepecheMode.jpg', '<p>Depeche Mode are an English electronic music band formed in Basildon, Essex in 1980. The group as of now consists of a trio of Dave Gahan (lead vocals and co-songwriting), Martin Gore (keyboards, guitar, co-lead vocals and main songwriting), and Andy Fletcher (keyboards).</p>\r\n<p>Depeche Mode released their debut album Speak & Spell in 1981, bringing the band onto the British new wave scene. Founding member Vince Clarke left after the release of the album; they recorded A Broken Frame as a trio. Gore took over as main songwriter and, later in 1982, Alan Wilder replaced Clarke, establishing a lineup that continued for 13 years.</p>\r\n<p>The band\'s last albums of the 1980s, Black Celebration and Music for the Masses, established them as a dominant force within the electronic music scene. A highlight of this era was the band\'s June 1988 concert at the Pasadena Rose Bowl, where they drew a crowd in excess of 60,000 people. In early 1990, they released Violator, an international mainstream success. The following album, Songs of Faith and Devotion, released in 1993, was also a success, though internal struggles within the band during recording and touring resulted in Wilder\'s departure in 1995.</p>\r\n<p>Depeche Mode has had 54 songs in the UK Singles Chart and 17 top 10 albums in the UK chart; they have sold more than 100 million records worldwide. Q included the band in the list of the \"50 Bands That Changed the World!\". Depeche Mode also ranks number 98 on VH1\'s \"100 Greatest Artists of All Time\". In December 2016, Billboard named Depeche Mode the 10th most successful dance club artist of all time. They were nominated for induction into the Rock and Roll Hall of Fame in 2017 and 2018, and will be inducted as part of the Class of 2020.</p>\r\n<p>Information from <a href=\"https://en.wikipedia.org/wiki/Depeche_Mode\" target=\"_blank\">Wikipedia</a>.</p>\r\n<p>Image is by <a href=\"http://antoncorbijn.com/?domain=www.corbijn.co.uk\" target=\"_blank\">Anton Corbijn</a> and is from Depeche Modes official website.</p>\r\n', 'http://www.depechemode.com/', '');
+INSERT INTO `artists` (`id`, `created_by`, `firstname`, `lastname`, `sorting`, `image_link`, `image`, `profile`, `show_artist`, `cleared_by`, `website`, `amazon_link`, `created_at`, `updated_at`) VALUES
+(2, 1, 'Test', 'Testesen', 'Testesen, Test', '', 'photo1518489913881199b7c7a081d.jpg', '<h3>Test</h3>\r\n<p>This is just for testing.</p>\r\n<p>Should delete image and insert an image link instead.</p>\r\n<p>Testing no image info update</p>', 1, 0, 'http://google.com', '', 1583333741, 0),
+(3, 1, 'Testing', '', 'Testing', '', 'a_band.jpg', '<h1>More testing</h1>\r\n<p>This is just to see if bandname with a the before is working correctly.</p>\r\n<p>I do hope that it will work the first time.</p>', 1, 0, '', 'https://www.amazon.com/s?k=the+band', 1583333773, 0),
+(5, 3, 'The Testings', '', 'Testings', 'https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80', '', 'Just testing image upload, testing editing post.\r\nChecking to see if image_link resets', 0, NULL, 'poiladfgjhoapi', '', NULL, 0),
+(6, 3, 'Wendy', 'Testaburger', 'Testaburger, Wendy', 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80', '', 'Just another test', 0, NULL, 'http://rughtrade.co.uk', '', NULL, 0),
+(8, 3, 'The The', '', 'The', '', 'singer.jpg', 'Image upload again', 0, NULL, '', '', NULL, 0),
+(9, 3, 'Some', 'Name', 'Name, Some', '', 'new.jpg', 'just testing uploading image to an artist without image informations', 0, NULL, '', '', NULL, 0),
+(10, 1, 'Depeche Mode', '', 'Depeche Mode', '', 'DepecheMode.jpg', '<p>Depeche Mode are an English electronic music band formed in Basildon, Essex in 1980. The group as of now consists of a trio of Dave Gahan (lead vocals and co-songwriting), Martin Gore (keyboards, guitar, co-lead vocals and main songwriting), and Andy Fletcher (keyboards).</p>\r\n<p>Depeche Mode released their debut album Speak & Spell in 1981, bringing the band onto the British new wave scene. Founding member Vince Clarke left after the release of the album; they recorded A Broken Frame as a trio. Gore took over as main songwriter and, later in 1982, Alan Wilder replaced Clarke, establishing a lineup that continued for 13 years.</p>\r\n<p>The band\'s last albums of the 1980s, Black Celebration and Music for the Masses, established them as a dominant force within the electronic music scene. A highlight of this era was the band\'s June 1988 concert at the Pasadena Rose Bowl, where they drew a crowd in excess of 60,000 people. In early 1990, they released Violator, an international mainstream success. The following album, Songs of Faith and Devotion, released in 1993, was also a success, though internal struggles within the band during recording and touring resulted in Wilder\'s departure in 1995.</p>\r\n<p>Depeche Mode has had 54 songs in the UK Singles Chart and 17 top 10 albums in the UK chart; they have sold more than 100 million records worldwide. Q included the band in the list of the \"50 Bands That Changed the World!\". Depeche Mode also ranks number 98 on VH1\'s \"100 Greatest Artists of All Time\". In December 2016, Billboard named Depeche Mode the 10th most successful dance club artist of all time. They were nominated for induction into the Rock and Roll Hall of Fame in 2017 and 2018, and will be inducted as part of the Class of 2020.</p>\r\n<p>Information from <a href=\"https://en.wikipedia.org/wiki/Depeche_Mode\" target=\"_blank\">Wikipedia</a>.</p>\r\n<p>Image is by <a href=\"http://antoncorbijn.com/?domain=www.corbijn.co.uk\" target=\"_blank\">Anton Corbijn</a> and is from Depeche Modes official website.</p>\r\n', 0, NULL, 'http://www.depechemode.com/', '', 1583236800, 0),
+(11, 1, 'Warpaint', '', 'Warpaint', '', 'warpaintbis.jpg', '<p>Warpaint is an American indie rock band from Los Angeles, California, formed in 2004. The current lineup is founders Emily Kokal (vocals, guitar), Theresa Wayman (guitar, vocals) and Jenny Lee Lindberg (bass, vocals), and Stella Mozgawa (drums), who joined the band in 2009.</p>\r\n\r\n<p>On December 6, 2010, the BBC announced that Warpaint had been nominated for the BBC\'s Sound of 2011 poll and they were the cover stars of Beat magazine\'s Winter 2010 launch issue.</p>\r\n\r\n<p>From <a href=\"https://en.wikipedia.org/wiki/Warpaint_(band)\" target=\"_blank\">Wikipedia</a></p>\r\n<p>Image from <a href=\"http://xpressmag.com.au/warpaint-head-in-the-game/\" target=\"_blank\">X-Press Magazine</a></p>', 0, NULL, 'https://www.warpaintwarpaint.com/', '', 1583236800, 0),
+(12, 1, 'Blondie', '', 'Blondie', '', 'Blondie1977.jpg', '<p>Blondie is an American rock band founded by singer Debbie Harry and guitarist Chris Stein. The band were pioneers in the early American new wave and punk scenes of the mid-late 1970s. Its first two albums contained strong elements of these genres, and although successful in the United Kingdom and Australia, Blondie was regarded as an underground band in the United States until the release of Parallel Lines in 1978. Over the next three years, the band achieved several hit singles including \"Heart of Glass\", \"Call Me\", \"Rapture\" and \"The Tide Is High\" and became noted for its eclectic mix of musical styles incorporating elements of disco, pop, reggae, and early rap music.</p>\r\n<p>Blondie disbanded after the release of its sixth studio album, The Hunter, in 1982. Debbie Harry continued to pursue a solo career with varied results after taking a few years off to care for partner Chris Stein, who was diagnosed with pemphigus, a rare autoimmune disease of the skin. The band re-formed in 1997, achieving renewed success and a number one single in the United Kingdom with \"Maria\" in 1999, exactly 20 years after their first UK No.1 single (\"Heart of Glass\").</p>\r\n\r\n<p>The group toured and performed throughout the world during the following years, and was inducted into the Rock and Roll Hall of Fame in 2006. Blondie has sold around 40 million records worldwide and is still active. The band\'s tenth studio album, Ghosts of Download, was released in 2014 and their eleventh studio album, Pollinator, was released on May 5, 2017.</p>\r\n<p>From <a href=\"https://en.wikipedia.org/wiki/Blondie_(band)\" target=\"_blank\">Wikipedia</a></p>', 0, 0, 'https://www.blondie.net/', '', 1583327401, 1583328041);
 
 -- --------------------------------------------------------
 
@@ -114,20 +121,28 @@ INSERT INTO `grades` (`id`, `value`, `short`, `definition`, `image`) VALUES
 
 CREATE TABLE `records` (
   `id` int(10) NOT NULL,
+  `created_by` int(10) NOT NULL,
   `artist_id` int(10) NOT NULL,
   `title` varchar(255) NOT NULL,
   `year` int(4) NOT NULL,
   `information` text,
   `image_link` varchar(255) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL
+  `image` varchar(255) DEFAULT NULL,
+  `cleared_by` int(10) NOT NULL,
+  `show_record` tinyint(1) NOT NULL,
+  `created_at` int(10) DEFAULT NULL,
+  `updated_at` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Data dump for tabellen `records`
 --
 
-INSERT INTO `records` (`id`, `artist_id`, `title`, `year`, `information`, `image_link`, `image`) VALUES
-(1, 5, 'Test of Sql', 2019, 'Somehow my sql were corrupted', '', 'test_cover.jpg');
+INSERT INTO `records` (`id`, `created_by`, `artist_id`, `title`, `year`, `information`, `image_link`, `image`, `cleared_by`, `show_record`, `created_at`, `updated_at`) VALUES
+(1, 3, 5, 'Test of Sql', 2019, 'Somehow my sql were corrupted', '', 'cowboybeboprecords1.jpg', 0, 0, 1583236800, 0),
+(2, 1, 6, 'More testing', 1991, 'Testig the new class Record, and now we are also testing the edit function without image upload.', '', 'warpaint_the_fool.jpg', 0, 0, 1583236800, 0),
+(3, 1, 8, 'Testing', 2000, 'Here we are testing editing the the image_link ', 'https://images-na.ssl-images-amazon.com/images/I/61gVFFe9fmL._SL1400_.jpg', '', 0, 0, 1583236800, 0),
+(4, 3, 2, 'Testing image uploads', 2014, 'Testing changing image file to image_link', 'https://cdn.shopify.com/s/files/1/1391/7125/products/5ac813f5-d58e-436c-9a07-2af0fba23e19_2048x2048.jpg?v=1554194157', '', 0, 0, 1583236800, 0);
 
 -- --------------------------------------------------------
 
@@ -197,7 +212,7 @@ ALTER TABLE `users`
 -- Tilføj AUTO_INCREMENT i tabel `artists`
 --
 ALTER TABLE `artists`
-  MODIFY `id` int(150) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(150) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Tilføj AUTO_INCREMENT i tabel `formats`
@@ -215,7 +230,7 @@ ALTER TABLE `grades`
 -- Tilføj AUTO_INCREMENT i tabel `records`
 --
 ALTER TABLE `records`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Tilføj AUTO_INCREMENT i tabel `users`
