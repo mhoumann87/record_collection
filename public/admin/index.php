@@ -1,6 +1,9 @@
 <?php require_once '../../private/initialize.php'; ?>
+
 <p class="no-show" id="imagePath">../../public/assets/images/</p>
+
 <?php
+
 $page_title = 'Admin Area - Not cleared items';
 
 /*

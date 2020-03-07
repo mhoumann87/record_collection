@@ -20,6 +20,13 @@ if (is_post_request()) {
   // the information from the user input.
   $args = $_POST['artist'];
   $artist = new Artist($args);
+
+  // If the artist is clered by an admministrator, store the admin id
+  // in the database
+  if ($args['show_image'] == 1) {
+    $artist->cleared_by = $session->user_id;
+  }
+
   // Set name to use for sorting
   $artist->prepare_for_upload($session->user_id);
   // Check to see if validation will pass

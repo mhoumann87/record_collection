@@ -14,7 +14,7 @@ if ($session->is_admin()) {
   $page_title = 'All Artists';
 }
 
-$artists = Artist::find_all();
+$artists = Artist::find_by_field_and_sort('show_artist', 1, 'sorting');
 
 //var_dump($artists);
 

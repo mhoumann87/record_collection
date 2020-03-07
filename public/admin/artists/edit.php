@@ -36,6 +36,12 @@ if (is_post_request()) {
   // The user submitted changes, collect them in an array
   $args = $_POST['artist'];
 
+  // If the artist is clered by an admministrator, store the admin id
+  // in the database
+  if ($args['show_image'] == 1) {
+    $artist->cleared_by = $session->user_id;
+  }
+
   /*
   * For this to work right, we have to check the informations that are in
   * the database allready and compare them to the changes the user have made.
