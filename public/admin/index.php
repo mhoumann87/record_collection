@@ -13,7 +13,7 @@ $page_title = 'Admin Area - Not cleared items';
 require_admin_role();
 
 $artists = Artist::find_by_field_and_sort('show_artist', 0, 'created_at');
-//$records = Record::find_by_field_and_sort('show_album', 0 , 'created_at');
+$records = Record::find_by_field_and_sort('show_record', 0, 'created_at');
 
 // var_dump($artists);
 ?>
@@ -22,9 +22,9 @@ $artists = Artist::find_by_field_and_sort('show_artist', 0, 'created_at');
 
 <section class="admin-index">
 
-  <?php if (!empty($artists)) { ?>
+  <div class="show-artists">
 
-    <div class="show-artists">
+    <?php if (!empty($artists)) { ?>
 
       <div class="show-artists-header">
         <h3>Artists waiting to be cleared</h3>
@@ -52,30 +52,69 @@ $artists = Artist::find_by_field_and_sort('show_artist', 0, 'created_at');
 
       </div>
 
-    </div>
-
-  <?php } else { ?>
-    <div class="show-artists">
-
-      <div class="no-artists">
-        <p>No artists waiting at the moment</p>
-      </div>
-
-    </div>
-  <?php } // !empty(artist)
-  ?>
-
-  <div class="artist-index-show-albums">
-
-    <h1>Show Albums</h1>
-
   </div>
 
-  <aside class="artist-index-aside">
+<?php } else { ?>
 
-    <h1>How to use this page</h1>
+  <div class="nothing-to-show">
+    <p>No artists waiting at the moment</p>
+  </div>
 
-  </aside>
+
+<?php } // !empty(artist)
+?>
+
+</div>
+
+<div class="show-records">
+
+  <?php if (!empty($records)) { ?>
+
+    <div class="show-records-header">
+      <h3>Albums waiting to be cleared</h3>
+    </div>
+
+    <div class="show-records-grid">
+
+      <?php foreach ($records as $record) { ?>
+
+
+        <div class="show-record-card">
+          <a href="<?php echo url_for('/admin/records/show.php?id=' . h(u($record->id))); ?>">
+            <?php if ($record->image_link != '') { ?>
+              <img src="<?php echo h($record->image_link); ?>" alt="<?php echo h($record->get_title_and_artist()); ?>" />
+            <?php } elseif ($record->image != '') { ?>
+              <img src="<?php echo url_for('/assets/images/' . $record->get_table_name() . '/' . h($record->image)) ?>" alt="<?php echo h($record->get_title_and_artist()); ?>" />
+            <?php } else { ?>
+              <div class="no-record-image">
+                <?php echo h($record->get_title_and_artist()); ?>
+              </div>
+            <?php } ?>
+          </a>
+        </div>
+
+      <?php } // foreach $records 
+      ?>
+
+    </div> <!-- show-records-grid -->
+
+  <?php } else { // !empty($records)
+  ?>
+
+    <div class="nothing-to-show">
+      <p>No albums waiting at the moment</p>
+    </div>
+
+  <?php } // else !empty($records) 
+  ?>
+
+</div> <!-- show-rwcords -->
+
+<aside class="artist-index-aside">
+
+  <h1>How to use this page</h1>
+
+</aside>
 
 </section>
 

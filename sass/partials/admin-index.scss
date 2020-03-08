@@ -30,14 +30,52 @@
                 padding: .4em;
             }
         }
+    }
 
-        .no-artists {
-            text-align: center;
-            padding: .4em;
+    .show-records {
+        margin-top: 1em;
 
-            p {
+        @include shaddow;
+
+        .show-records-header {
+            background-color: $background-dark;
+            margin: 0 0 1em 0;
+            padding: 0.4em;
+
+            h3 {
                 margin: 0;
+                font-size: 1.4rem;
+                color: $font-light;
             }
+        }
+
+        .show-records-grid {
+            padding: 0 1em 1em 1em;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+
+            .show-record-card {
+                background-color: $background-dark;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                a {
+                    text-decoration: none;
+                    color: $font-light;
+                }
+            }
+        }
+    }
+
+    .nothing-to-show {
+        text-align: center;
+        padding: .4em;
+
+        p {
+            margin: 0;
         }
     }
 }

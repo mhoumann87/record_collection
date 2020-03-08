@@ -61,6 +61,11 @@ class Record extends DatabaseObject
     return self::$table_name;
   }
 
+  public function get_title_and_artist()
+  {
+    return "{$this->title} by {$this->show_artist_name()}";
+  }
+
   // Find the name of the artist this album connects to
   public function show_artist_name()
   {
