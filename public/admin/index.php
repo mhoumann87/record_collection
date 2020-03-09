@@ -110,9 +110,21 @@ $records = Record::find_by_field_and_sort('show_record', 0, 'created_at');
 
 </div> <!-- show-rwcords -->
 
-<aside class="artist-index-aside">
+<aside class="show-index-info">
 
-  <h1>How to use this page</h1>
+  <div class="show-index-info-header">
+    <h3>How to use this page</h3>
+  </div>
+
+  <div class="show-index-info-content">
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, recusandae? Nam modi ex tenetur fugiat ratione! Quisquam commodi, voluptate nesciunt at officia aliquam eos numquam eligendi illo, dolore ipsa iusto.
+      Deleniti asperiores possimus voluptates qui dicta tempore veniam laudantium blanditiis ullam! Error sit fugit quas inventore laudantium, praesentium numquam est beatae, quos aliquid earum hic quibusdam ipsum officia amet excepturi.
+      Adipisci itaque sed obcaecati necessitatibus mollitia, dignissimos placeat dolor exercitationem consequatur fuga porro tempore blanditiis dolores nam iste ut sit voluptates in! Vel blanditiis maxime deserunt impedit, odit repellendus est.
+      Possimus, blanditiis pariatur. Saepe quam, harum aspernatur, consequatur dolorem ad iusto ipsam dolores odio numquam laboriosam consectetur corrupti asperiores nihil vitae nisi. Recusandae dignissimos reiciendis atque doloremque minima cupiditate maxime.
+      Quibusdam, eos. Hic odio temporibus accusamus necessitatibus repudiandae dolores rem porro ipsum amet sit molestiae sed error dolorum culpa officiis aspernatur, non magnam nihil dolore nesciunt unde iure reprehenderit. Expedita.</p>
+
+  </div>
 
 </aside>
 

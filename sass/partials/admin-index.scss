@@ -70,6 +70,33 @@
         }
     }
 
+    .show-index-info {
+        margin-top: 1em;
+
+        @include shaddow;
+
+        .show-index-info-header {
+            background-color: $background-dark;
+            padding: .4em;
+            margin: 0;
+
+            h3 {
+                color: $font-light;
+                margin: 0;
+                font-size: 1.4rem;
+            }
+        }
+
+        .show-index-info-content {
+            padding: .4em;
+            margin-top: 1em;
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+
     .nothing-to-show {
         text-align: center;
         padding: .4em;
