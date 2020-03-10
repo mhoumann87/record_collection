@@ -34,7 +34,7 @@ class Record extends DatabaseObject
   public $information;
   public $image_link;
   public $image;
-  protected $show_record;
+  public $show_record;
   protected $cleared_by;
   public $created_at;
   public $updated_at;
@@ -74,11 +74,23 @@ class Record extends DatabaseObject
   }
 
   // Get all input ready for upload
-  public function prepare_for_upload($artist)
+  public function prepare_for_upload($artist, $user)
   {
     $this->year = (int) $this->year;
     $this->artist_id = (int) $artist;
+    $this->created_by = $user;
     $this->information = $this->clear_html_input($this->information);
+    self::set_dates();
+  }
+
+  // Set the updated and created at dates
+  protected function set_dates()
+  {
+    if (!isset($this->id)) {
+      $this->created_at = time();
+    } else {
+      $this->updated_at = time();
+    }
   }
 
   // Rules for validation, we just need title and year

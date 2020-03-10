@@ -34,6 +34,12 @@ if (is_post_request()) {
   $args = $_POST['record'];
   // var_dump($args);
 
+  // If the album is cleared by an administrator, 
+  // store the admin id in the database
+  if (args['show_record'] == 1) {
+    $record->cleared_by = $session->user_id;
+  }
+
   // Check to see if an image file is being uploaded
   if ($_FILES[$record->for_image_upload]['name']['image'] != '') {
     // echo 'image uploaded';
@@ -60,7 +66,7 @@ if (is_post_request()) {
         } else {
           // The image is uploaded and we update the database
           $record->merge_attributes($args);
-          $record->prepare_for_upload($record->artist_id);
+          $record->prepare_for_upload($record->artist_id, $session->user_id);
           $record->image = $result;
           $result = $record->save();
 
@@ -83,7 +89,7 @@ if (is_post_request()) {
       } else {
         // Image uploaded successfully and we update the database
         $record->merge_attributes($args);
-        $record->prepare_for_upload($record->artist_id);
+        $record->prepare_for_upload($record->artist_id, $session->user_id);
         $record->image = $result;
         $result = $record->save();
 
@@ -109,7 +115,7 @@ if (is_post_request()) {
       if ($image_deleted == 1) {
         // The image is deleted and we can update database
         $record->merge_attributes($args);
-        $record->prepare_for_upload($record->artist_id);
+        $record->prepare_for_upload($record->artist_id, $session->user_id);
         $record->image = '';
         $result = $record->save();
 
@@ -124,7 +130,7 @@ if (is_post_request()) {
     } else {
       // No image file in the system, just update the database
       $record->merge_attributes($args);
-      $record->prepare_for_upload($record->artist_id);
+      $record->prepare_for_upload($record->artist_id, $session->user_id);
       $result = $record->save();
 
       if ($result == true) {
@@ -143,7 +149,7 @@ if (is_post_request()) {
     }
 
     $record->merge_attributes($args);
-    $record->prepare_for_upload($record->artist_id);
+    $record->prepare_for_upload($record->artist_id, $session->user_id);
     $record->image_link = $save_image_link;
     $result = $record->save();
 

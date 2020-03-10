@@ -25,7 +25,7 @@ if (is_post_request()) {
   $args = $_POST['record'];
 
   $record = new Record($args);
-  $record->prepare_for_upload($artist);
+  $record->prepare_for_upload($artist, $session->user_id);
 
   $valid = $record->check_validation();
   if (empty($valid)) {

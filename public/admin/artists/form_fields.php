@@ -43,7 +43,7 @@ if (!isset($artist)) {
   <input type="text" name="artist[website]" value="<?php echo h($artist->website); ?>" />
 </div>
 
-<?php if ($session->is_admin()) { ?>
+<?php if ($session->is_admin() && isset($artist->id)) { ?>
   <div class="radio-box">
     <label for="artist[show_artist]">Show this artist: </label>
     <input type="radio" name="artist[show_artist]" value="0" <?php echo ($artist->show_artist == 0) ? 'checked="checked"' : ''; ?>>No&nbsp;
