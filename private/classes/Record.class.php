@@ -35,7 +35,7 @@ class Record extends DatabaseObject
   public $image_link;
   public $image;
   public $show_record;
-  protected $cleared_by;
+  public $cleared_by;
   public $created_at;
   public $updated_at;
 

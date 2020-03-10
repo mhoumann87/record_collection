@@ -36,7 +36,7 @@ if (is_post_request()) {
 
   // If the album is cleared by an administrator, 
   // store the admin id in the database
-  if (args['show_record'] == 1) {
+  if ($args['show_record'] == 1) {
     $record->cleared_by = $session->user_id;
   }
 

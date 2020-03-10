@@ -10,7 +10,7 @@ $page_title = 'All Albums';
 * an admin to delete the album 
 */
 
-$records = Record::find_all();
+$records = Record::find_by_field_and_sort('show_record', 1, 'year');
 //var_dump($records);
 
 ?>
