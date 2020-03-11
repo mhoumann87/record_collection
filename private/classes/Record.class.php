@@ -66,6 +66,13 @@ class Record extends DatabaseObject
     return "{$this->title} by {$this->show_artist_name()}";
   }
 
+  // When record is updated, reset cleared_by and show_record
+  public function reset_show_and_cleared()
+  {
+    $this->show_record = 0;
+    $this->cleared_by = null;
+  }
+
   // Find the name of the artist this album connects to
   public function show_artist_name()
   {

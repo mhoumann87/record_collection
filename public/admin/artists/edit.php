@@ -38,8 +38,15 @@ if (is_post_request()) {
 
   // If the artist is clered by an admministrator, store the admin id
   // in the database
-  if ($args['show_image'] == 1) {
+  if ($args['show_artist'] == 1) {
     $artist->cleared_by = $session->user_id;
+  }
+
+  // If the artist is updated, set cleared_by to an empty string
+  // and mark the post to be cleared again
+  if ($args['show_artist'] == $record->show_artist) {
+    $artist->cleared_by = '';
+    $artist->show_artist = 0;
   }
 
   /*

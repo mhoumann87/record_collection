@@ -66,6 +66,11 @@ if (is_post_request()) {
         } else {
           // The image is uploaded and we update the database
           $record->merge_attributes($args);
+          // If the record is updated, set cleared_by to an empty string
+          // and mart the record to be cleared again
+          if ($args['show_record'] == $record->show_record) {
+            $record->reset_show_and_cleared();
+          }
           $record->prepare_for_upload($record->artist_id, $session->user_id);
           $record->image = $result;
           $result = $record->save();
@@ -89,6 +94,11 @@ if (is_post_request()) {
       } else {
         // Image uploaded successfully and we update the database
         $record->merge_attributes($args);
+        // If the record is updated, set cleared_by to an empty string
+        // and mart the record to be cleared again
+        if ($args['show_record'] == $record->show_record) {
+          $record->reset_show_and_cleared();
+        }
         $record->prepare_for_upload($record->artist_id, $session->user_id);
         $record->image = $result;
         $result = $record->save();
@@ -115,6 +125,11 @@ if (is_post_request()) {
       if ($image_deleted == 1) {
         // The image is deleted and we can update database
         $record->merge_attributes($args);
+        // If the record is updated, set cleared_by to an empty string
+        // and mart the record to be cleared again
+        if ($args['show_record'] == $record->show_record) {
+          $record->reset_show_and_cleared();
+        }
         $record->prepare_for_upload($record->artist_id, $session->user_id);
         $record->image = '';
         $result = $record->save();
@@ -130,6 +145,11 @@ if (is_post_request()) {
     } else {
       // No image file in the system, just update the database
       $record->merge_attributes($args);
+      // If the record is updated, set cleared_by to an empty string
+      // and mart the record to be cleared again
+      if ($args['show_record'] == $record->show_record) {
+        $record->reset_show_and_cleared();
+      }
       $record->prepare_for_upload($record->artist_id, $session->user_id);
       $result = $record->save();
 
@@ -149,6 +169,11 @@ if (is_post_request()) {
     }
 
     $record->merge_attributes($args);
+    // If the record is updated, set cleared_by to an empty string
+    // and mart the record to be cleared again
+    if ($args['show_record'] == $record->show_record) {
+      $record->reset_show_and_cleared();
+    }
     $record->prepare_for_upload($record->artist_id, $session->user_id);
     $record->image_link = $save_image_link;
     $result = $record->save();
