@@ -39,15 +39,10 @@ if (is_post_request()) {
   // If the artist is clered by an admministrator, store the admin id
   // in the database
   if ($args['show_artist'] == 1) {
-    $artist->cleared_by = $session->user_id;
+    $artist->set_cleared_by($session->user_id);
   }
 
-  // If the artist is updated, set cleared_by to an empty string
-  // and mark the post to be cleared again
-  if ($args['show_artist'] == $record->show_artist) {
-    $artist->cleared_by = '';
-    $artist->show_artist = 0;
-  }
+
 
   /*
   * For this to work right, we have to check the informations that are in
@@ -86,6 +81,12 @@ if (is_post_request()) {
 
         // Inset the changes from the input
         $artist->merge_attributes($args);
+        // If the artist is updated, set cleared_by to an empty string
+        // and mark the post to be cleared again
+        if ($args['show_artist'] == $record->show_artist) {
+          //echo 'Clear show and cleared by';
+          $artist->reset_show_and_cleared();
+        }
         // Set the name used for sorting
         $artist->prepare_for_upload($session->user_id);
         // Set image in the database to an empty string
@@ -105,6 +106,12 @@ if (is_post_request()) {
       // If we have an image_link in the database it will
       // be updated too
       $artist->merge_attributes($args);
+      // If the artist is updated, set cleared_by to an empty string
+      // and mark the post to be cleared again
+      if ($args['show_artist'] == $artist->show_artist) {
+        //echo 'Clear show and cleared by';
+        $artist->reset_show_and_cleared();
+      }
       $artist->prepare_for_upload($session->user_id);
       $result = $artist->save();
     }
@@ -133,6 +140,12 @@ if (is_post_request()) {
         } else {
           // No errors we just update the database with info about the new image
           $artist->merge_attributes($args);
+          // If the artist is updated, set cleared_by to an empty string
+          // and mark the post to be cleared again
+          if ($args['show_artist'] == $artist->show_artist) {
+            //echo 'Clear show and cleared by';
+            $artist->reset_show_and_cleared();
+          }
           $artist->prepare_for_upload($session->user_id);
           $artist->image = $result;
           $result = $artist->save();
@@ -160,6 +173,12 @@ if (is_post_request()) {
       } else {
         // The image is uploaded, and we just update the database
         $artist->merge_attributes($args);
+        // If the artist is updated, set cleared_by to an empty string
+        // and mark the post to be cleared again
+        if ($args['show_artist'] == $artist->show_artist) {
+          //echo 'Clear show and cleared by';
+          $artist->reset_show_and_cleared();
+        }
         $artist->prepare_for_upload($session->user_id);
         $artist->image = $result;
         $result = $artist->save();
@@ -180,6 +199,12 @@ if (is_post_request()) {
       $save_image_link = $artist->image_link;
     }
     $artist->merge_attributes($args);
+    // If the artist is updated, set cleared_by to an empty string
+    // and mark the post to be cleared again
+    if ($args['show_artist'] == $artist->show_artist) {
+      //echo 'Clear show and cleared by';
+      $artist->reset_show_and_cleared();
+    }
     $artist->prepare_for_upload($session->user_id);
     $artist->image_link = $save_image_link;
     $result = $artist->save();
@@ -216,6 +241,15 @@ if (is_post_request()) {
   <?php } ?>
 
   <div class="display-content">
+
+    <?php if ($session->is_admin()) { ?>
+      <div class="user-info">
+        <p>Created by: <?php echo $artist->display_username(); ?></p>
+        <?php echo $artist->show_cleared_by() ? '<p>Cleared by: ' . $artist->show_cleared_by() . '</p>' : ''; ?>
+        <p>Created: <?php echo date('j/n Y', h($artist->created_at)); ?></p>
+        <?php echo $artist->updated_at ? '<p>Updated at: ' . date('j/n Y', h($artist->updated_at)) . '</p>' : ''; ?>
+      </div>
+    <?php } ?>
 
     <form action="<?php echo url_for('/admin/artists/edit.php?id=' . h(u($artist->id))); ?>" method="post" enctype="multipart/form-data">
 

@@ -73,6 +73,31 @@ class Artist extends DatabaseObject
     self::set_dates();
   }
 
+  // Set and show cleared_by
+  public function set_cleared_by($id)
+  {
+    $this->cleared_by = $id;
+  }
+
+  public function show_cleared_by()
+  {
+    if ($this->cleared_by) {
+      $user = User::find_by_id($this->cleared_by);
+      //var_dump($user);
+      return h($user->username);
+    } else {
+      return false;
+    }
+  }
+
+  // If the artist is updated, we have to reset show_artist
+  // and cleared_by
+  public function reset_show_and_cleared()
+  {
+    $this->cleared_by = null;
+    $this->show_artist = 0;
+  }
+
   // Function to set created_at/updated_at values
   protected function set_dates()
   {
@@ -103,7 +128,7 @@ class Artist extends DatabaseObject
   public function display_name()
   {
     if (!isset($this->lastname)) {
-      return $this->firstname;
+      return h($this->firstname);
     } else {
       return "{$this->firstname} {$this->lastname}";
     }
@@ -116,7 +141,7 @@ class Artist extends DatabaseObject
     if (empty($user)) {
       return 'User deleted';
     } else {
-      return $user->username;
+      return h($user->username);
     }
   }
 
