@@ -37,7 +37,7 @@ if (is_post_request()) {
   // If the album is cleared by an administrator, 
   // store the admin id in the database
   if ($args['show_record'] == 1) {
-    $record->cleared_by = $session->user_id;
+    $record->set_cleared_by($session->user_id);
   }
 
   // Check to see if an image file is being uploaded
@@ -68,7 +68,7 @@ if (is_post_request()) {
           $record->merge_attributes($args);
           // If the record is updated, set cleared_by to an empty string
           // and mart the record to be cleared again
-          if ($args['show_record'] == $record->show_record) {
+          if ($args['show_record'] != $record->show_record) {
             $record->reset_show_and_cleared();
           }
           $record->prepare_for_upload($record->artist_id, $session->user_id);
@@ -96,7 +96,7 @@ if (is_post_request()) {
         $record->merge_attributes($args);
         // If the record is updated, set cleared_by to an empty string
         // and mart the record to be cleared again
-        if ($args['show_record'] == $record->show_record) {
+        if ($args['show_record'] != $record->show_record) {
           $record->reset_show_and_cleared();
         }
         $record->prepare_for_upload($record->artist_id, $session->user_id);
@@ -127,7 +127,7 @@ if (is_post_request()) {
         $record->merge_attributes($args);
         // If the record is updated, set cleared_by to an empty string
         // and mart the record to be cleared again
-        if ($args['show_record'] == $record->show_record) {
+        if ($args['show_record'] != $record->show_record) {
           $record->reset_show_and_cleared();
         }
         $record->prepare_for_upload($record->artist_id, $session->user_id);
@@ -147,7 +147,7 @@ if (is_post_request()) {
       $record->merge_attributes($args);
       // If the record is updated, set cleared_by to an empty string
       // and mart the record to be cleared again
-      if ($args['show_record'] == $record->show_record) {
+      if ($args['show_record'] != $record->show_record) {
         $record->reset_show_and_cleared();
       }
       $record->prepare_for_upload($record->artist_id, $session->user_id);
@@ -171,7 +171,7 @@ if (is_post_request()) {
     $record->merge_attributes($args);
     // If the record is updated, set cleared_by to an empty string
     // and mart the record to be cleared again
-    if ($args['show_record'] == $record->show_record) {
+    if ($args['show_record'] != $record->show_record) {
       $record->reset_show_and_cleared();
     }
     $record->prepare_for_upload($record->artist_id, $session->user_id);
@@ -220,6 +220,24 @@ if (is_post_request()) {
   <?php echo display_errors($record->errors); ?>
 
   <div class="display-content">
+
+    <div class="record-info">
+
+      <p><a href="<?php echo url_for('/admin/artists/show.php?id=' . h(u($record->artist_id))); ?>">
+          <?php echo $record->show_artist_name(); ?>
+        </a></p>
+
+      <?php if ($session->is_admin()) { ?>
+
+        <p>Created by: <?php echo $record->display_created_by(); ?></p>
+        <?php echo $record->display_cleared_by() ? '<p>Cleared by: ' . $record->display_cleared_by() . '</p>' : ''; ?>
+        <p>Created <?php echo date('j/n Y', $record->created_at); ?></p>
+        <?php echo $record->updated_at ? '<p>Updated at: ' . date('j/n Y', $record->updated_at) . '</p>' : ''; ?>
+
+
+      <?php } ?>
+
+    </div>
 
     <form action="<?php echo url_for('/admin/records/edit.php?id=' . h(u($record->id))); ?>" method="post" enctype="multipart/form-data">
 

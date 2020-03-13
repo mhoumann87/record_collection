@@ -35,7 +35,7 @@ class Record extends DatabaseObject
   public $image_link;
   public $image;
   public $show_record;
-  public $cleared_by;
+  protected $cleared_by;
   public $created_at;
   public $updated_at;
 
@@ -61,16 +61,44 @@ class Record extends DatabaseObject
     return self::$table_name;
   }
 
-  public function get_title_and_artist()
+  // Set and get created_by
+  public function set_created_by($id)
   {
-    return "{$this->title} by {$this->show_artist_name()}";
+    $this->created_by = $id;
+  }
+
+  public function display_created_by()
+  {
+    $user = User::find_by_id($this->created_by);
+    return $user->username;
+  }
+
+  // Get and set cleared by
+  public function set_cleared_by($id)
+  {
+    $this->cleared_by = $id;
+  }
+
+  public function display_cleared_by()
+  {
+    if ($this->cleared_by) {
+      $user = User::find_by_id($this->cleared_by);
+      return $user->username;
+    } else {
+      return false;
+    }
   }
 
   // When record is updated, reset cleared_by and show_record
   public function reset_show_and_cleared()
   {
     $this->show_record = 0;
-    $this->cleared_by = null;
+    $this->set_cleared_by(0);
+  }
+
+  public function get_title_and_artist()
+  {
+    return "{$this->title} by {$this->show_artist_name()}";
   }
 
   // Find the name of the artist this album connects to
@@ -85,7 +113,7 @@ class Record extends DatabaseObject
   {
     $this->year = (int) $this->year;
     $this->artist_id = (int) $artist;
-    $this->created_by = $user;
+    $this->set_created_by($user);
     $this->information = $this->clear_html_input($this->information);
     self::set_dates();
   }
