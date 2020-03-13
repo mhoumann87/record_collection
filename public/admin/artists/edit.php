@@ -36,14 +36,6 @@ if (is_post_request()) {
   // The user submitted changes, collect them in an array
   $args = $_POST['artist'];
 
-  // If the artist is clered by an admministrator, store the admin id
-  // in the database
-  if ($args['show_artist'] == 1) {
-    $artist->set_cleared_by($session->user_id);
-  }
-
-
-
   /*
   * For this to work right, we have to check the informations that are in
   * the database allready and compare them to the changes the user have made.
@@ -53,7 +45,13 @@ if (is_post_request()) {
   * - If the user have added an image link, we have to check if an image has to be
   *   deleted or we just have to update the image link
   * - If the user hasn't added any image imformation, we just have to update the artist  
-   */
+     */
+  // If the artist is clered by an admministrator, store the admin id
+  // in the database
+  // var_dump($args);
+  if ($args['show_artist']) {
+    $artist->set_cleared_by($session->user_id);
+  }
   /*   var_dump($artist);
   echo '<br>';
   var_dump($args); */
@@ -98,7 +96,7 @@ if (is_post_request()) {
         // else it will automatically display the errors
         if ($result === true) {
           $session->message('Artist updated successfully');
-          redirect_to(url_for('/admin/artists/show.php?id=' . h(u($artist->id))));
+          //redirect_to(url_for('/admin/artists/show.php?id=' . h(u($artist->id))));
         }
       }
     } else {
@@ -108,8 +106,7 @@ if (is_post_request()) {
       $artist->merge_attributes($args);
       // If the artist is updated, set cleared_by to an empty string
       // and mark the post to be cleared again
-      if ($args['show_artist'] == $artist->show_artist) {
-        //echo 'Clear show and cleared by';
+      if ($args['show_artist'] != $artist->show_artist) {
         $artist->reset_show_and_cleared();
       }
       $artist->prepare_for_upload($session->user_id);
@@ -142,8 +139,7 @@ if (is_post_request()) {
           $artist->merge_attributes($args);
           // If the artist is updated, set cleared_by to an empty string
           // and mark the post to be cleared again
-          if ($args['show_artist'] == $artist->show_artist) {
-            //echo 'Clear show and cleared by';
+          if ($args['show_artist'] != $artist->show_artist) {
             $artist->reset_show_and_cleared();
           }
           $artist->prepare_for_upload($session->user_id);
@@ -153,7 +149,7 @@ if (is_post_request()) {
           if ($result === true) {
             // If database is updated, show success message and redirect user to show.php
             $session->message('Image uploaded and artist updated successfully');
-            redirect_to(url_for('/admin/artists/show.php?id=' . h(u($artist->id))));
+            //redirect_to(url_for('/admin/artists/show.php?id=' . h(u($artist->id))));
           }
         }
       } else {
@@ -175,8 +171,7 @@ if (is_post_request()) {
         $artist->merge_attributes($args);
         // If the artist is updated, set cleared_by to an empty string
         // and mark the post to be cleared again
-        if ($args['show_artist'] == $artist->show_artist) {
-          //echo 'Clear show and cleared by';
+        if ($args['show_artist'] != $artist->show_artist) {
           $artist->reset_show_and_cleared();
         }
         $artist->prepare_for_upload($session->user_id);
@@ -186,7 +181,7 @@ if (is_post_request()) {
         // If update is successful, we set an message and redirect user to show.php
         if ($result === true) {
           $session->message('Image uploaded and artist updated successfully');
-          redirect_to(url_for('/admin/artists/show.php?id=' . h(u($artist->id))));
+          //redirect_to(url_for('/admin/artists/show.php?id=' . h(u($artist->id))));
         }
       }
     }
@@ -201,8 +196,7 @@ if (is_post_request()) {
     $artist->merge_attributes($args);
     // If the artist is updated, set cleared_by to an empty string
     // and mark the post to be cleared again
-    if ($args['show_artist'] == $artist->show_artist) {
-      //echo 'Clear show and cleared by';
+    if ($args['show_artist'] != $artist->show_artist) {
       $artist->reset_show_and_cleared();
     }
     $artist->prepare_for_upload($session->user_id);
@@ -211,7 +205,7 @@ if (is_post_request()) {
 
     if ($result === true) {
       $session->message('Artist updated successfully');
-      redirect_to(url_for('/admin/artists/show.php?id=' . h(u($artist->id))));
+      //redirect_to(url_for('/admin/artists/show.php?id=' . h(u($artist->id))));
     }
   }
 } // if (is_post_request())

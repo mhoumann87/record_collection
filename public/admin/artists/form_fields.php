@@ -49,4 +49,6 @@ if (!isset($artist)) {
     <input type="radio" name="artist[show_artist]" value="0" <?php echo ($artist->show_artist == 0) ? 'checked="checked"' : ''; ?>>No&nbsp;
     <input type="radio" name="artist[show_artist]" value="1" <?php echo ($artist->show_artist > 0) ? 'checked="checked"' : ''; ?>>Yes
   </div>
+<?php } else { ?>
+  <input type="hidden" name="artist[show_artist]" value="0" />
 <?php } ?>
