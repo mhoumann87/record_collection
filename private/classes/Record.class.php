@@ -52,7 +52,6 @@ class Record extends DatabaseObject
     $this->information = $args['information'] ?? '';
     $this->image_link = $args['image_link'] ?? '';
     $this->image = $args['image'] ?? '';
-    $this->show_record = $args['show_record'] ?? 0;
   }
 
   // Function to send table name further on
@@ -92,8 +91,9 @@ class Record extends DatabaseObject
   // When record is updated, reset cleared_by and show_record
   public function reset_show_and_cleared()
   {
+    $this->cleared_by = 0;
     $this->show_record = 0;
-    $this->set_cleared_by(0);
+    return $this->cleared_by;
   }
 
   public function get_title_and_artist()

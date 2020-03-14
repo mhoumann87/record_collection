@@ -68,7 +68,7 @@ if (is_post_request()) {
           $record->merge_attributes($args);
           // If the record is updated, set cleared_by to an empty string
           // and mart the record to be cleared again
-          if ($args['show_record'] != $record->show_record) {
+          if ($args['show_record'] == 0 && $record->show_record == 0) {
             $record->reset_show_and_cleared();
           }
           $record->prepare_for_upload($record->artist_id, $session->user_id);
@@ -96,7 +96,8 @@ if (is_post_request()) {
         $record->merge_attributes($args);
         // If the record is updated, set cleared_by to an empty string
         // and mart the record to be cleared again
-        if ($args['show_record'] != $record->show_record) {
+        if ($args['show_record'] == 0 && $record->show_record == 0) {
+          echo 'Cleared input';
           $record->reset_show_and_cleared();
         }
         $record->prepare_for_upload($record->artist_id, $session->user_id);
@@ -127,7 +128,8 @@ if (is_post_request()) {
         $record->merge_attributes($args);
         // If the record is updated, set cleared_by to an empty string
         // and mart the record to be cleared again
-        if ($args['show_record'] != $record->show_record) {
+        if ($args['show_record'] == 0 && $record->show_record == 0) {
+          echo 'Cleared input';
           $record->reset_show_and_cleared();
         }
         $record->prepare_for_upload($record->artist_id, $session->user_id);
@@ -147,7 +149,8 @@ if (is_post_request()) {
       $record->merge_attributes($args);
       // If the record is updated, set cleared_by to an empty string
       // and mart the record to be cleared again
-      if ($args['show_record'] != $record->show_record) {
+      if ($args['show_record'] == 0 && $record->show_record == 0) {
+        echo 'Cleared input';
         $record->reset_show_and_cleared();
       }
       $record->prepare_for_upload($record->artist_id, $session->user_id);
@@ -171,7 +174,9 @@ if (is_post_request()) {
     $record->merge_attributes($args);
     // If the record is updated, set cleared_by to an empty string
     // and mart the record to be cleared again
-    if ($args['show_record'] != $record->show_record) {
+    echo $args['show_record'] . '<br>';
+    echo $record->show_record;
+    if ($args['show_record'] == 0 && $record->show_record == 0) {
       $record->reset_show_and_cleared();
     }
     $record->prepare_for_upload($record->artist_id, $session->user_id);
