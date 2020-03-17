@@ -7,7 +7,6 @@ class Wishlist extends DatabaseObject
   static protected $db_colomns = [
     'id',
     'user_id',
-    'artist_id',
     'record_id',
     'format_id'
   ];
