@@ -23,6 +23,7 @@ if ($artist == '') {
 
 if (is_post_request()) {
   $args = $_POST['record'];
+  var_dump($args);
 
   $record = new Record($args);
   $record->prepare_for_upload($artist, $session->user_id);
