@@ -30,6 +30,20 @@
     }
 }
 
+.select-box {
+    justify-content: flex-start;
+    margin-bottom: 1em;
+
+    select {
+        border: none;
+        background: $background;
+        padding: .5em;
+        font-size: 1rem;
+        font-family: $body-font;
+        margin-left: 1em;
+    }
+}
+
 .radio-box {
     width: 100%;
     margin-bottom: 1em;

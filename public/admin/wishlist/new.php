@@ -22,6 +22,9 @@ if (is_post_request()) {
   $args = $_POST['wishlist'];
 
   var_dump($args);
+} else {
+  // It is a get request, just make an empty instance of a wishlist
+  $wishlist = new Wishlist();
 }
 
 
@@ -30,14 +33,44 @@ if (is_post_request()) {
 
 <?php include SHARED_PATH . '/header.php'; ?>
 
-<form action="<?php echo url_for('/admin/wishlist/new.php?id=' . h(u($id))); ?>" method="post">
+<a href="<?php echo url_for('/admin/records/show.php?id=' . h(u($record->id))); ?>">
+  <button class="btn-link">Back To Album</button>
+</a>
+
+<section class="display-box">
+
+  <div class="display-header-no-margin">
+    <h2>Add Album to Your Wishlist</h2>
+  </div>
+
+  <?php if ($record->image_link != '') { ?>
+    <div class="display-header-image">
+      <img src="<?php echo h($record->image_link); ?>" alt="<?php echo $record->get_title_and_artist(); ?>" />
+    </div>
+  <?php } elseif ($record->image != '') { ?>
+    <div class="display-header-image">
+      <img src="<?php echo url_for('/assets/images/' . $record->get_table_name() . '/' . $record->image); ?>" alt="<?php echo $record->get_title_and_artist(); ?>" />
+    </div>
+  <?php } else { ?>
+    <?php echo ''; ?>
+  <?php } ?>
+
+  <div class="display-content">
+
+    <h3><?php echo h($record->show_artist_name()); ?></h3>
+    <h3>By <?php echo h($record->show_artist_name()); ?></h3>
+
+    <form action="<?php echo url_for('/admin/wishlist/new.php?id=' . h(u($id))); ?>" method="post">
+
+      <?php include 'form_fields.php'; ?>
+
+      <input class="button btn-success" type="submit" value="Add Item" />
 
 
-  <input type="text" name="wishlist[test]" />
+    </form>
 
-  <input type="submit" value="submit" />
+  </div>
 
-
-</form>
+</section>
 
 <?php include SHARED_PATH . '/footer.php'; ?>
