@@ -20,14 +20,23 @@ if (!$record) {
 
 if (is_post_request()) {
   $args = $_POST['wishlist'];
+  // var_dump($args);
+  $wishlist = new Wishlist($args);
+  $wishlist->prepare_for_upload();
+  $result = $wishlist->save();
+  //var_dump($args);
 
-  var_dump($args);
+  //var_dump($wishlist);
+  //var_dump($result);
+
+  if ($result === true) {
+    $session->message('Item added to your wishlist');
+    redirect_to(url_for('/admin/wishlist/index.php'));
+  }
 } else {
   // It is a get request, just make an empty instance of a wishlist
   $wishlist = new Wishlist();
 }
-
-
 
 ?>
 
@@ -54,6 +63,8 @@ if (is_post_request()) {
   <?php } else { ?>
     <?php echo ''; ?>
   <?php } ?>
+
+  <?php echo display_errors($wishlist->errors); ?>
 
   <div class="display-content">
 

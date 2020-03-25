@@ -36,7 +36,7 @@ class DatabaseObject
     $sql .= ") VALUES ('";
     $sql .= join("', '", array_values($attributes));
     $sql .= "')";
-    //echo $sql;
+    //return $sql;
 
     $result = self::$db->query($sql);
 
