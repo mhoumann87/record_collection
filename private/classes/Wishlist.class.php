@@ -41,4 +41,10 @@ class Wishlist extends DatabaseObject
   {
     return date('j/n Y', $this->added);
   }
+
+  public function get_format_for_item()
+  {
+    $format = Format::find_by_id($this->format_id);
+    return $format->name;
+  }
 } // class
