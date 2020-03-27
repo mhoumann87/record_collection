@@ -166,8 +166,15 @@
             }
         }
 
+        img {
+            max-width: 5em;
+            height: auto;
+            margin: 0 auto;
+        }
+
         .btn {
             text-align: center;
+            margin: 0 auto;
         }
     }
 }

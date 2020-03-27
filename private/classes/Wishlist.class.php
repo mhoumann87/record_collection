@@ -45,6 +45,7 @@ class Wishlist extends DatabaseObject
   public function get_format_for_item()
   {
     $format = Format::find_by_id($this->format_id);
+    //return $format;
     return $format->name;
   }
 } // class
