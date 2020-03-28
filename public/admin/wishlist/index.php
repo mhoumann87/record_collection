@@ -51,7 +51,7 @@ $page_title = 'Wishlist for ' . $session->username;
           <td><?php echo $item->get_date_added(); ?></td>
 
           <td class="btn">
-            <a href="<?php echo url_for('/admin/records/show.php?id=' . h(u($item->record_id))); ?>">
+            <a href="<?php echo url_for('/admin/wishlist/show.php?id=' . h(u($item->id))); ?>">
               <button class="btn-link" role="link">See More</button>
             </a>
           </td>
