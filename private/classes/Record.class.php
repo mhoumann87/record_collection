@@ -108,6 +108,26 @@ class Record extends DatabaseObject
     return h($artist->display_name());
   }
 
+  // Function to output for image
+  public function display_record_image()
+  {
+    if ($this->image_link != '') {
+      return
+        '<div class="display-header-image">' .
+        '<img src="' . $this->image_link . '" alt="' . $this->get_title_and_artist() . '">' .
+        '</div>';
+    } elseif ($this->image != '') {
+      $path_to_image = url_for('/assets/images/' . self::$table_name . '/' . $this->image);
+      return
+        '<div class="display-header-image">' .
+        '<img src="' . $path_to_image . '" alt="' . $this->get_title_and_artist() . '">' .
+        '</div>';
+    } else {
+      return
+        '<div class="display-header"><h2>' . $this->get_title_and_artist() . '</h2></div>';
+    }
+  }
+
   // Get all input ready for upload
   public function prepare_for_upload($artist, $user)
   {
