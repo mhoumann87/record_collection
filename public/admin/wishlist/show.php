@@ -56,6 +56,18 @@ if ($wishlist->user_id === $session->user_id) {
 
     <p>Added to wishlist: <?php echo h($wishlist->get_date_added()); ?></p>
 
+    <div class="button-bar">
+
+      <a href="<?php echo url_for('/admin/collection/add.php?id=' . $wishlist->record_id); ?>">
+        <button class="btn-success" role="link">Add Record to Collection</button>
+      </a>
+
+      <a href="<?php echo url_for('/admin/wishlist/delete.php?id=' . $wishlist->id); ?>">
+        <button class="btn-danger" role="link">Delete from Wishlist</button>
+      </a>
+
+    </div>
+
   </div>
 
 </section>

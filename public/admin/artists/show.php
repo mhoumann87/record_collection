@@ -127,20 +127,7 @@ $image_path = '/assets/images/' . $artist->get_table_name() . '/';
   ?>
     <a href="<?php echo url_for('/admin/records/show.php?id=' . h(u($record->id))); ?>">
       <div class="album-card">
-
-        <?php if ($record->image_link != '') { ?>
-          <div class="artist-show-albums-image">
-            <img src="<?php echo h($record->image_link); ?>" alt="<?php echo h($record->title) . ' by ' . $artist->display_name(); ?>" />
-          </div>
-        <?php } elseif ($record->image != '') { ?>
-          <div class="artist-show-albums-image">
-            <img src="<?php echo url_for('/assets/images/' . $record->get_table_name() . '/' . h($record->image)); ?>" alt="<?php echo h($record->title) . ' by ' . $artist->display_name(); ?>" />
-          </div>
-        <?php } else { ?>
-          <div class="artist-show-albums-text">
-            <p><?php echo $record->title; ?></p>
-          </div>
-        <?php } ?>
+        <?php echo $record->display_record_image(); ?>
       </div>
     </a>
   <?php } ?>

@@ -220,19 +220,7 @@ if (is_post_request()) {
 
 <section class="display-box">
 
-  <?php if ($artist->image_link != '') { ?>
-    <div class="display-header-image">
-      <img src="<?php echo h($artist->image_link); ?>" alt="<?php echo h($artist->display_name()); ?>">
-    </div>
-  <?php } elseif ($artist->image) { ?>
-    <div class="display-header-image">
-      <img src="<?php echo url_for('/assets/images/artists/' . h($artist->image)); ?>" alt="<?php echo h($artist->display_name()); ?>">
-    </div>
-  <?php } else { ?>
-    <div class="display-header">
-      <h2><?php echo h($artist->display_name()); ?></h2>
-    </div>
-  <?php } ?>
+  <?php echo $artist->display_artist_image(); ?>
 
   <div class="display-content">
 

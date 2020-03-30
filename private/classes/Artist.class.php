@@ -145,6 +145,27 @@ class Artist extends DatabaseObject
     }
   }
 
+  // Function to output for image
+  public function display_artist_image()
+  {
+    if ($this->image_link != '') {
+      return
+        '<div class="display-header-image">' .
+        '<img src="' . h($this->image_link) . '" alt="' . $this->display_name() . '">' .
+        '</div>';
+    } elseif ($this->image != '') {
+      $path_to_image = url_for('/assets/images/' . self::$table_name . '/' . $this->image);
+      return
+        '<div class="display-header-image">' .
+        '<img src="' . h($path_to_image) . '" alt="' . $this->display_name() . '">' .
+        '</div>';
+    } else {
+      return
+        '<div class="display-header"><h2>' . $this->display_name() . '</h2></div>';
+    }
+  }
+
+
   // The only required field is name
   protected function validate()
   {

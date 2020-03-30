@@ -39,7 +39,11 @@
         text-decoration: none;
     }
 
-    .artist-show-albums-text {
+    .display-header-image {
+        margin: 0;
+    }
+
+    .display-header {
         background: $background-dark;
         display: flex;
         flex-direction: column;
