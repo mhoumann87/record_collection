@@ -39,8 +39,8 @@ if ($wishlist->user_id != $session->user_id) {
   if (is_post_request()) {
     // Get the input (only able to change format here)
     $args = $_POST['wishlist'];
-    // Create an instace of the wishlist with the inpur
-    $wishlist = new Wishlist($args);
+    // Merge the new info with the old
+    $wishlist->merge_attributes($args);
     // Save the new wishlist to the database
     $result = $wishlist->save();
 
@@ -54,9 +54,6 @@ if ($wishlist->user_id != $session->user_id) {
     // of the wishlist, that we set up in the beginning
   }
 } // if ($wishlist->user_id != $session->user_id) {
-
-
-
 
 ?>
 
