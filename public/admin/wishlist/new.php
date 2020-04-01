@@ -52,17 +52,7 @@ if (is_post_request()) {
     <h2>Add Album to Your Wishlist</h2>
   </div>
 
-  <?php if ($record->image_link != '') { ?>
-    <div class="display-header-image">
-      <img src="<?php echo h($record->image_link); ?>" alt="<?php echo $record->get_title_and_artist(); ?>" />
-    </div>
-  <?php } elseif ($record->image != '') { ?>
-    <div class="display-header-image">
-      <img src="<?php echo url_for('/assets/images/' . $record->get_table_name() . '/' . $record->image); ?>" alt="<?php echo $record->get_title_and_artist(); ?>" />
-    </div>
-  <?php } else { ?>
-    <?php echo ''; ?>
-  <?php } ?>
+  <?php echo $record->display_record_image(); ?>
 
   <?php echo display_errors($wishlist->errors); ?>
 

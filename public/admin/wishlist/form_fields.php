@@ -17,7 +17,8 @@ if (!isset($wishlist)) {
   <select name="wishlist[format_id]">
     <?php $formats = Format::find_all();
     foreach ($formats as $format) { ?>
-      <option value="<?php echo h($format->id) ?>">
+      <option value="<?php echo h($format->id) ?>" <?php echo $format->id == $wishlist->format_id ? 'selected' : ''; ?>>
+
         <?php echo h($format->name); ?>
       </option>
     <?php } ?>
