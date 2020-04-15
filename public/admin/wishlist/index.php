@@ -27,6 +27,7 @@ $page_title = 'Wishlist for ' . $session->username;
           <th>Added At</th>
           <th>&nbsp;</th>
           <th>&nbsp;</th>
+          <th>&nbsp;</th>
         </tr>
       </thead>
       <tbody>
@@ -54,13 +55,19 @@ $page_title = 'Wishlist for ' . $session->username;
 
             <td class="btn">
               <a href="<?php echo url_for('/admin/wishlist/show.php?id=' . h(u($item->id))); ?>">
-                <button class="btn-link" role="link">See More</button>
+                <button class="btn-link" role="link">See Item</button>
               </a>
             </td>
 
             <td class="btn">
               <a href="<?php echo url_for('/admin/wishlist/edit.php?id=' . h(u($item->id))); ?>">
-                <button class="btn-link" role="link">Change Status</button>
+                <button class="btn-link" role="link">Edit Item</button>
+              </a>
+            </td>
+
+            <td class="btn">
+              <a href="<?php echo url_for('/admin/wishlist/delete.php?id=' . h(u($wishlist->id))) ?>">
+                <button class="btn-danger" role="link">Delete Item</button>
               </a>
             </td>
 
