@@ -27,9 +27,23 @@ $record = Record::find_by_id($wishlist->record_id);
 // otherwise just show the form with the info
 // from the database
 if (is_post_request()) {
-  echo 'Update database';
+
+  // Get the input from the form and store them in a variable
+  $args = $_POST['wishlist'];
+  // Combine the new inputs with the old from the database
+  $wishlist->merge_attributes($args);
+  // Save to the database
+  $result = $wishlist->save();
+  // If the object is saved return user to index,
+  // display success message
+  if ($result === true) {
+    $session->message('Whislist item is updated');
+    redirect_to(url_for('/admin/wishlist/index.php'));
+  }
 } else {
   // Just show the form
+  // Happends automatically, 
+  // this is just to keep me sane
 }
 
 ?>
@@ -63,20 +77,13 @@ if (is_post_request()) {
 
         <div class="button-bar">
 
-          <input class="button btn-success" type="submit" name="submit" value="Edit Record" />
+          <input class="button btn-success" type="submit" name="submit" value="Update Item" />
 
       </form>
 
-      <a href="<?php echo url_for('/admin/collection/new.php?id=' . h(u($wishlist->id))); ?>">
-        <button class="btn-success">Add To Your Collection</button>
-      </a>
     </div>
 
-
-
   </div>
-
-
 
   </div>
 
